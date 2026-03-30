@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Class 3 Science Test – 17-04-2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f4f8;
+  padding: 12px;
+  min-height: 100vh;
+}
+.header {
+  background: #4527A0;
+  color: white;
+  text-align: center;
+  padding: 16px 12px 10px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.header h2 { font-size: 22px; margin-bottom: 4px; }
+.header .sub { font-size: 13px; opacity: 0.85; }
+#timer {
+  font-size: 20px;
+  font-weight: bold;
+  color: #c62828;
+  text-align: center;
+  background: #fff3cd;
+  border: 2px solid #f5c518;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+  transition: background 0.5s;
+}
+#timer.danger {
+  background: #ffcdd2;
+  border-color: #e53935;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+.question {
+  background: white;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-left: 5px solid #4527A0;
+}
+.question b { color: #333; font-size: 14px; display: block; margin-bottom: 6px; }
+label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+label:hover { background: #f5f5f5; color: #4527A0; }
+input[type="radio"] { accent-color: #4527A0; width: 16px; height: 16px; flex-shrink: 0; }
+#submitBtn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: #4527A0;
+  color: white;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 18px;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s, transform 0.1s;
+}
+#submitBtn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+#submitBtn:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+#result {
+  margin-top: 20px;
+  text-align: center;
+  padding: 18px;
+  border-radius: 12px;
+  display: none;
+}
+#result h3 { font-size: 26px; margin-bottom: 6px; }
+#result p  { font-size: 16px; }
+
+/* ── Timer-expired overlay ── */
+#lockOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(183,28,28,0.93);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+}
+#lockOverlay h1 { color: white; font-size: 44px; margin-bottom: 10px; }
+#lockOverlay p  { color: #ffebee; font-size: 18px; margin-bottom: 24px; }
+#lockOverlay button {
+  padding: 14px 34px;
+  font-size: 18px;
+  font-weight: bold;
+  background: white;
+  color: #b71c1c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- Timer-expired overlay -->
+<div id="lockOverlay">
+  <h1>⏰ Time's Up!</h1>
+  <p>Your quiz has been locked.<br>Click the button below to submit your answers.</p>
+  <button onclick="closeLockAndSubmit()">📝 Submit My Answers</button>
+</div>
+
+<div class="header">
+  <h2>🔬 Class 3 Science Test</h2>
+  <div class="sub">Date: 17-04-2026 &nbsp;|&nbsp; Total Questions: 50 &nbsp;|&nbsp; Time: 15 Minutes</div>
+</div>
+
+<div id="timer">⏱ Time Left: 15:00</div>
+
+<form id="quizForm">
+<div class="question"><b>1. Which is the largest planet in our solar system?</b><br>
+  <label><input type="radio" name="q1" value="Jupiter"> Jupiter</label><br>
+  <label><input type="radio" name="q1" value="Saturn"> Saturn</label><br>
+  <label><input type="radio" name="q1" value="Earth"> Earth</label><br>
+</div>
+<div class="question"><b>2. What do plants need to make food?</b><br>
+  <label><input type="radio" name="q2" value="Sunlight, water and CO2"> Sunlight, water and CO2</label><br>
+  <label><input type="radio" name="q2" value="Only soil"> Only soil</label><br>
+  <label><input type="radio" name="q2" value="Only water"> Only water</label><br>
+</div>
+<div class="question"><b>3. What is the process by which plants make food?</b><br>
+  <label><input type="radio" name="q3" value="Photosynthesis"> Photosynthesis</label><br>
+  <label><input type="radio" name="q3" value="Respiration"> Respiration</label><br>
+  <label><input type="radio" name="q3" value="Digestion"> Digestion</label><br>
+</div>
+<div class="question"><b>4. Which organ pumps blood in our body?</b><br>
+  <label><input type="radio" name="q4" value="Heart"> Heart</label><br>
+  <label><input type="radio" name="q4" value="Lungs"> Lungs</label><br>
+  <label><input type="radio" name="q4" value="Liver"> Liver</label><br>
+</div>
+<div class="question"><b>5. Animals that eat only plants are called ___.</b><br>
+  <label><input type="radio" name="q5" value="Herbivores"> Herbivores</label><br>
+  <label><input type="radio" name="q5" value="Carnivores"> Carnivores</label><br>
+  <label><input type="radio" name="q5" value="Omnivores"> Omnivores</label><br>
+</div>
+<div class="question"><b>6. Which gas do plants take in during photosynthesis?</b><br>
+  <label><input type="radio" name="q6" value="Carbon Dioxide"> Carbon Dioxide</label><br>
+  <label><input type="radio" name="q6" value="Oxygen"> Oxygen</label><br>
+  <label><input type="radio" name="q6" value="Nitrogen"> Nitrogen</label><br>
+</div>
+<div class="question"><b>7. What is the boiling point of water?</b><br>
+  <label><input type="radio" name="q7" value="100°C"> 100°C</label><br>
+  <label><input type="radio" name="q7" value="50°C"> 50°C</label><br>
+  <label><input type="radio" name="q7" value="200°C"> 200°C</label><br>
+</div>
+<div class="question"><b>8. Which is the nearest star to the Earth?</b><br>
+  <label><input type="radio" name="q8" value="The Sun"> The Sun</label><br>
+  <label><input type="radio" name="q8" value="The Moon"> The Moon</label><br>
+  <label><input type="radio" name="q8" value="Jupiter"> Jupiter</label><br>
+</div>
+<div class="question"><b>9. Animals that eat both plants and animals are called ___.</b><br>
+  <label><input type="radio" name="q9" value="Omnivores"> Omnivores</label><br>
+  <label><input type="radio" name="q9" value="Herbivores"> Herbivores</label><br>
+  <label><input type="radio" name="q9" value="Carnivores"> Carnivores</label><br>
+</div>
+<div class="question"><b>10. Which organ is responsible for breathing?</b><br>
+  <label><input type="radio" name="q10" value="Lungs"> Lungs</label><br>
+  <label><input type="radio" name="q10" value="Heart"> Heart</label><br>
+  <label><input type="radio" name="q10" value="Liver"> Liver</label><br>
+</div>
+<div class="question"><b>11. Water freezes at ___ degrees Celsius.</b><br>
+  <label><input type="radio" name="q11" value="0"> 0</label><br>
+  <label><input type="radio" name="q11" value="10"> 10</label><br>
+  <label><input type="radio" name="q11" value="100"> 100</label><br>
+</div>
+<div class="question"><b>12. Which part of the plant makes food?</b><br>
+  <label><input type="radio" name="q12" value="Leaves"> Leaves</label><br>
+  <label><input type="radio" name="q12" value="Roots"> Roots</label><br>
+  <label><input type="radio" name="q12" value="Stem"> Stem</label><br>
+</div>
+<div class="question"><b>13. What is the natural satellite of Earth?</b><br>
+  <label><input type="radio" name="q13" value="Moon"> Moon</label><br>
+  <label><input type="radio" name="q13" value="Sun"> Sun</label><br>
+  <label><input type="radio" name="q13" value="Mars"> Mars</label><br>
+</div>
+<div class="question"><b>14. Which planet is known as the Red Planet?</b><br>
+  <label><input type="radio" name="q14" value="Mars"> Mars</label><br>
+  <label><input type="radio" name="q14" value="Venus"> Venus</label><br>
+  <label><input type="radio" name="q14" value="Saturn"> Saturn</label><br>
+</div>
+<div class="question"><b>15. Water turning into vapour is called ___.</b><br>
+  <label><input type="radio" name="q15" value="Evaporation"> Evaporation</label><br>
+  <label><input type="radio" name="q15" value="Condensation"> Condensation</label><br>
+  <label><input type="radio" name="q15" value="Precipitation"> Precipitation</label><br>
+</div>
+<div class="question"><b>16. Which sense organ is used for hearing?</b><br>
+  <label><input type="radio" name="q16" value="Ear"> Ear</label><br>
+  <label><input type="radio" name="q16" value="Eye"> Eye</label><br>
+  <label><input type="radio" name="q16" value="Nose"> Nose</label><br>
+</div>
+<div class="question"><b>17. What do caterpillars change into?</b><br>
+  <label><input type="radio" name="q17" value="Butterflies"> Butterflies</label><br>
+  <label><input type="radio" name="q17" value="Bees"> Bees</label><br>
+  <label><input type="radio" name="q17" value="Flies"> Flies</label><br>
+</div>
+<div class="question"><b>18. Which vitamin do we get from sunlight?</b><br>
+  <label><input type="radio" name="q18" value="Vitamin D"> Vitamin D</label><br>
+  <label><input type="radio" name="q18" value="Vitamin C"> Vitamin C</label><br>
+  <label><input type="radio" name="q18" value="Vitamin A"> Vitamin A</label><br>
+</div>
+<div class="question"><b>19. What does a thermometer measure?</b><br>
+  <label><input type="radio" name="q19" value="Temperature"> Temperature</label><br>
+  <label><input type="radio" name="q19" value="Weight"> Weight</label><br>
+  <label><input type="radio" name="q19" value="Length"> Length</label><br>
+</div>
+<div class="question"><b>20. Which part of the plant absorbs water from soil?</b><br>
+  <label><input type="radio" name="q20" value="Roots"> Roots</label><br>
+  <label><input type="radio" name="q20" value="Leaves"> Leaves</label><br>
+  <label><input type="radio" name="q20" value="Flowers"> Flowers</label><br>
+</div>
+<div class="question"><b>21. What is the state of water at 0°C?</b><br>
+  <label><input type="radio" name="q21" value="Solid (Ice)"> Solid (Ice)</label><br>
+  <label><input type="radio" name="q21" value="Liquid"> Liquid</label><br>
+  <label><input type="radio" name="q21" value="Gas"> Gas</label><br>
+</div>
+<div class="question"><b>22. Which of these animals lays eggs?</b><br>
+  <label><input type="radio" name="q22" value="Hen"> Hen</label><br>
+  <label><input type="radio" name="q22" value="Dog"> Dog</label><br>
+  <label><input type="radio" name="q22" value="Cat"> Cat</label><br>
+</div>
+<div class="question"><b>23. What is the main source of energy for Earth?</b><br>
+  <label><input type="radio" name="q23" value="Sun"> Sun</label><br>
+  <label><input type="radio" name="q23" value="Moon"> Moon</label><br>
+  <label><input type="radio" name="q23" value="Wind"> Wind</label><br>
+</div>
+<div class="question"><b>24. Which gas is most abundant in the atmosphere?</b><br>
+  <label><input type="radio" name="q24" value="Nitrogen"> Nitrogen</label><br>
+  <label><input type="radio" name="q24" value="Oxygen"> Oxygen</label><br>
+  <label><input type="radio" name="q24" value="Carbon Dioxide"> Carbon Dioxide</label><br>
+</div>
+<div class="question"><b>25. Which planet is closest to the Sun?</b><br>
+  <label><input type="radio" name="q25" value="Mercury"> Mercury</label><br>
+  <label><input type="radio" name="q25" value="Venus"> Venus</label><br>
+  <label><input type="radio" name="q25" value="Earth"> Earth</label><br>
+</div>
+<div class="question"><b>26. Water changing from gas to liquid is called ___.</b><br>
+  <label><input type="radio" name="q26" value="Condensation"> Condensation</label><br>
+  <label><input type="radio" name="q26" value="Evaporation"> Evaporation</label><br>
+  <label><input type="radio" name="q26" value="Precipitation"> Precipitation</label><br>
+</div>
+<div class="question"><b>27. Which sense helps us smell?</b><br>
+  <label><input type="radio" name="q27" value="Nose"> Nose</label><br>
+  <label><input type="radio" name="q27" value="Eye"> Eye</label><br>
+  <label><input type="radio" name="q27" value="Ear"> Ear</label><br>
+</div>
+<div class="question"><b>28. Animals that live both on land and in water are ___.</b><br>
+  <label><input type="radio" name="q28" value="Amphibians"> Amphibians</label><br>
+  <label><input type="radio" name="q28" value="Reptiles"> Reptiles</label><br>
+  <label><input type="radio" name="q28" value="Mammals"> Mammals</label><br>
+</div>
+<div class="question"><b>29. Which is the largest animal on land?</b><br>
+  <label><input type="radio" name="q29" value="Elephant"> Elephant</label><br>
+  <label><input type="radio" name="q29" value="Giraffe"> Giraffe</label><br>
+  <label><input type="radio" name="q29" value="Hippo"> Hippo</label><br>
+</div>
+<div class="question"><b>30. Which organ do we use to taste food?</b><br>
+  <label><input type="radio" name="q30" value="Tongue"> Tongue</label><br>
+  <label><input type="radio" name="q30" value="Nose"> Nose</label><br>
+  <label><input type="radio" name="q30" value="Ear"> Ear</label><br>
+</div>
+<div class="question"><b>31. What is the young one of a cow called?</b><br>
+  <label><input type="radio" name="q31" value="Calf"> Calf</label><br>
+  <label><input type="radio" name="q31" value="Foal"> Foal</label><br>
+  <label><input type="radio" name="q31" value="Lamb"> Lamb</label><br>
+</div>
+<div class="question"><b>32. Which planet has rings around it?</b><br>
+  <label><input type="radio" name="q32" value="Saturn"> Saturn</label><br>
+  <label><input type="radio" name="q32" value="Jupiter"> Jupiter</label><br>
+  <label><input type="radio" name="q32" value="Mars"> Mars</label><br>
+</div>
+<div class="question"><b>33. What do plants give out during photosynthesis?</b><br>
+  <label><input type="radio" name="q33" value="Oxygen"> Oxygen</label><br>
+  <label><input type="radio" name="q33" value="Carbon Dioxide"> Carbon Dioxide</label><br>
+  <label><input type="radio" name="q33" value="Nitrogen"> Nitrogen</label><br>
+</div>
+<div class="question"><b>34. Which of these is a non-living thing?</b><br>
+  <label><input type="radio" name="q34" value="Rock"> Rock</label><br>
+  <label><input type="radio" name="q34" value="Plant"> Plant</label><br>
+  <label><input type="radio" name="q34" value="Insect"> Insect</label><br>
+</div>
+<div class="question"><b>35. The change from caterpillar to butterfly is called ___.</b><br>
+  <label><input type="radio" name="q35" value="Metamorphosis"> Metamorphosis</label><br>
+  <label><input type="radio" name="q35" value="Digestion"> Digestion</label><br>
+  <label><input type="radio" name="q35" value="Evaporation"> Evaporation</label><br>
+</div>
+<div class="question"><b>36. Which organ do fish use to breathe?</b><br>
+  <label><input type="radio" name="q36" value="Gills"> Gills</label><br>
+  <label><input type="radio" name="q36" value="Lungs"> Lungs</label><br>
+  <label><input type="radio" name="q36" value="Skin"> Skin</label><br>
+</div>
+<div class="question"><b>37. What is the young one of a horse called?</b><br>
+  <label><input type="radio" name="q37" value="Foal"> Foal</label><br>
+  <label><input type="radio" name="q37" value="Calf"> Calf</label><br>
+  <label><input type="radio" name="q37" value="Kid"> Kid</label><br>
+</div>
+<div class="question"><b>38. Which force pulls objects towards Earth?</b><br>
+  <label><input type="radio" name="q38" value="Gravity"> Gravity</label><br>
+  <label><input type="radio" name="q38" value="Magnetism"> Magnetism</label><br>
+  <label><input type="radio" name="q38" value="Friction"> Friction</label><br>
+</div>
+<div class="question"><b>39. Which of these is a primary colour?</b><br>
+  <label><input type="radio" name="q39" value="Red"> Red</label><br>
+  <label><input type="radio" name="q39" value="Orange"> Orange</label><br>
+  <label><input type="radio" name="q39" value="Purple"> Purple</label><br>
+</div>
+<div class="question"><b>40. Which of these is a source of light?</b><br>
+  <label><input type="radio" name="q40" value="Sun"> Sun</label><br>
+  <label><input type="radio" name="q40" value="Moon"> Moon</label><br>
+  <label><input type="radio" name="q40" value="Mirror"> Mirror</label><br>
+</div>
+<div class="question"><b>41. What do carnivores eat?</b><br>
+  <label><input type="radio" name="q41" value="Meat only"> Meat only</label><br>
+  <label><input type="radio" name="q41" value="Plants only"> Plants only</label><br>
+  <label><input type="radio" name="q41" value="Both plants and meat"> Both plants and meat</label><br>
+</div>
+<div class="question"><b>42. Animals that eat only meat are called ___.</b><br>
+  <label><input type="radio" name="q42" value="Carnivores"> Carnivores</label><br>
+  <label><input type="radio" name="q42" value="Herbivores"> Herbivores</label><br>
+  <label><input type="radio" name="q42" value="Omnivores"> Omnivores</label><br>
+</div>
+<div class="question"><b>43. Which sense organ do we use to see?</b><br>
+  <label><input type="radio" name="q43" value="Eyes"> Eyes</label><br>
+  <label><input type="radio" name="q43" value="Ears"> Ears</label><br>
+  <label><input type="radio" name="q43" value="Nose"> Nose</label><br>
+</div>
+<div class="question"><b>44. What do we use to measure length?</b><br>
+  <label><input type="radio" name="q44" value="Ruler"> Ruler</label><br>
+  <label><input type="radio" name="q44" value="Thermometer"> Thermometer</label><br>
+  <label><input type="radio" name="q44" value="Scale"> Scale</label><br>
+</div>
+<div class="question"><b>45. Which of these is a mammal?</b><br>
+  <label><input type="radio" name="q45" value="Whale"> Whale</label><br>
+  <label><input type="radio" name="q45" value="Frog"> Frog</label><br>
+  <label><input type="radio" name="q45" value="Crocodile"> Crocodile</label><br>
+</div>
+<div class="question"><b>46. What is the young one of a dog called?</b><br>
+  <label><input type="radio" name="q46" value="Puppy"> Puppy</label><br>
+  <label><input type="radio" name="q46" value="Kitten"> Kitten</label><br>
+  <label><input type="radio" name="q46" value="Foal"> Foal</label><br>
+</div>
+<div class="question"><b>47. Which season comes after Winter?</b><br>
+  <label><input type="radio" name="q47" value="Spring"> Spring</label><br>
+  <label><input type="radio" name="q47" value="Autumn"> Autumn</label><br>
+  <label><input type="radio" name="q47" value="Summer"> Summer</label><br>
+</div>
+<div class="question"><b>48. Where do fish live?</b><br>
+  <label><input type="radio" name="q48" value="Water"> Water</label><br>
+  <label><input type="radio" name="q48" value="Land"> Land</label><br>
+  <label><input type="radio" name="q48" value="Trees"> Trees</label><br>
+</div>
+<div class="question"><b>49. What gives plants their green colour?</b><br>
+  <label><input type="radio" name="q49" value="Chlorophyll"> Chlorophyll</label><br>
+  <label><input type="radio" name="q49" value="Oxygen"> Oxygen</label><br>
+  <label><input type="radio" name="q49" value="Carbon Dioxide"> Carbon Dioxide</label><br>
+</div>
+<div class="question"><b>50. Which of these is a reptile?</b><br>
+  <label><input type="radio" name="q50" value="Lizard"> Lizard</label><br>
+  <label><input type="radio" name="q50" value="Frog"> Frog</label><br>
+  <label><input type="radio" name="q50" value="Whale"> Whale</label><br>
+</div>
+
+<button type="button" id="submitBtn" onclick="submitQuiz()">✅ Submit Quiz</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+let timeLeft = 900;
+let locked   = false;
+let submitted = false;
+
+const timerEl = document.getElementById('timer');
+
+const timerInterval = setInterval(function () {
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  timerEl.textContent = '⏱ Time Left: ' + m + ':' + (s < 10 ? '0' : '') + s;
+
+  if (timeLeft <= 60 && !timerEl.classList.contains('danger')) {
+    timerEl.classList.add('danger');
+  }
+
+  timeLeft--;
+
+  if (timeLeft < 0) {
+    clearInterval(timerInterval);
+    timerEl.textContent = '⏰ Time is Up!';
+    timerEl.classList.add('danger');
+
+    // Lock all radio inputs
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+    locked = true;
+
+    // Show the warning overlay
+    document.getElementById('lockOverlay').style.display = 'flex';
+  }
+}, 1000);
+
+function closeLockAndSubmit() {
+  document.getElementById('lockOverlay').style.display = 'none';
+  submitQuiz();
+}
+
+const answers = {
+  q1: "Jupiter",
+  q2: "Sunlight, water and CO2",
+  q3: "Photosynthesis",
+  q4: "Heart",
+  q5: "Herbivores",
+  q6: "Carbon Dioxide",
+  q7: "100°C",
+  q8: "The Sun",
+  q9: "Omnivores",
+  q10: "Lungs",
+  q11: "0",
+  q12: "Leaves",
+  q13: "Moon",
+  q14: "Mars",
+  q15: "Evaporation",
+  q16: "Ear",
+  q17: "Butterflies",
+  q18: "Vitamin D",
+  q19: "Temperature",
+  q20: "Roots",
+  q21: "Solid (Ice)",
+  q22: "Hen",
+  q23: "Sun",
+  q24: "Nitrogen",
+  q25: "Mercury",
+  q26: "Condensation",
+  q27: "Nose",
+  q28: "Amphibians",
+  q29: "Elephant",
+  q30: "Tongue",
+  q31: "Calf",
+  q32: "Saturn",
+  q33: "Oxygen",
+  q34: "Rock",
+  q35: "Metamorphosis",
+  q36: "Gills",
+  q37: "Foal",
+  q38: "Gravity",
+  q39: "Red",
+  q40: "Sun",
+  q41: "Meat only",
+  q42: "Carnivores",
+  q43: "Eyes",
+  q44: "Ruler",
+  q45: "Whale",
+  q46: "Puppy",
+  q47: "Spring",
+  q48: "Water",
+  q49: "Chlorophyll",
+  q50: "Lizard"
+};
+
+let report = [];
+
+function submitQuiz() {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+  document.getElementById('submitBtn').disabled = true;
+
+  let score = 0;
+  report = [];
+
+  for (const q in answers) {
+    const sel     = document.querySelector('input[name="' + q + '"]:checked');
+    const user    = sel ? sel.value : 'Not Answered';
+    const correct = answers[q];
+    const res     = (user === correct) ? 'Correct' : 'Wrong';
+    if (res === 'Correct') score++;
+    report.push({ q, user, correct, res });
+  }
+
+  const pct = score / 50;
+  let badge = pct >= 0.8 ? '🌟 Excellent! Keep it up!' :
+              pct >= 0.6 ? '👍 Good effort! Practice more.' :
+                                         '📚 Keep studying! You can do better.';
+
+  const resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+  resultEl.style.background = pct >= 0.6 ? '#e8f5e9' : '#fff3cd';
+  resultEl.style.border     = '2px solid ' + (pct >= 0.6 ? '#388e3c' : '#f59e0b');
+  resultEl.innerHTML =
+    '<h3>🎯 Score: ' + score + ' / 50</h3>' +
+    '<p>' + badge + '</p>';
+
+  generatePDF(score);
+}
+
+function generatePDF(score) {
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.setTextColor(40, 40, 40);
+    doc.text('Class 3 Science Test Report', 10, 15);
+
+    doc.setFontSize(11);
+    doc.text('Date  : 17-04-2026', 10, 25);
+    doc.text('Score : ' + score + ' / 50', 10, 32);
+
+    let y = 44;
+    doc.setFontSize(9);
+
+    report.forEach(function (r, i) {
+      if (y > 275) { doc.addPage(); y = 15; }
+      const tick = r.res === 'Correct' ? '[OK]' : '[X] ';
+      const line = tick + ' Q' + (i + 1) + ': Your=' + r.user + ' | Ans=' + r.correct;
+      doc.setTextColor(r.res === 'Correct' ? 0 : 180, r.res === 'Correct' ? 120 : 0, 0);
+      doc.text(line.substring(0, 95), 10, y);
+      y += 7;
+    });
+
+    const now = new Date();
+    const fname = 'ScienceTest_17-04-2026_' + now.getHours() + now.getMinutes() + '.pdf';
+    doc.save(fname);
+  } catch (e) {
+    console.warn('PDF generation error:', e);
+  }
+}
+</script>
+</body>
+</html>

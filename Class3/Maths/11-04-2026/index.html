@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Class 3 Maths Test – 11-04-2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f4f8;
+  padding: 12px;
+  min-height: 100vh;
+}
+.header {
+  background: #558B2F;
+  color: white;
+  text-align: center;
+  padding: 16px 12px 10px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.header h2 { font-size: 22px; margin-bottom: 4px; }
+.header .sub { font-size: 13px; opacity: 0.85; }
+#timer {
+  font-size: 20px;
+  font-weight: bold;
+  color: #c62828;
+  text-align: center;
+  background: #fff3cd;
+  border: 2px solid #f5c518;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+  transition: background 0.5s;
+}
+#timer.danger {
+  background: #ffcdd2;
+  border-color: #e53935;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+.question {
+  background: white;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-left: 5px solid #558B2F;
+}
+.question b { color: #333; font-size: 14px; display: block; margin-bottom: 6px; }
+label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+label:hover { background: #f5f5f5; color: #558B2F; }
+input[type="radio"] { accent-color: #558B2F; width: 16px; height: 16px; flex-shrink: 0; }
+#submitBtn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: #558B2F;
+  color: white;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 18px;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s, transform 0.1s;
+}
+#submitBtn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+#submitBtn:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+#result {
+  margin-top: 20px;
+  text-align: center;
+  padding: 18px;
+  border-radius: 12px;
+  display: none;
+}
+#result h3 { font-size: 26px; margin-bottom: 6px; }
+#result p  { font-size: 16px; }
+
+/* ── Timer-expired overlay ── */
+#lockOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(183,28,28,0.93);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+}
+#lockOverlay h1 { color: white; font-size: 44px; margin-bottom: 10px; }
+#lockOverlay p  { color: #ffebee; font-size: 18px; margin-bottom: 24px; }
+#lockOverlay button {
+  padding: 14px 34px;
+  font-size: 18px;
+  font-weight: bold;
+  background: white;
+  color: #b71c1c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- Timer-expired overlay -->
+<div id="lockOverlay">
+  <h1>⏰ Time's Up!</h1>
+  <p>Your quiz has been locked.<br>Click the button below to submit your answers.</p>
+  <button onclick="closeLockAndSubmit()">📝 Submit My Answers</button>
+</div>
+
+<div class="header">
+  <h2>🔢 Class 3 Maths Test</h2>
+  <div class="sub">Date: 11-04-2026 &nbsp;|&nbsp; Total Questions: 50 &nbsp;|&nbsp; Time: 15 Minutes</div>
+</div>
+
+<div id="timer">⏱ Time Left: 15:00</div>
+
+<form id="quizForm">
+<div class="question"><b>1. What is 45 + 37?</b><br>
+  <label><input type="radio" name="q1" value="82"> 82</label><br>
+  <label><input type="radio" name="q1" value="72"> 72</label><br>
+  <label><input type="radio" name="q1" value="92"> 92</label><br>
+</div>
+<div class="question"><b>2. What is 100 - 64?</b><br>
+  <label><input type="radio" name="q2" value="36"> 36</label><br>
+  <label><input type="radio" name="q2" value="46"> 46</label><br>
+  <label><input type="radio" name="q2" value="26"> 26</label><br>
+</div>
+<div class="question"><b>3. What is 6 × 7?</b><br>
+  <label><input type="radio" name="q3" value="42"> 42</label><br>
+  <label><input type="radio" name="q3" value="48"> 48</label><br>
+  <label><input type="radio" name="q3" value="36"> 36</label><br>
+</div>
+<div class="question"><b>4. What is 81 ÷ 9?</b><br>
+  <label><input type="radio" name="q4" value="9"> 9</label><br>
+  <label><input type="radio" name="q4" value="8"> 8</label><br>
+  <label><input type="radio" name="q4" value="7"> 7</label><br>
+</div>
+<div class="question"><b>5. What is the place value of 3 in 347?</b><br>
+  <label><input type="radio" name="q5" value="Hundreds"> Hundreds</label><br>
+  <label><input type="radio" name="q5" value="Tens"> Tens</label><br>
+  <label><input type="radio" name="q5" value="Ones"> Ones</label><br>
+</div>
+<div class="question"><b>6. Which is the smallest 3-digit number?</b><br>
+  <label><input type="radio" name="q6" value="100"> 100</label><br>
+  <label><input type="radio" name="q6" value="99"> 99</label><br>
+  <label><input type="radio" name="q6" value="111"> 111</label><br>
+</div>
+<div class="question"><b>7. What is 250 + 150?</b><br>
+  <label><input type="radio" name="q7" value="400"> 400</label><br>
+  <label><input type="radio" name="q7" value="350"> 350</label><br>
+  <label><input type="radio" name="q7" value="450"> 450</label><br>
+</div>
+<div class="question"><b>8. What is 500 - 275?</b><br>
+  <label><input type="radio" name="q8" value="225"> 225</label><br>
+  <label><input type="radio" name="q8" value="235"> 235</label><br>
+  <label><input type="radio" name="q8" value="215"> 215</label><br>
+</div>
+<div class="question"><b>9. How many sides does a hexagon have?</b><br>
+  <label><input type="radio" name="q9" value="6"> 6</label><br>
+  <label><input type="radio" name="q9" value="5"> 5</label><br>
+  <label><input type="radio" name="q9" value="8"> 8</label><br>
+</div>
+<div class="question"><b>10. What is 9 × 8?</b><br>
+  <label><input type="radio" name="q10" value="72"> 72</label><br>
+  <label><input type="radio" name="q10" value="63"> 63</label><br>
+  <label><input type="radio" name="q10" value="81"> 81</label><br>
+</div>
+<div class="question"><b>11. What is 144 ÷ 12?</b><br>
+  <label><input type="radio" name="q11" value="12"> 12</label><br>
+  <label><input type="radio" name="q11" value="11"> 11</label><br>
+  <label><input type="radio" name="q11" value="13"> 13</label><br>
+</div>
+<div class="question"><b>12. Perimeter of a square with side 5 cm?</b><br>
+  <label><input type="radio" name="q12" value="20 cm"> 20 cm</label><br>
+  <label><input type="radio" name="q12" value="25 cm"> 25 cm</label><br>
+  <label><input type="radio" name="q12" value="15 cm"> 15 cm</label><br>
+</div>
+<div class="question"><b>13. Which number comes between 49 and 51?</b><br>
+  <label><input type="radio" name="q13" value="50"> 50</label><br>
+  <label><input type="radio" name="q13" value="48"> 48</label><br>
+  <label><input type="radio" name="q13" value="52"> 52</label><br>
+</div>
+<div class="question"><b>14. What is half of 68?</b><br>
+  <label><input type="radio" name="q14" value="34"> 34</label><br>
+  <label><input type="radio" name="q14" value="38"> 38</label><br>
+  <label><input type="radio" name="q14" value="32"> 32</label><br>
+</div>
+<div class="question"><b>15. How many minutes are in an hour?</b><br>
+  <label><input type="radio" name="q15" value="60"> 60</label><br>
+  <label><input type="radio" name="q15" value="30"> 30</label><br>
+  <label><input type="radio" name="q15" value="90"> 90</label><br>
+</div>
+<div class="question"><b>16. What is 7 × 6?</b><br>
+  <label><input type="radio" name="q16" value="42"> 42</label><br>
+  <label><input type="radio" name="q16" value="35"> 35</label><br>
+  <label><input type="radio" name="q16" value="48"> 48</label><br>
+</div>
+<div class="question"><b>17. What is 1000 - 450?</b><br>
+  <label><input type="radio" name="q17" value="550"> 550</label><br>
+  <label><input type="radio" name="q17" value="650"> 650</label><br>
+  <label><input type="radio" name="q17" value="500"> 500</label><br>
+</div>
+<div class="question"><b>18. What is the Roman numeral for 10?</b><br>
+  <label><input type="radio" name="q18" value="X"> X</label><br>
+  <label><input type="radio" name="q18" value="V"> V</label><br>
+  <label><input type="radio" name="q18" value="L"> L</label><br>
+</div>
+<div class="question"><b>19. Which shape has 4 equal sides?</b><br>
+  <label><input type="radio" name="q19" value="Square"> Square</label><br>
+  <label><input type="radio" name="q19" value="Rectangle"> Rectangle</label><br>
+  <label><input type="radio" name="q19" value="Triangle"> Triangle</label><br>
+</div>
+<div class="question"><b>20. What is 56 ÷ 7?</b><br>
+  <label><input type="radio" name="q20" value="8"> 8</label><br>
+  <label><input type="radio" name="q20" value="7"> 7</label><br>
+  <label><input type="radio" name="q20" value="9"> 9</label><br>
+</div>
+<div class="question"><b>21. What is 325 + 275?</b><br>
+  <label><input type="radio" name="q21" value="600"> 600</label><br>
+  <label><input type="radio" name="q21" value="500"> 500</label><br>
+  <label><input type="radio" name="q21" value="700"> 700</label><br>
+</div>
+<div class="question"><b>22. How many centimeters in a meter?</b><br>
+  <label><input type="radio" name="q22" value="100"> 100</label><br>
+  <label><input type="radio" name="q22" value="10"> 10</label><br>
+  <label><input type="radio" name="q22" value="1000"> 1000</label><br>
+</div>
+<div class="question"><b>23. What is 8 × 9?</b><br>
+  <label><input type="radio" name="q23" value="72"> 72</label><br>
+  <label><input type="radio" name="q23" value="63"> 63</label><br>
+  <label><input type="radio" name="q23" value="81"> 81</label><br>
+</div>
+<div class="question"><b>24. How many seconds in a minute?</b><br>
+  <label><input type="radio" name="q24" value="60"> 60</label><br>
+  <label><input type="radio" name="q24" value="30"> 30</label><br>
+  <label><input type="radio" name="q24" value="45"> 45</label><br>
+</div>
+<div class="question"><b>25. What is the next even number after 28?</b><br>
+  <label><input type="radio" name="q25" value="30"> 30</label><br>
+  <label><input type="radio" name="q25" value="29"> 29</label><br>
+  <label><input type="radio" name="q25" value="32"> 32</label><br>
+</div>
+<div class="question"><b>26. What is 1/4 of 20?</b><br>
+  <label><input type="radio" name="q26" value="5"> 5</label><br>
+  <label><input type="radio" name="q26" value="4"> 4</label><br>
+  <label><input type="radio" name="q26" value="10"> 10</label><br>
+</div>
+<div class="question"><b>27. How many grams in a kilogram?</b><br>
+  <label><input type="radio" name="q27" value="1000"> 1000</label><br>
+  <label><input type="radio" name="q27" value="100"> 100</label><br>
+  <label><input type="radio" name="q27" value="500"> 500</label><br>
+</div>
+<div class="question"><b>28. What is 7 + 8 + 9?</b><br>
+  <label><input type="radio" name="q28" value="24"> 24</label><br>
+  <label><input type="radio" name="q28" value="22"> 22</label><br>
+  <label><input type="radio" name="q28" value="26"> 26</label><br>
+</div>
+<div class="question"><b>29. Which number is divisible by 5?</b><br>
+  <label><input type="radio" name="q29" value="35"> 35</label><br>
+  <label><input type="radio" name="q29" value="33"> 33</label><br>
+  <label><input type="radio" name="q29" value="37"> 37</label><br>
+</div>
+<div class="question"><b>30. Area of a rectangle: length 6 cm, width 4 cm?</b><br>
+  <label><input type="radio" name="q30" value="24 sq cm"> 24 sq cm</label><br>
+  <label><input type="radio" name="q30" value="20 sq cm"> 20 sq cm</label><br>
+  <label><input type="radio" name="q30" value="28 sq cm"> 28 sq cm</label><br>
+</div>
+<div class="question"><b>31. What is 99 + 1?</b><br>
+  <label><input type="radio" name="q31" value="100"> 100</label><br>
+  <label><input type="radio" name="q31" value="101"> 101</label><br>
+  <label><input type="radio" name="q31" value="98"> 98</label><br>
+</div>
+<div class="question"><b>32. How many faces does a cube have?</b><br>
+  <label><input type="radio" name="q32" value="6"> 6</label><br>
+  <label><input type="radio" name="q32" value="4"> 4</label><br>
+  <label><input type="radio" name="q32" value="8"> 8</label><br>
+</div>
+<div class="question"><b>33. What is 3 × 11?</b><br>
+  <label><input type="radio" name="q33" value="33"> 33</label><br>
+  <label><input type="radio" name="q33" value="30"> 30</label><br>
+  <label><input type="radio" name="q33" value="36"> 36</label><br>
+</div>
+<div class="question"><b>34. What is double of 45?</b><br>
+  <label><input type="radio" name="q34" value="90"> 90</label><br>
+  <label><input type="radio" name="q34" value="80"> 80</label><br>
+  <label><input type="radio" name="q34" value="85"> 85</label><br>
+</div>
+<div class="question"><b>35. Which is an odd number?</b><br>
+  <label><input type="radio" name="q35" value="37"> 37</label><br>
+  <label><input type="radio" name="q35" value="44"> 44</label><br>
+  <label><input type="radio" name="q35" value="28"> 28</label><br>
+</div>
+<div class="question"><b>36. What is 200 ÷ 4?</b><br>
+  <label><input type="radio" name="q36" value="50"> 50</label><br>
+  <label><input type="radio" name="q36" value="40"> 40</label><br>
+  <label><input type="radio" name="q36" value="60"> 60</label><br>
+</div>
+<div class="question"><b>37. What is the value of 5 in 503?</b><br>
+  <label><input type="radio" name="q37" value="500"> 500</label><br>
+  <label><input type="radio" name="q37" value="50"> 50</label><br>
+  <label><input type="radio" name="q37" value="5"> 5</label><br>
+</div>
+<div class="question"><b>38. How many days in a leap year?</b><br>
+  <label><input type="radio" name="q38" value="366"> 366</label><br>
+  <label><input type="radio" name="q38" value="365"> 365</label><br>
+  <label><input type="radio" name="q38" value="360"> 360</label><br>
+</div>
+<div class="question"><b>39. What is 15 × 3?</b><br>
+  <label><input type="radio" name="q39" value="45"> 45</label><br>
+  <label><input type="radio" name="q39" value="40"> 40</label><br>
+  <label><input type="radio" name="q39" value="50"> 50</label><br>
+</div>
+<div class="question"><b>40. Which fraction is the largest?</b><br>
+  <label><input type="radio" name="q40" value="3/4"> 3/4</label><br>
+  <label><input type="radio" name="q40" value="1/2"> 1/2</label><br>
+  <label><input type="radio" name="q40" value="1/4"> 1/4</label><br>
+</div>
+<div class="question"><b>41. What is 999 + 1?</b><br>
+  <label><input type="radio" name="q41" value="1000"> 1000</label><br>
+  <label><input type="radio" name="q41" value="1001"> 1001</label><br>
+  <label><input type="radio" name="q41" value="998"> 998</label><br>
+</div>
+<div class="question"><b>42. How many hours in a day?</b><br>
+  <label><input type="radio" name="q42" value="24"> 24</label><br>
+  <label><input type="radio" name="q42" value="12"> 12</label><br>
+  <label><input type="radio" name="q42" value="48"> 48</label><br>
+</div>
+<div class="question"><b>43. What is 50 × 2?</b><br>
+  <label><input type="radio" name="q43" value="100"> 100</label><br>
+  <label><input type="radio" name="q43" value="150"> 150</label><br>
+  <label><input type="radio" name="q43" value="200"> 200</label><br>
+</div>
+<div class="question"><b>44. What is 63 - 18?</b><br>
+  <label><input type="radio" name="q44" value="45"> 45</label><br>
+  <label><input type="radio" name="q44" value="55"> 55</label><br>
+  <label><input type="radio" name="q44" value="35"> 35</label><br>
+</div>
+<div class="question"><b>45. Which is the largest 2-digit number?</b><br>
+  <label><input type="radio" name="q45" value="99"> 99</label><br>
+  <label><input type="radio" name="q45" value="98"> 98</label><br>
+  <label><input type="radio" name="q45" value="100"> 100</label><br>
+</div>
+<div class="question"><b>46. What is 12 × 5?</b><br>
+  <label><input type="radio" name="q46" value="60"> 60</label><br>
+  <label><input type="radio" name="q46" value="70"> 70</label><br>
+  <label><input type="radio" name="q46" value="50"> 50</label><br>
+</div>
+<div class="question"><b>47. How many milliliters in 1 liter?</b><br>
+  <label><input type="radio" name="q47" value="1000"> 1000</label><br>
+  <label><input type="radio" name="q47" value="100"> 100</label><br>
+  <label><input type="radio" name="q47" value="500"> 500</label><br>
+</div>
+<div class="question"><b>48. What is 432 rounded to the nearest hundred?</b><br>
+  <label><input type="radio" name="q48" value="400"> 400</label><br>
+  <label><input type="radio" name="q48" value="500"> 500</label><br>
+  <label><input type="radio" name="q48" value="430"> 430</label><br>
+</div>
+<div class="question"><b>49. What is 11 × 11?</b><br>
+  <label><input type="radio" name="q49" value="121"> 121</label><br>
+  <label><input type="radio" name="q49" value="111"> 111</label><br>
+  <label><input type="radio" name="q49" value="131"> 131</label><br>
+</div>
+<div class="question"><b>50. 8 pens cost ₹5 each. Total cost?</b><br>
+  <label><input type="radio" name="q50" value="₹40"> ₹40</label><br>
+  <label><input type="radio" name="q50" value="₹45"> ₹45</label><br>
+  <label><input type="radio" name="q50" value="₹35"> ₹35</label><br>
+</div>
+
+<button type="button" id="submitBtn" onclick="submitQuiz()">✅ Submit Quiz</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+let timeLeft = 900;
+let locked   = false;
+let submitted = false;
+
+const timerEl = document.getElementById('timer');
+
+const timerInterval = setInterval(function () {
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  timerEl.textContent = '⏱ Time Left: ' + m + ':' + (s < 10 ? '0' : '') + s;
+
+  if (timeLeft <= 60 && !timerEl.classList.contains('danger')) {
+    timerEl.classList.add('danger');
+  }
+
+  timeLeft--;
+
+  if (timeLeft < 0) {
+    clearInterval(timerInterval);
+    timerEl.textContent = '⏰ Time is Up!';
+    timerEl.classList.add('danger');
+
+    // Lock all radio inputs
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+    locked = true;
+
+    // Show the warning overlay
+    document.getElementById('lockOverlay').style.display = 'flex';
+  }
+}, 1000);
+
+function closeLockAndSubmit() {
+  document.getElementById('lockOverlay').style.display = 'none';
+  submitQuiz();
+}
+
+const answers = {
+  q1: "82",
+  q2: "36",
+  q3: "42",
+  q4: "9",
+  q5: "Hundreds",
+  q6: "100",
+  q7: "400",
+  q8: "225",
+  q9: "6",
+  q10: "72",
+  q11: "12",
+  q12: "20 cm",
+  q13: "50",
+  q14: "34",
+  q15: "60",
+  q16: "42",
+  q17: "550",
+  q18: "X",
+  q19: "Square",
+  q20: "8",
+  q21: "600",
+  q22: "100",
+  q23: "72",
+  q24: "60",
+  q25: "30",
+  q26: "5",
+  q27: "1000",
+  q28: "24",
+  q29: "35",
+  q30: "24 sq cm",
+  q31: "100",
+  q32: "6",
+  q33: "33",
+  q34: "90",
+  q35: "37",
+  q36: "50",
+  q37: "500",
+  q38: "366",
+  q39: "45",
+  q40: "3/4",
+  q41: "1000",
+  q42: "24",
+  q43: "100",
+  q44: "45",
+  q45: "99",
+  q46: "60",
+  q47: "1000",
+  q48: "400",
+  q49: "121",
+  q50: "₹40"
+};
+
+let report = [];
+
+function submitQuiz() {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+  document.getElementById('submitBtn').disabled = true;
+
+  let score = 0;
+  report = [];
+
+  for (const q in answers) {
+    const sel     = document.querySelector('input[name="' + q + '"]:checked');
+    const user    = sel ? sel.value : 'Not Answered';
+    const correct = answers[q];
+    const res     = (user === correct) ? 'Correct' : 'Wrong';
+    if (res === 'Correct') score++;
+    report.push({ q, user, correct, res });
+  }
+
+  const pct = score / 50;
+  let badge = pct >= 0.8 ? '🌟 Excellent! Keep it up!' :
+              pct >= 0.6 ? '👍 Good effort! Practice more.' :
+                                         '📚 Keep studying! You can do better.';
+
+  const resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+  resultEl.style.background = pct >= 0.6 ? '#e8f5e9' : '#fff3cd';
+  resultEl.style.border     = '2px solid ' + (pct >= 0.6 ? '#388e3c' : '#f59e0b');
+  resultEl.innerHTML =
+    '<h3>🎯 Score: ' + score + ' / 50</h3>' +
+    '<p>' + badge + '</p>';
+
+  generatePDF(score);
+}
+
+function generatePDF(score) {
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.setTextColor(40, 40, 40);
+    doc.text('Class 3 Maths Test Report', 10, 15);
+
+    doc.setFontSize(11);
+    doc.text('Date  : 11-04-2026', 10, 25);
+    doc.text('Score : ' + score + ' / 50', 10, 32);
+
+    let y = 44;
+    doc.setFontSize(9);
+
+    report.forEach(function (r, i) {
+      if (y > 275) { doc.addPage(); y = 15; }
+      const tick = r.res === 'Correct' ? '[OK]' : '[X] ';
+      const line = tick + ' Q' + (i + 1) + ': Your=' + r.user + ' | Ans=' + r.correct;
+      doc.setTextColor(r.res === 'Correct' ? 0 : 180, r.res === 'Correct' ? 120 : 0, 0);
+      doc.text(line.substring(0, 95), 10, y);
+      y += 7;
+    });
+
+    const now = new Date();
+    const fname = 'MathsTest_11-04-2026_' + now.getHours() + now.getMinutes() + '.pdf';
+    doc.save(fname);
+  } catch (e) {
+    console.warn('PDF generation error:', e);
+  }
+}
+</script>
+</body>
+</html>

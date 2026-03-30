@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Class 3 Social Science Test – 10-04-2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f4f8;
+  padding: 12px;
+  min-height: 100vh;
+}
+.header {
+  background: #E65100;
+  color: white;
+  text-align: center;
+  padding: 16px 12px 10px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.header h2 { font-size: 22px; margin-bottom: 4px; }
+.header .sub { font-size: 13px; opacity: 0.85; }
+#timer {
+  font-size: 20px;
+  font-weight: bold;
+  color: #c62828;
+  text-align: center;
+  background: #fff3cd;
+  border: 2px solid #f5c518;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+  transition: background 0.5s;
+}
+#timer.danger {
+  background: #ffcdd2;
+  border-color: #e53935;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+.question {
+  background: white;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-left: 5px solid #E65100;
+}
+.question b { color: #333; font-size: 14px; display: block; margin-bottom: 6px; }
+label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+label:hover { background: #f5f5f5; color: #E65100; }
+input[type="radio"] { accent-color: #E65100; width: 16px; height: 16px; flex-shrink: 0; }
+#submitBtn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: #E65100;
+  color: white;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 18px;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s, transform 0.1s;
+}
+#submitBtn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+#submitBtn:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+#result {
+  margin-top: 20px;
+  text-align: center;
+  padding: 18px;
+  border-radius: 12px;
+  display: none;
+}
+#result h3 { font-size: 26px; margin-bottom: 6px; }
+#result p  { font-size: 16px; }
+
+/* ── Timer-expired overlay ── */
+#lockOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(183,28,28,0.93);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+}
+#lockOverlay h1 { color: white; font-size: 44px; margin-bottom: 10px; }
+#lockOverlay p  { color: #ffebee; font-size: 18px; margin-bottom: 24px; }
+#lockOverlay button {
+  padding: 14px 34px;
+  font-size: 18px;
+  font-weight: bold;
+  background: white;
+  color: #b71c1c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- Timer-expired overlay -->
+<div id="lockOverlay">
+  <h1>⏰ Time's Up!</h1>
+  <p>Your quiz has been locked.<br>Click the button below to submit your answers.</p>
+  <button onclick="closeLockAndSubmit()">📝 Submit My Answers</button>
+</div>
+
+<div class="header">
+  <h2>🌍 Class 3 Social Science Test</h2>
+  <div class="sub">Date: 10-04-2026 &nbsp;|&nbsp; Total Questions: 50 &nbsp;|&nbsp; Time: 15 Minutes</div>
+</div>
+
+<div id="timer">⏱ Time Left: 15:00</div>
+
+<form id="quizForm">
+<div class="question"><b>1. What is the capital city of India?</b><br>
+  <label><input type="radio" name="q1" value="New Delhi"> New Delhi</label><br>
+  <label><input type="radio" name="q1" value="Mumbai"> Mumbai</label><br>
+  <label><input type="radio" name="q1" value="Kolkata"> Kolkata</label><br>
+</div>
+<div class="question"><b>2. Which river is called the 'Ganga'?</b><br>
+  <label><input type="radio" name="q2" value="Ganges"> Ganges</label><br>
+  <label><input type="radio" name="q2" value="Yamuna"> Yamuna</label><br>
+  <label><input type="radio" name="q2" value="Godavari"> Godavari</label><br>
+</div>
+<div class="question"><b>3. How many states are there in India (2024)?</b><br>
+  <label><input type="radio" name="q3" value="28"> 28</label><br>
+  <label><input type="radio" name="q3" value="29"> 29</label><br>
+  <label><input type="radio" name="q3" value="30"> 30</label><br>
+</div>
+<div class="question"><b>4. What is the national language of India?</b><br>
+  <label><input type="radio" name="q4" value="Hindi"> Hindi</label><br>
+  <label><input type="radio" name="q4" value="English"> English</label><br>
+  <label><input type="radio" name="q4" value="Bengali"> Bengali</label><br>
+</div>
+<div class="question"><b>5. Which mountain range is the highest in the world?</b><br>
+  <label><input type="radio" name="q5" value="Himalayas"> Himalayas</label><br>
+  <label><input type="radio" name="q5" value="Alps"> Alps</label><br>
+  <label><input type="radio" name="q5" value="Andes"> Andes</label><br>
+</div>
+<div class="question"><b>6. Who was the first Prime Minister of India?</b><br>
+  <label><input type="radio" name="q6" value="Jawaharlal Nehru"> Jawaharlal Nehru</label><br>
+  <label><input type="radio" name="q6" value="Mahatma Gandhi"> Mahatma Gandhi</label><br>
+  <label><input type="radio" name="q6" value="Sardar Patel"> Sardar Patel</label><br>
+</div>
+<div class="question"><b>7. What is the national fruit of India?</b><br>
+  <label><input type="radio" name="q7" value="Mango"> Mango</label><br>
+  <label><input type="radio" name="q7" value="Apple"> Apple</label><br>
+  <label><input type="radio" name="q7" value="Banana"> Banana</label><br>
+</div>
+<div class="question"><b>8. In which direction does the sun rise?</b><br>
+  <label><input type="radio" name="q8" value="East"> East</label><br>
+  <label><input type="radio" name="q8" value="West"> West</label><br>
+  <label><input type="radio" name="q8" value="North"> North</label><br>
+</div>
+<div class="question"><b>9. On which date is India's Independence Day?</b><br>
+  <label><input type="radio" name="q9" value="15 August"> 15 August</label><br>
+  <label><input type="radio" name="q9" value="26 January"> 26 January</label><br>
+  <label><input type="radio" name="q9" value="2 October"> 2 October</label><br>
+</div>
+<div class="question"><b>10. Which of these is a means of transport?</b><br>
+  <label><input type="radio" name="q10" value="Bus"> Bus</label><br>
+  <label><input type="radio" name="q10" value="Computer"> Computer</label><br>
+  <label><input type="radio" name="q10" value="Television"> Television</label><br>
+</div>
+<div class="question"><b>11. What is a map?</b><br>
+  <label><input type="radio" name="q11" value="Drawing of Earth's surface"> Drawing of Earth's surface</label><br>
+  <label><input type="radio" name="q11" value="A type of book"> A type of book</label><br>
+  <label><input type="radio" name="q11" value="A globe"> A globe</label><br>
+</div>
+<div class="question"><b>12. Which continent does India belong to?</b><br>
+  <label><input type="radio" name="q12" value="Asia"> Asia</label><br>
+  <label><input type="radio" name="q12" value="Africa"> Africa</label><br>
+  <label><input type="radio" name="q12" value="Europe"> Europe</label><br>
+</div>
+<div class="question"><b>13. What is the longest river in India?</b><br>
+  <label><input type="radio" name="q13" value="Ganga"> Ganga</label><br>
+  <label><input type="radio" name="q13" value="Yamuna"> Yamuna</label><br>
+  <label><input type="radio" name="q13" value="Godavari"> Godavari</label><br>
+</div>
+<div class="question"><b>14. Who is known as the 'Father of the Nation'?</b><br>
+  <label><input type="radio" name="q14" value="Mahatma Gandhi"> Mahatma Gandhi</label><br>
+  <label><input type="radio" name="q14" value="Nehru"> Nehru</label><br>
+  <label><input type="radio" name="q14" value="Ambedkar"> Ambedkar</label><br>
+</div>
+<div class="question"><b>15. What does a compass help us find?</b><br>
+  <label><input type="radio" name="q15" value="Direction"> Direction</label><br>
+  <label><input type="radio" name="q15" value="Temperature"> Temperature</label><br>
+  <label><input type="radio" name="q15" value="Distance"> Distance</label><br>
+</div>
+<div class="question"><b>16. What is the national flower of India?</b><br>
+  <label><input type="radio" name="q16" value="Lotus"> Lotus</label><br>
+  <label><input type="radio" name="q16" value="Rose"> Rose</label><br>
+  <label><input type="radio" name="q16" value="Sunflower"> Sunflower</label><br>
+</div>
+<div class="question"><b>17. Which is the largest state in India by area?</b><br>
+  <label><input type="radio" name="q17" value="Rajasthan"> Rajasthan</label><br>
+  <label><input type="radio" name="q17" value="Uttar Pradesh"> Uttar Pradesh</label><br>
+  <label><input type="radio" name="q17" value="Maharashtra"> Maharashtra</label><br>
+</div>
+<div class="question"><b>18. What is a globe?</b><br>
+  <label><input type="radio" name="q18" value="A spherical model of Earth"> A spherical model of Earth</label><br>
+  <label><input type="radio" name="q18" value="A flat map"> A flat map</label><br>
+  <label><input type="radio" name="q18" value="A type of compass"> A type of compass</label><br>
+</div>
+<div class="question"><b>19. What ocean is to the south of India?</b><br>
+  <label><input type="radio" name="q19" value="Indian Ocean"> Indian Ocean</label><br>
+  <label><input type="radio" name="q19" value="Arabian Sea"> Arabian Sea</label><br>
+  <label><input type="radio" name="q19" value="Bay of Bengal"> Bay of Bengal</label><br>
+</div>
+<div class="question"><b>20. What does 'PM' stand for in Indian government?</b><br>
+  <label><input type="radio" name="q20" value="Prime Minister"> Prime Minister</label><br>
+  <label><input type="radio" name="q20" value="Police Minister"> Police Minister</label><br>
+  <label><input type="radio" name="q20" value="Public Minister"> Public Minister</label><br>
+</div>
+<div class="question"><b>21. What do we call a person who grows crops?</b><br>
+  <label><input type="radio" name="q21" value="Farmer"> Farmer</label><br>
+  <label><input type="radio" name="q21" value="Doctor"> Doctor</label><br>
+  <label><input type="radio" name="q21" value="Engineer"> Engineer</label><br>
+</div>
+<div class="question"><b>22. Which of these is a natural resource?</b><br>
+  <label><input type="radio" name="q22" value="Coal"> Coal</label><br>
+  <label><input type="radio" name="q22" value="Plastic"> Plastic</label><br>
+  <label><input type="radio" name="q22" value="Paper"> Paper</label><br>
+</div>
+<div class="question"><b>23. What is the national tree of India?</b><br>
+  <label><input type="radio" name="q23" value="Banyan"> Banyan</label><br>
+  <label><input type="radio" name="q23" value="Peepal"> Peepal</label><br>
+  <label><input type="radio" name="q23" value="Neem"> Neem</label><br>
+</div>
+<div class="question"><b>24. What is the currency of India?</b><br>
+  <label><input type="radio" name="q24" value="Rupee"> Rupee</label><br>
+  <label><input type="radio" name="q24" value="Dollar"> Dollar</label><br>
+  <label><input type="radio" name="q24" value="Euro"> Euro</label><br>
+</div>
+<div class="question"><b>25. Republic Day of India is celebrated on ___.</b><br>
+  <label><input type="radio" name="q25" value="26 January"> 26 January</label><br>
+  <label><input type="radio" name="q25" value="15 August"> 15 August</label><br>
+  <label><input type="radio" name="q25" value="2 October"> 2 October</label><br>
+</div>
+<div class="question"><b>26. Gandhi Jayanti is celebrated on ___.</b><br>
+  <label><input type="radio" name="q26" value="2 October"> 2 October</label><br>
+  <label><input type="radio" name="q26" value="15 August"> 15 August</label><br>
+  <label><input type="radio" name="q26" value="26 January"> 26 January</label><br>
+</div>
+<div class="question"><b>27. What do we call the head of a village?</b><br>
+  <label><input type="radio" name="q27" value="Sarpanch"> Sarpanch</label><br>
+  <label><input type="radio" name="q27" value="Mayor"> Mayor</label><br>
+  <label><input type="radio" name="q27" value="Chief Minister"> Chief Minister</label><br>
+</div>
+<div class="question"><b>28. The Taj Mahal is located in ___.</b><br>
+  <label><input type="radio" name="q28" value="Agra"> Agra</label><br>
+  <label><input type="radio" name="q28" value="Delhi"> Delhi</label><br>
+  <label><input type="radio" name="q28" value="Jaipur"> Jaipur</label><br>
+</div>
+<div class="question"><b>29. Which of these is a means of communication?</b><br>
+  <label><input type="radio" name="q29" value="Telephone"> Telephone</label><br>
+  <label><input type="radio" name="q29" value="Chair"> Chair</label><br>
+  <label><input type="radio" name="q29" value="Table"> Table</label><br>
+</div>
+<div class="question"><b>30. What type of climate does a desert have?</b><br>
+  <label><input type="radio" name="q30" value="Hot and dry"> Hot and dry</label><br>
+  <label><input type="radio" name="q30" value="Cold and wet"> Cold and wet</label><br>
+  <label><input type="radio" name="q30" value="Moderate"> Moderate</label><br>
+</div>
+<div class="question"><b>31. Which of these is a water body?</b><br>
+  <label><input type="radio" name="q31" value="Lake"> Lake</label><br>
+  <label><input type="radio" name="q31" value="Mountain"> Mountain</label><br>
+  <label><input type="radio" name="q31" value="Desert"> Desert</label><br>
+</div>
+<div class="question"><b>32. Who makes laws in India?</b><br>
+  <label><input type="radio" name="q32" value="Parliament"> Parliament</label><br>
+  <label><input type="radio" name="q32" value="Police"> Police</label><br>
+  <label><input type="radio" name="q32" value="Army"> Army</label><br>
+</div>
+<div class="question"><b>33. India's national emblem comes from ___.</b><br>
+  <label><input type="radio" name="q33" value="Ashoka Pillar"> Ashoka Pillar</label><br>
+  <label><input type="radio" name="q33" value="Taj Mahal"> Taj Mahal</label><br>
+  <label><input type="radio" name="q33" value="Red Fort"> Red Fort</label><br>
+</div>
+<div class="question"><b>34. Which of these is a non-renewable resource?</b><br>
+  <label><input type="radio" name="q34" value="Coal"> Coal</label><br>
+  <label><input type="radio" name="q34" value="Solar Energy"> Solar Energy</label><br>
+  <label><input type="radio" name="q34" value="Wind Energy"> Wind Energy</label><br>
+</div>
+<div class="question"><b>35. A peninsula is land surrounded by water on ___ sides.</b><br>
+  <label><input type="radio" name="q35" value="Three"> Three</label><br>
+  <label><input type="radio" name="q35" value="Two"> Two</label><br>
+  <label><input type="radio" name="q35" value="Four"> Four</label><br>
+</div>
+<div class="question"><b>36. India is a ___ country.</b><br>
+  <label><input type="radio" name="q36" value="Democratic"> Democratic</label><br>
+  <label><input type="radio" name="q36" value="Monarchy"> Monarchy</label><br>
+  <label><input type="radio" name="q36" value="Dictatorship"> Dictatorship</label><br>
+</div>
+<div class="question"><b>37. What do we call a person who delivers letters?</b><br>
+  <label><input type="radio" name="q37" value="Postman"> Postman</label><br>
+  <label><input type="radio" name="q37" value="Milkman"> Milkman</label><br>
+  <label><input type="radio" name="q37" value="Fireman"> Fireman</label><br>
+</div>
+<div class="question"><b>38. A book of maps is called ___.</b><br>
+  <label><input type="radio" name="q38" value="Atlas"> Atlas</label><br>
+  <label><input type="radio" name="q38" value="Globe"> Globe</label><br>
+  <label><input type="radio" name="q38" value="Dictionary"> Dictionary</label><br>
+</div>
+<div class="question"><b>39. What type of soil is best for farming?</b><br>
+  <label><input type="radio" name="q39" value="Loamy soil"> Loamy soil</label><br>
+  <label><input type="radio" name="q39" value="Sandy soil"> Sandy soil</label><br>
+  <label><input type="radio" name="q39" value="Rocky soil"> Rocky soil</label><br>
+</div>
+<div class="question"><b>40. Which line divides the Earth into North and South?</b><br>
+  <label><input type="radio" name="q40" value="Equator"> Equator</label><br>
+  <label><input type="radio" name="q40" value="Tropic of Cancer"> Tropic of Cancer</label><br>
+  <label><input type="radio" name="q40" value="Prime Meridian"> Prime Meridian</label><br>
+</div>
+<div class="question"><b>41. What is a market?</b><br>
+  <label><input type="radio" name="q41" value="A place to buy and sell goods"> A place to buy and sell goods</label><br>
+  <label><input type="radio" name="q41" value="A school"> A school</label><br>
+  <label><input type="radio" name="q41" value="A hospital"> A hospital</label><br>
+</div>
+<div class="question"><b>42. India celebrates Republic Day parade in ___.</b><br>
+  <label><input type="radio" name="q42" value="New Delhi"> New Delhi</label><br>
+  <label><input type="radio" name="q42" value="Mumbai"> Mumbai</label><br>
+  <label><input type="radio" name="q42" value="Kolkata"> Kolkata</label><br>
+</div>
+<div class="question"><b>43. What do we call a very large city?</b><br>
+  <label><input type="radio" name="q43" value="Metropolis"> Metropolis</label><br>
+  <label><input type="radio" name="q43" value="Village"> Village</label><br>
+  <label><input type="radio" name="q43" value="Town"> Town</label><br>
+</div>
+<div class="question"><b>44. Which of these is a hill station in India?</b><br>
+  <label><input type="radio" name="q44" value="Shimla"> Shimla</label><br>
+  <label><input type="radio" name="q44" value="Agra"> Agra</label><br>
+  <label><input type="radio" name="q44" value="Surat"> Surat</label><br>
+</div>
+<div class="question"><b>45. What do we call moving from one place to another to live?</b><br>
+  <label><input type="radio" name="q45" value="Migration"> Migration</label><br>
+  <label><input type="radio" name="q45" value="Cultivation"> Cultivation</label><br>
+  <label><input type="radio" name="q45" value="Celebration"> Celebration</label><br>
+</div>
+<div class="question"><b>46. What is the function of a hospital?</b><br>
+  <label><input type="radio" name="q46" value="To treat sick people"> To treat sick people</label><br>
+  <label><input type="radio" name="q46" value="To teach students"> To teach students</label><br>
+  <label><input type="radio" name="q46" value="To store food"> To store food</label><br>
+</div>
+<div class="question"><b>47. Which colour represents peace on maps for water?</b><br>
+  <label><input type="radio" name="q47" value="Blue"> Blue</label><br>
+  <label><input type="radio" name="q47" value="Green"> Green</label><br>
+  <label><input type="radio" name="q47" value="Yellow"> Yellow</label><br>
+</div>
+<div class="question"><b>48. What does the President of India do?</b><br>
+  <label><input type="radio" name="q48" value="Head of the country"> Head of the country</label><br>
+  <label><input type="radio" name="q48" value="Head of the army"> Head of the army</label><br>
+  <label><input type="radio" name="q48" value="Head of the court"> Head of the court</label><br>
+</div>
+<div class="question"><b>49. How many Union Territories are there in India (2024)?</b><br>
+  <label><input type="radio" name="q49" value="8"> 8</label><br>
+  <label><input type="radio" name="q49" value="7"> 7</label><br>
+  <label><input type="radio" name="q49" value="9"> 9</label><br>
+</div>
+<div class="question"><b>50. Which season is coldest in India?</b><br>
+  <label><input type="radio" name="q50" value="Winter"> Winter</label><br>
+  <label><input type="radio" name="q50" value="Summer"> Summer</label><br>
+  <label><input type="radio" name="q50" value="Monsoon"> Monsoon</label><br>
+</div>
+
+<button type="button" id="submitBtn" onclick="submitQuiz()">✅ Submit Quiz</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+let timeLeft = 900;
+let locked   = false;
+let submitted = false;
+
+const timerEl = document.getElementById('timer');
+
+const timerInterval = setInterval(function () {
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  timerEl.textContent = '⏱ Time Left: ' + m + ':' + (s < 10 ? '0' : '') + s;
+
+  if (timeLeft <= 60 && !timerEl.classList.contains('danger')) {
+    timerEl.classList.add('danger');
+  }
+
+  timeLeft--;
+
+  if (timeLeft < 0) {
+    clearInterval(timerInterval);
+    timerEl.textContent = '⏰ Time is Up!';
+    timerEl.classList.add('danger');
+
+    // Lock all radio inputs
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+    locked = true;
+
+    // Show the warning overlay
+    document.getElementById('lockOverlay').style.display = 'flex';
+  }
+}, 1000);
+
+function closeLockAndSubmit() {
+  document.getElementById('lockOverlay').style.display = 'none';
+  submitQuiz();
+}
+
+const answers = {
+  q1: "New Delhi",
+  q2: "Ganges",
+  q3: "28",
+  q4: "Hindi",
+  q5: "Himalayas",
+  q6: "Jawaharlal Nehru",
+  q7: "Mango",
+  q8: "East",
+  q9: "15 August",
+  q10: "Bus",
+  q11: "Drawing of Earth\'s surface",
+  q12: "Asia",
+  q13: "Ganga",
+  q14: "Mahatma Gandhi",
+  q15: "Direction",
+  q16: "Lotus",
+  q17: "Rajasthan",
+  q18: "A spherical model of Earth",
+  q19: "Indian Ocean",
+  q20: "Prime Minister",
+  q21: "Farmer",
+  q22: "Coal",
+  q23: "Banyan",
+  q24: "Rupee",
+  q25: "26 January",
+  q26: "2 October",
+  q27: "Sarpanch",
+  q28: "Agra",
+  q29: "Telephone",
+  q30: "Hot and dry",
+  q31: "Lake",
+  q32: "Parliament",
+  q33: "Ashoka Pillar",
+  q34: "Coal",
+  q35: "Three",
+  q36: "Democratic",
+  q37: "Postman",
+  q38: "Atlas",
+  q39: "Loamy soil",
+  q40: "Equator",
+  q41: "A place to buy and sell goods",
+  q42: "New Delhi",
+  q43: "Metropolis",
+  q44: "Shimla",
+  q45: "Migration",
+  q46: "To treat sick people",
+  q47: "Blue",
+  q48: "Head of the country",
+  q49: "8",
+  q50: "Winter"
+};
+
+let report = [];
+
+function submitQuiz() {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+  document.getElementById('submitBtn').disabled = true;
+
+  let score = 0;
+  report = [];
+
+  for (const q in answers) {
+    const sel     = document.querySelector('input[name="' + q + '"]:checked');
+    const user    = sel ? sel.value : 'Not Answered';
+    const correct = answers[q];
+    const res     = (user === correct) ? 'Correct' : 'Wrong';
+    if (res === 'Correct') score++;
+    report.push({ q, user, correct, res });
+  }
+
+  const pct = score / 50;
+  let badge = pct >= 0.8 ? '🌟 Excellent! Keep it up!' :
+              pct >= 0.6 ? '👍 Good effort! Practice more.' :
+                                         '📚 Keep studying! You can do better.';
+
+  const resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+  resultEl.style.background = pct >= 0.6 ? '#e8f5e9' : '#fff3cd';
+  resultEl.style.border     = '2px solid ' + (pct >= 0.6 ? '#388e3c' : '#f59e0b');
+  resultEl.innerHTML =
+    '<h3>🎯 Score: ' + score + ' / 50</h3>' +
+    '<p>' + badge + '</p>';
+
+  generatePDF(score);
+}
+
+function generatePDF(score) {
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.setTextColor(40, 40, 40);
+    doc.text('Class 3 Social Science Test Report', 10, 15);
+
+    doc.setFontSize(11);
+    doc.text('Date  : 10-04-2026', 10, 25);
+    doc.text('Score : ' + score + ' / 50', 10, 32);
+
+    let y = 44;
+    doc.setFontSize(9);
+
+    report.forEach(function (r, i) {
+      if (y > 275) { doc.addPage(); y = 15; }
+      const tick = r.res === 'Correct' ? '[OK]' : '[X] ';
+      const line = tick + ' Q' + (i + 1) + ': Your=' + r.user + ' | Ans=' + r.correct;
+      doc.setTextColor(r.res === 'Correct' ? 0 : 180, r.res === 'Correct' ? 120 : 0, 0);
+      doc.text(line.substring(0, 95), 10, y);
+      y += 7;
+    });
+
+    const now = new Date();
+    const fname = 'SSTest_10-04-2026_' + now.getHours() + now.getMinutes() + '.pdf';
+    doc.save(fname);
+  } catch (e) {
+    console.warn('PDF generation error:', e);
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Class 3 Hindi Test – 17-04-2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f4f8;
+  padding: 12px;
+  min-height: 100vh;
+}
+.header {
+  background: #B71C1C;
+  color: white;
+  text-align: center;
+  padding: 16px 12px 10px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.header h2 { font-size: 22px; margin-bottom: 4px; }
+.header .sub { font-size: 13px; opacity: 0.85; }
+#timer {
+  font-size: 20px;
+  font-weight: bold;
+  color: #c62828;
+  text-align: center;
+  background: #fff3cd;
+  border: 2px solid #f5c518;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+  transition: background 0.5s;
+}
+#timer.danger {
+  background: #ffcdd2;
+  border-color: #e53935;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+.question {
+  background: white;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-left: 5px solid #B71C1C;
+}
+.question b { color: #333; font-size: 14px; display: block; margin-bottom: 6px; }
+label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+label:hover { background: #f5f5f5; color: #B71C1C; }
+input[type="radio"] { accent-color: #B71C1C; width: 16px; height: 16px; flex-shrink: 0; }
+#submitBtn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: #B71C1C;
+  color: white;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 18px;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s, transform 0.1s;
+}
+#submitBtn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+#submitBtn:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+#result {
+  margin-top: 20px;
+  text-align: center;
+  padding: 18px;
+  border-radius: 12px;
+  display: none;
+}
+#result h3 { font-size: 26px; margin-bottom: 6px; }
+#result p  { font-size: 16px; }
+
+/* ── Timer-expired overlay ── */
+#lockOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(183,28,28,0.93);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+}
+#lockOverlay h1 { color: white; font-size: 44px; margin-bottom: 10px; }
+#lockOverlay p  { color: #ffebee; font-size: 18px; margin-bottom: 24px; }
+#lockOverlay button {
+  padding: 14px 34px;
+  font-size: 18px;
+  font-weight: bold;
+  background: white;
+  color: #b71c1c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- Timer-expired overlay -->
+<div id="lockOverlay">
+  <h1>⏰ Time's Up!</h1>
+  <p>Your quiz has been locked.<br>Click the button below to submit your answers.</p>
+  <button onclick="closeLockAndSubmit()">📝 Submit My Answers</button>
+</div>
+
+<div class="header">
+  <h2>🇮🇳 Class 3 Hindi Test</h2>
+  <div class="sub">Date: 17-04-2026 &nbsp;|&nbsp; Total Questions: 50 &nbsp;|&nbsp; Time: 15 Minutes</div>
+</div>
+
+<div id="timer">⏱ Time Left: 15:00</div>
+
+<form id="quizForm">
+<div class="question"><b>1. हिंदी में कितने स्वर होते हैं?</b><br>
+  <label><input type="radio" name="q1" value="11"> 11</label><br>
+  <label><input type="radio" name="q1" value="8"> 8</label><br>
+  <label><input type="radio" name="q1" value="13"> 13</label><br>
+</div>
+<div class="question"><b>2. 'अ, आ, इ, ई' ये क्या हैं?</b><br>
+  <label><input type="radio" name="q2" value="स्वर"> स्वर</label><br>
+  <label><input type="radio" name="q2" value="व्यंजन"> व्यंजन</label><br>
+  <label><input type="radio" name="q2" value="मात्राएँ"> मात्राएँ</label><br>
+</div>
+<div class="question"><b>3. 'क, ख, ग, घ' ये क्या हैं?</b><br>
+  <label><input type="radio" name="q3" value="व्यंजन"> व्यंजन</label><br>
+  <label><input type="radio" name="q3" value="स्वर"> स्वर</label><br>
+  <label><input type="radio" name="q3" value="अनुस्वार"> अनुस्वार</label><br>
+</div>
+<div class="question"><b>4. 'लड़का' का स्त्रीलिंग क्या है?</b><br>
+  <label><input type="radio" name="q4" value="लड़की"> लड़की</label><br>
+  <label><input type="radio" name="q4" value="लड़के"> लड़के</label><br>
+  <label><input type="radio" name="q4" value="लड़कन"> लड़कन</label><br>
+</div>
+<div class="question"><b>5. 'राजा' का स्त्रीलिंग क्या है?</b><br>
+  <label><input type="radio" name="q5" value="रानी"> रानी</label><br>
+  <label><input type="radio" name="q5" value="राजकुमारी"> राजकुमारी</label><br>
+  <label><input type="radio" name="q5" value="राजकुमार"> राजकुमार</label><br>
+</div>
+<div class="question"><b>6. 'बड़ा' का विलोम शब्द क्या है?</b><br>
+  <label><input type="radio" name="q6" value="छोटा"> छोटा</label><br>
+  <label><input type="radio" name="q6" value="मोटा"> मोटा</label><br>
+  <label><input type="radio" name="q6" value="लंबा"> लंबा</label><br>
+</div>
+<div class="question"><b>7. 'दिन' का विलोम शब्द क्या है?</b><br>
+  <label><input type="radio" name="q7" value="रात"> रात</label><br>
+  <label><input type="radio" name="q7" value="शाम"> शाम</label><br>
+  <label><input type="radio" name="q7" value="सुबह"> सुबह</label><br>
+</div>
+<div class="question"><b>8. 'किताब' का बहुवचन क्या है?</b><br>
+  <label><input type="radio" name="q8" value="किताबें"> किताबें</label><br>
+  <label><input type="radio" name="q8" value="किताब"> किताब</label><br>
+  <label><input type="radio" name="q8" value="किताबों"> किताबों</label><br>
+</div>
+<div class="question"><b>9. निम्न में से संज्ञा शब्द कौन सा है?</b><br>
+  <label><input type="radio" name="q9" value="मेज"> मेज</label><br>
+  <label><input type="radio" name="q9" value="सुंदर"> सुंदर</label><br>
+  <label><input type="radio" name="q9" value="दौड़ना"> दौड़ना</label><br>
+</div>
+<div class="question"><b>10. 'अच्छा' का विलोम क्या है?</b><br>
+  <label><input type="radio" name="q10" value="बुरा"> बुरा</label><br>
+  <label><input type="radio" name="q10" value="सुंदर"> सुंदर</label><br>
+  <label><input type="radio" name="q10" value="बड़ा"> बड़ा</label><br>
+</div>
+<div class="question"><b>11. 'गर्म' का विलोम क्या है?</b><br>
+  <label><input type="radio" name="q11" value="ठंडा"> ठंडा</label><br>
+  <label><input type="radio" name="q11" value="गरम"> गरम</label><br>
+  <label><input type="radio" name="q11" value="सुखद"> सुखद</label><br>
+</div>
+<div class="question"><b>12. हिंदी में 'Sun' को क्या कहते हैं?</b><br>
+  <label><input type="radio" name="q12" value="सूर्य"> सूर्य</label><br>
+  <label><input type="radio" name="q12" value="चंद्रमा"> चंद्रमा</label><br>
+  <label><input type="radio" name="q12" value="तारा"> तारा</label><br>
+</div>
+<div class="question"><b>13. वाक्य के अंत में '?' कब लगता है?</b><br>
+  <label><input type="radio" name="q13" value="प्रश्न पूछने पर"> प्रश्न पूछने पर</label><br>
+  <label><input type="radio" name="q13" value="आदेश देने पर"> आदेश देने पर</label><br>
+  <label><input type="radio" name="q13" value="खुशी व्यक्त करने पर"> खुशी व्यक्त करने पर</label><br>
+</div>
+<div class="question"><b>14. 'नदी' शब्द किस लिंग का है?</b><br>
+  <label><input type="radio" name="q14" value="स्त्रीलिंग"> स्त्रीलिंग</label><br>
+  <label><input type="radio" name="q14" value="पुल्लिंग"> पुल्लिंग</label><br>
+  <label><input type="radio" name="q14" value="उभयलिंग"> उभयलिंग</label><br>
+</div>
+<div class="question"><b>15. 'पानी' का पर्यायवाची शब्द क्या है?</b><br>
+  <label><input type="radio" name="q15" value="जल"> जल</label><br>
+  <label><input type="radio" name="q15" value="वायु"> वायु</label><br>
+  <label><input type="radio" name="q15" value="अग्नि"> अग्नि</label><br>
+</div>
+<div class="question"><b>16. 'आकाश' का अर्थ क्या है?</b><br>
+  <label><input type="radio" name="q16" value="आसमान"> आसमान</label><br>
+  <label><input type="radio" name="q16" value="जमीन"> जमीन</label><br>
+  <label><input type="radio" name="q16" value="पानी"> पानी</label><br>
+</div>
+<div class="question"><b>17. 'माता' का पर्यायवाची शब्द क्या है?</b><br>
+  <label><input type="radio" name="q17" value="माँ"> माँ</label><br>
+  <label><input type="radio" name="q17" value="पिता"> पिता</label><br>
+  <label><input type="radio" name="q17" value="भाई"> भाई</label><br>
+</div>
+<div class="question"><b>18. 'घर' का पर्यायवाची शब्द क्या है?</b><br>
+  <label><input type="radio" name="q18" value="मकान"> मकान</label><br>
+  <label><input type="radio" name="q18" value="दुकान"> दुकान</label><br>
+  <label><input type="radio" name="q18" value="विद्यालय"> विद्यालय</label><br>
+</div>
+<div class="question"><b>19. 'विद्यालय' का अर्थ क्या है?</b><br>
+  <label><input type="radio" name="q19" value="स्कूल"> स्कूल</label><br>
+  <label><input type="radio" name="q19" value="अस्पताल"> अस्पताल</label><br>
+  <label><input type="radio" name="q19" value="बाजार"> बाजार</label><br>
+</div>
+<div class="question"><b>20. 'मैं, तुम, वह' ये क्या हैं?</b><br>
+  <label><input type="radio" name="q20" value="सर्वनाम"> सर्वनाम</label><br>
+  <label><input type="radio" name="q20" value="संज्ञा"> संज्ञा</label><br>
+  <label><input type="radio" name="q20" value="विशेषण"> विशेषण</label><br>
+</div>
+<div class="question"><b>21. 'हरा' शब्द क्या है?</b><br>
+  <label><input type="radio" name="q21" value="विशेषण"> विशेषण</label><br>
+  <label><input type="radio" name="q21" value="संज्ञा"> संज्ञा</label><br>
+  <label><input type="radio" name="q21" value="क्रिया"> क्रिया</label><br>
+</div>
+<div class="question"><b>22. 'खाना' शब्द क्या है?</b><br>
+  <label><input type="radio" name="q22" value="क्रिया"> क्रिया</label><br>
+  <label><input type="radio" name="q22" value="संज्ञा"> संज्ञा</label><br>
+  <label><input type="radio" name="q22" value="विशेषण"> विशेषण</label><br>
+</div>
+<div class="question"><b>23. हिंदी वर्णमाला का पहला स्वर कौन सा है?</b><br>
+  <label><input type="radio" name="q23" value="अ"> अ</label><br>
+  <label><input type="radio" name="q23" value="आ"> आ</label><br>
+  <label><input type="radio" name="q23" value="इ"> इ</label><br>
+</div>
+<div class="question"><b>24. हिंदी वर्णमाला का पहला व्यंजन कौन सा है?</b><br>
+  <label><input type="radio" name="q24" value="क"> क</label><br>
+  <label><input type="radio" name="q24" value="ख"> ख</label><br>
+  <label><input type="radio" name="q24" value="ग"> ग</label><br>
+</div>
+<div class="question"><b>25. 'सुबह' का विलोम शब्द क्या है?</b><br>
+  <label><input type="radio" name="q25" value="शाम"> शाम</label><br>
+  <label><input type="radio" name="q25" value="रात"> रात</label><br>
+  <label><input type="radio" name="q25" value="दोपहर"> दोपहर</label><br>
+</div>
+<div class="question"><b>26. 'ऊँचा' का विलोम शब्द क्या है?</b><br>
+  <label><input type="radio" name="q26" value="नीचा"> नीचा</label><br>
+  <label><input type="radio" name="q26" value="छोटा"> छोटा</label><br>
+  <label><input type="radio" name="q26" value="मोटा"> मोटा</label><br>
+</div>
+<div class="question"><b>27. 'पुस्तक' का बहुवचन क्या है?</b><br>
+  <label><input type="radio" name="q27" value="पुस्तकें"> पुस्तकें</label><br>
+  <label><input type="radio" name="q27" value="पुस्तकों"> पुस्तकों</label><br>
+  <label><input type="radio" name="q27" value="पुस्तक"> पुस्तक</label><br>
+</div>
+<div class="question"><b>28. 'बच्चे खेल रहे हैं।' में 'बच्चे' क्या है?</b><br>
+  <label><input type="radio" name="q28" value="बहुवचन"> बहुवचन</label><br>
+  <label><input type="radio" name="q28" value="एकवचन"> एकवचन</label><br>
+  <label><input type="radio" name="q28" value="स्त्रीलिंग"> स्त्रीलिंग</label><br>
+</div>
+<div class="question"><b>29. 'काला' का विलोम शब्द क्या है?</b><br>
+  <label><input type="radio" name="q29" value="सफेद"> सफेद</label><br>
+  <label><input type="radio" name="q29" value="लाल"> लाल</label><br>
+  <label><input type="radio" name="q29" value="नीला"> नीला</label><br>
+</div>
+<div class="question"><b>30. 'खुश' का विलोम शब्द क्या है?</b><br>
+  <label><input type="radio" name="q30" value="दुखी"> दुखी</label><br>
+  <label><input type="radio" name="q30" value="क्रोधित"> क्रोधित</label><br>
+  <label><input type="radio" name="q30" value="शांत"> शांत</label><br>
+</div>
+<div class="question"><b>31. 'नया' का विलोम शब्द क्या है?</b><br>
+  <label><input type="radio" name="q31" value="पुराना"> पुराना</label><br>
+  <label><input type="radio" name="q31" value="सुंदर"> सुंदर</label><br>
+  <label><input type="radio" name="q31" value="बड़ा"> बड़ा</label><br>
+</div>
+<div class="question"><b>32. 'वृक्ष' का अर्थ क्या है?</b><br>
+  <label><input type="radio" name="q32" value="पेड़"> पेड़</label><br>
+  <label><input type="radio" name="q32" value="फूल"> फूल</label><br>
+  <label><input type="radio" name="q32" value="पत्ती"> पत्ती</label><br>
+</div>
+<div class="question"><b>33. 'शेर' की स्त्रीलिंग क्या है?</b><br>
+  <label><input type="radio" name="q33" value="शेरनी"> शेरनी</label><br>
+  <label><input type="radio" name="q33" value="शेरी"> शेरी</label><br>
+  <label><input type="radio" name="q33" value="शेरा"> शेरा</label><br>
+</div>
+<div class="question"><b>34. 'बाघ' की स्त्रीलिंग क्या है?</b><br>
+  <label><input type="radio" name="q34" value="बाघिन"> बाघिन</label><br>
+  <label><input type="radio" name="q34" value="बाघी"> बाघी</label><br>
+  <label><input type="radio" name="q34" value="बाघनी"> बाघनी</label><br>
+</div>
+<div class="question"><b>35. 'गाय' का बहुवचन क्या है?</b><br>
+  <label><input type="radio" name="q35" value="गायें"> गायें</label><br>
+  <label><input type="radio" name="q35" value="गाय"> गाय</label><br>
+  <label><input type="radio" name="q35" value="गायों"> गायों</label><br>
+</div>
+<div class="question"><b>36. हिंदी दिवस कब मनाया जाता है?</b><br>
+  <label><input type="radio" name="q36" value="14 सितंबर"> 14 सितंबर</label><br>
+  <label><input type="radio" name="q36" value="14 जनवरी"> 14 जनवरी</label><br>
+  <label><input type="radio" name="q36" value="26 जनवरी"> 26 जनवरी</label><br>
+</div>
+<div class="question"><b>37. 'अमृत' का विलोम शब्द क्या है?</b><br>
+  <label><input type="radio" name="q37" value="विष"> विष</label><br>
+  <label><input type="radio" name="q37" value="मीठा"> मीठा</label><br>
+  <label><input type="radio" name="q37" value="कड़वा"> कड़वा</label><br>
+</div>
+<div class="question"><b>38. 'धीरे-धीरे' कौन सा शब्द है?</b><br>
+  <label><input type="radio" name="q38" value="क्रिया विशेषण"> क्रिया विशेषण</label><br>
+  <label><input type="radio" name="q38" value="संज्ञा"> संज्ञा</label><br>
+  <label><input type="radio" name="q38" value="सर्वनाम"> सर्वनाम</label><br>
+</div>
+<div class="question"><b>39. 'बाघ' किस लिंग का शब्द है?</b><br>
+  <label><input type="radio" name="q39" value="पुल्लिंग"> पुल्लिंग</label><br>
+  <label><input type="radio" name="q39" value="स्त्रीलिंग"> स्त्रीलिंग</label><br>
+  <label><input type="radio" name="q39" value="उभयलिंग"> उभयलिंग</label><br>
+</div>
+<div class="question"><b>40. 'राम और श्याम मित्र हैं।' में 'और' क्या है?</b><br>
+  <label><input type="radio" name="q40" value="समुच्चयबोधक"> समुच्चयबोधक</label><br>
+  <label><input type="radio" name="q40" value="संज्ञा"> संज्ञा</label><br>
+  <label><input type="radio" name="q40" value="क्रिया"> क्रिया</label><br>
+</div>
+<div class="question"><b>41. 'पेड़ पर पक्षी बैठे हैं।' में 'पर' क्या है?</b><br>
+  <label><input type="radio" name="q41" value="संबंधबोधक"> संबंधबोधक</label><br>
+  <label><input type="radio" name="q41" value="संज्ञा"> संज्ञा</label><br>
+  <label><input type="radio" name="q41" value="विशेषण"> विशेषण</label><br>
+</div>
+<div class="question"><b>42. 'मोर' भारत का राष्ट्रीय ___ है।</b><br>
+  <label><input type="radio" name="q42" value="पक्षी"> पक्षी</label><br>
+  <label><input type="radio" name="q42" value="पशु"> पशु</label><br>
+  <label><input type="radio" name="q42" value="फूल"> फूल</label><br>
+</div>
+<div class="question"><b>43. 'पाठशाला' किसे कहते हैं?</b><br>
+  <label><input type="radio" name="q43" value="विद्यालय को"> विद्यालय को</label><br>
+  <label><input type="radio" name="q43" value="अस्पताल को"> अस्पताल को</label><br>
+  <label><input type="radio" name="q43" value="दुकान को"> दुकान को</label><br>
+</div>
+<div class="question"><b>44. 'माँ मुझसे प्यार करती हैं।' में क्रिया कौन सी है?</b><br>
+  <label><input type="radio" name="q44" value="करती हैं"> करती हैं</label><br>
+  <label><input type="radio" name="q44" value="माँ"> माँ</label><br>
+  <label><input type="radio" name="q44" value="प्यार"> प्यार</label><br>
+</div>
+<div class="question"><b>45. 'मेरा' किस सर्वनाम का रूप है?</b><br>
+  <label><input type="radio" name="q45" value="मैं"> मैं</label><br>
+  <label><input type="radio" name="q45" value="तुम"> तुम</label><br>
+  <label><input type="radio" name="q45" value="वह"> वह</label><br>
+</div>
+<div class="question"><b>46. हिंदी में 'Moon' को क्या कहते हैं?</b><br>
+  <label><input type="radio" name="q46" value="चंद्रमा"> चंद्रमा</label><br>
+  <label><input type="radio" name="q46" value="सूर्य"> सूर्य</label><br>
+  <label><input type="radio" name="q46" value="तारा"> तारा</label><br>
+</div>
+<div class="question"><b>47. हिंदी में 'Flower' को क्या कहते हैं?</b><br>
+  <label><input type="radio" name="q47" value="फूल"> फूल</label><br>
+  <label><input type="radio" name="q47" value="पत्ता"> पत्ता</label><br>
+  <label><input type="radio" name="q47" value="जड़"> जड़</label><br>
+</div>
+<div class="question"><b>48. 'राजा' किस लिंग का शब्द है?</b><br>
+  <label><input type="radio" name="q48" value="पुल्लिंग"> पुल्लिंग</label><br>
+  <label><input type="radio" name="q48" value="स्त्रीलिंग"> स्त्रीलिंग</label><br>
+  <label><input type="radio" name="q48" value="उभयलिंग"> उभयलिंग</label><br>
+</div>
+<div class="question"><b>49. 'सुंदर' शब्द क्या है?</b><br>
+  <label><input type="radio" name="q49" value="विशेषण"> विशेषण</label><br>
+  <label><input type="radio" name="q49" value="संज्ञा"> संज्ञा</label><br>
+  <label><input type="radio" name="q49" value="क्रिया"> क्रिया</label><br>
+</div>
+<div class="question"><b>50. हिंदी में 'Water' को क्या कहते हैं?</b><br>
+  <label><input type="radio" name="q50" value="पानी"> पानी</label><br>
+  <label><input type="radio" name="q50" value="आग"> आग</label><br>
+  <label><input type="radio" name="q50" value="हवा"> हवा</label><br>
+</div>
+
+<button type="button" id="submitBtn" onclick="submitQuiz()">✅ Submit Quiz</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+let timeLeft = 900;
+let locked   = false;
+let submitted = false;
+
+const timerEl = document.getElementById('timer');
+
+const timerInterval = setInterval(function () {
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  timerEl.textContent = '⏱ Time Left: ' + m + ':' + (s < 10 ? '0' : '') + s;
+
+  if (timeLeft <= 60 && !timerEl.classList.contains('danger')) {
+    timerEl.classList.add('danger');
+  }
+
+  timeLeft--;
+
+  if (timeLeft < 0) {
+    clearInterval(timerInterval);
+    timerEl.textContent = '⏰ Time is Up!';
+    timerEl.classList.add('danger');
+
+    // Lock all radio inputs
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+    locked = true;
+
+    // Show the warning overlay
+    document.getElementById('lockOverlay').style.display = 'flex';
+  }
+}, 1000);
+
+function closeLockAndSubmit() {
+  document.getElementById('lockOverlay').style.display = 'none';
+  submitQuiz();
+}
+
+const answers = {
+  q1: "11",
+  q2: "स्वर",
+  q3: "व्यंजन",
+  q4: "लड़की",
+  q5: "रानी",
+  q6: "छोटा",
+  q7: "रात",
+  q8: "किताबें",
+  q9: "मेज",
+  q10: "बुरा",
+  q11: "ठंडा",
+  q12: "सूर्य",
+  q13: "प्रश्न पूछने पर",
+  q14: "स्त्रीलिंग",
+  q15: "जल",
+  q16: "आसमान",
+  q17: "माँ",
+  q18: "मकान",
+  q19: "स्कूल",
+  q20: "सर्वनाम",
+  q21: "विशेषण",
+  q22: "क्रिया",
+  q23: "अ",
+  q24: "क",
+  q25: "शाम",
+  q26: "नीचा",
+  q27: "पुस्तकें",
+  q28: "बहुवचन",
+  q29: "सफेद",
+  q30: "दुखी",
+  q31: "पुराना",
+  q32: "पेड़",
+  q33: "शेरनी",
+  q34: "बाघिन",
+  q35: "गायें",
+  q36: "14 सितंबर",
+  q37: "विष",
+  q38: "क्रिया विशेषण",
+  q39: "पुल्लिंग",
+  q40: "समुच्चयबोधक",
+  q41: "संबंधबोधक",
+  q42: "पक्षी",
+  q43: "विद्यालय को",
+  q44: "करती हैं",
+  q45: "मैं",
+  q46: "चंद्रमा",
+  q47: "फूल",
+  q48: "पुल्लिंग",
+  q49: "विशेषण",
+  q50: "पानी"
+};
+
+let report = [];
+
+function submitQuiz() {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+  document.getElementById('submitBtn').disabled = true;
+
+  let score = 0;
+  report = [];
+
+  for (const q in answers) {
+    const sel     = document.querySelector('input[name="' + q + '"]:checked');
+    const user    = sel ? sel.value : 'Not Answered';
+    const correct = answers[q];
+    const res     = (user === correct) ? 'Correct' : 'Wrong';
+    if (res === 'Correct') score++;
+    report.push({ q, user, correct, res });
+  }
+
+  const pct = score / 50;
+  let badge = pct >= 0.8 ? '🌟 Excellent! Keep it up!' :
+              pct >= 0.6 ? '👍 Good effort! Practice more.' :
+                                         '📚 Keep studying! You can do better.';
+
+  const resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+  resultEl.style.background = pct >= 0.6 ? '#e8f5e9' : '#fff3cd';
+  resultEl.style.border     = '2px solid ' + (pct >= 0.6 ? '#388e3c' : '#f59e0b');
+  resultEl.innerHTML =
+    '<h3>🎯 Score: ' + score + ' / 50</h3>' +
+    '<p>' + badge + '</p>';
+
+  generatePDF(score);
+}
+
+function generatePDF(score) {
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.setTextColor(40, 40, 40);
+    doc.text('Class 3 Hindi Test Report', 10, 15);
+
+    doc.setFontSize(11);
+    doc.text('Date  : 17-04-2026', 10, 25);
+    doc.text('Score : ' + score + ' / 50', 10, 32);
+
+    let y = 44;
+    doc.setFontSize(9);
+
+    report.forEach(function (r, i) {
+      if (y > 275) { doc.addPage(); y = 15; }
+      const tick = r.res === 'Correct' ? '[OK]' : '[X] ';
+      const line = tick + ' Q' + (i + 1) + ': Your=' + r.user + ' | Ans=' + r.correct;
+      doc.setTextColor(r.res === 'Correct' ? 0 : 180, r.res === 'Correct' ? 120 : 0, 0);
+      doc.text(line.substring(0, 95), 10, y);
+      y += 7;
+    });
+
+    const now = new Date();
+    const fname = 'HindiTest_17-04-2026_' + now.getHours() + now.getMinutes() + '.pdf';
+    doc.save(fname);
+  } catch (e) {
+    console.warn('PDF generation error:', e);
+  }
+}
+</script>
+</body>
+</html>

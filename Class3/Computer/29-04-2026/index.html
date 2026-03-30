@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Class 3 Computer Test – 29-04-2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f4f8;
+  padding: 12px;
+  min-height: 100vh;
+}
+.header {
+  background: #006064;
+  color: white;
+  text-align: center;
+  padding: 16px 12px 10px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.header h2 { font-size: 22px; margin-bottom: 4px; }
+.header .sub { font-size: 13px; opacity: 0.85; }
+#timer {
+  font-size: 20px;
+  font-weight: bold;
+  color: #c62828;
+  text-align: center;
+  background: #fff3cd;
+  border: 2px solid #f5c518;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+  transition: background 0.5s;
+}
+#timer.danger {
+  background: #ffcdd2;
+  border-color: #e53935;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+.question {
+  background: white;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-left: 5px solid #006064;
+}
+.question b { color: #333; font-size: 14px; display: block; margin-bottom: 6px; }
+label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+label:hover { background: #f5f5f5; color: #006064; }
+input[type="radio"] { accent-color: #006064; width: 16px; height: 16px; flex-shrink: 0; }
+#submitBtn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: #006064;
+  color: white;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 18px;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s, transform 0.1s;
+}
+#submitBtn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+#submitBtn:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+#result {
+  margin-top: 20px;
+  text-align: center;
+  padding: 18px;
+  border-radius: 12px;
+  display: none;
+}
+#result h3 { font-size: 26px; margin-bottom: 6px; }
+#result p  { font-size: 16px; }
+
+/* ── Timer-expired overlay ── */
+#lockOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(183,28,28,0.93);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+}
+#lockOverlay h1 { color: white; font-size: 44px; margin-bottom: 10px; }
+#lockOverlay p  { color: #ffebee; font-size: 18px; margin-bottom: 24px; }
+#lockOverlay button {
+  padding: 14px 34px;
+  font-size: 18px;
+  font-weight: bold;
+  background: white;
+  color: #b71c1c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- Timer-expired overlay -->
+<div id="lockOverlay">
+  <h1>⏰ Time's Up!</h1>
+  <p>Your quiz has been locked.<br>Click the button below to submit your answers.</p>
+  <button onclick="closeLockAndSubmit()">📝 Submit My Answers</button>
+</div>
+
+<div class="header">
+  <h2>💻 Class 3 Computer Test</h2>
+  <div class="sub">Date: 29-04-2026 &nbsp;|&nbsp; Total Questions: 50 &nbsp;|&nbsp; Time: 15 Minutes</div>
+</div>
+
+<div id="timer">⏱ Time Left: 15:00</div>
+
+<form id="quizForm">
+<div class="question"><b>1. What does CPU stand for?</b><br>
+  <label><input type="radio" name="q1" value="Central Processing Unit"> Central Processing Unit</label><br>
+  <label><input type="radio" name="q1" value="Computer Personal Unit"> Computer Personal Unit</label><br>
+  <label><input type="radio" name="q1" value="Central Power Unit"> Central Power Unit</label><br>
+</div>
+<div class="question"><b>2. Which part of a computer is used for typing?</b><br>
+  <label><input type="radio" name="q2" value="Keyboard"> Keyboard</label><br>
+  <label><input type="radio" name="q2" value="Mouse"> Mouse</label><br>
+  <label><input type="radio" name="q2" value="Monitor"> Monitor</label><br>
+</div>
+<div class="question"><b>3. What is used to point and click on a computer?</b><br>
+  <label><input type="radio" name="q3" value="Mouse"> Mouse</label><br>
+  <label><input type="radio" name="q3" value="Keyboard"> Keyboard</label><br>
+  <label><input type="radio" name="q3" value="Speaker"> Speaker</label><br>
+</div>
+<div class="question"><b>4. Which device shows output on screen?</b><br>
+  <label><input type="radio" name="q4" value="Monitor"> Monitor</label><br>
+  <label><input type="radio" name="q4" value="Printer"> Printer</label><br>
+  <label><input type="radio" name="q4" value="Scanner"> Scanner</label><br>
+</div>
+<div class="question"><b>5. What does a printer do?</b><br>
+  <label><input type="radio" name="q5" value="Prints documents on paper"> Prints documents on paper</label><br>
+  <label><input type="radio" name="q5" value="Shows images on screen"> Shows images on screen</label><br>
+  <label><input type="radio" name="q5" value="Stores data"> Stores data</label><br>
+</div>
+<div class="question"><b>6. Where is data stored permanently?</b><br>
+  <label><input type="radio" name="q6" value="Hard Disk"> Hard Disk</label><br>
+  <label><input type="radio" name="q6" value="RAM"> RAM</label><br>
+  <label><input type="radio" name="q6" value="CPU"> CPU</label><br>
+</div>
+<div class="question"><b>7. Which key deletes a character to the left?</b><br>
+  <label><input type="radio" name="q7" value="Backspace"> Backspace</label><br>
+  <label><input type="radio" name="q7" value="Enter"> Enter</label><br>
+  <label><input type="radio" name="q7" value="Shift"> Shift</label><br>
+</div>
+<div class="question"><b>8. What does 'www' stand for?</b><br>
+  <label><input type="radio" name="q8" value="World Wide Web"> World Wide Web</label><br>
+  <label><input type="radio" name="q8" value="World Wide Window"> World Wide Window</label><br>
+  <label><input type="radio" name="q8" value="Wide World Web"> Wide World Web</label><br>
+</div>
+<div class="question"><b>9. Which key moves to a new line?</b><br>
+  <label><input type="radio" name="q9" value="Enter"> Enter</label><br>
+  <label><input type="radio" name="q9" value="Shift"> Shift</label><br>
+  <label><input type="radio" name="q9" value="Tab"> Tab</label><br>
+</div>
+<div class="question"><b>10. A computer virus is ___.</b><br>
+  <label><input type="radio" name="q10" value="harmful software"> harmful software</label><br>
+  <label><input type="radio" name="q10" value="a real virus"> a real virus</label><br>
+  <label><input type="radio" name="q10" value="a computer part"> a computer part</label><br>
+</div>
+<div class="question"><b>11. What does RAM stand for?</b><br>
+  <label><input type="radio" name="q11" value="Random Access Memory"> Random Access Memory</label><br>
+  <label><input type="radio" name="q11" value="Read Access Memory"> Read Access Memory</label><br>
+  <label><input type="radio" name="q11" value="Remote Access Memory"> Remote Access Memory</label><br>
+</div>
+<div class="question"><b>12. Which of these is an input device?</b><br>
+  <label><input type="radio" name="q12" value="Scanner"> Scanner</label><br>
+  <label><input type="radio" name="q12" value="Monitor"> Monitor</label><br>
+  <label><input type="radio" name="q12" value="Speaker"> Speaker</label><br>
+</div>
+<div class="question"><b>13. What does 'Ctrl + C' do?</b><br>
+  <label><input type="radio" name="q13" value="Copy"> Copy</label><br>
+  <label><input type="radio" name="q13" value="Cut"> Cut</label><br>
+  <label><input type="radio" name="q13" value="Paste"> Paste</label><br>
+</div>
+<div class="question"><b>14. What does 'Ctrl + V' do?</b><br>
+  <label><input type="radio" name="q14" value="Paste"> Paste</label><br>
+  <label><input type="radio" name="q14" value="Copy"> Copy</label><br>
+  <label><input type="radio" name="q14" value="Save"> Save</label><br>
+</div>
+<div class="question"><b>15. Which key makes all letters CAPITAL?</b><br>
+  <label><input type="radio" name="q15" value="Caps Lock"> Caps Lock</label><br>
+  <label><input type="radio" name="q15" value="Tab"> Tab</label><br>
+  <label><input type="radio" name="q15" value="Enter"> Enter</label><br>
+</div>
+<div class="question"><b>16. Which of these is an output device?</b><br>
+  <label><input type="radio" name="q16" value="Speaker"> Speaker</label><br>
+  <label><input type="radio" name="q16" value="Keyboard"> Keyboard</label><br>
+  <label><input type="radio" name="q16" value="Mouse"> Mouse</label><br>
+</div>
+<div class="question"><b>17. What is the full form of 'PC'?</b><br>
+  <label><input type="radio" name="q17" value="Personal Computer"> Personal Computer</label><br>
+  <label><input type="radio" name="q17" value="Public Computer"> Public Computer</label><br>
+  <label><input type="radio" name="q17" value="Power Computer"> Power Computer</label><br>
+</div>
+<div class="question"><b>18. Which key is at the top-left of a keyboard?</b><br>
+  <label><input type="radio" name="q18" value="Escape"> Escape</label><br>
+  <label><input type="radio" name="q18" value="Enter"> Enter</label><br>
+  <label><input type="radio" name="q18" value="Shift"> Shift</label><br>
+</div>
+<div class="question"><b>19. A folder in a computer is used to ___.</b><br>
+  <label><input type="radio" name="q19" value="store files"> store files</label><br>
+  <label><input type="radio" name="q19" value="print files"> print files</label><br>
+  <label><input type="radio" name="q19" value="delete files"> delete files</label><br>
+</div>
+<div class="question"><b>20. What does a scanner do?</b><br>
+  <label><input type="radio" name="q20" value="Converts documents to digital form"> Converts documents to digital form</label><br>
+  <label><input type="radio" name="q20" value="Prints documents"> Prints documents</label><br>
+  <label><input type="radio" name="q20" value="Stores files"> Stores files</label><br>
+</div>
+<div class="question"><b>21. Which of these is a storage device?</b><br>
+  <label><input type="radio" name="q21" value="Pen Drive"> Pen Drive</label><br>
+  <label><input type="radio" name="q21" value="Mouse"> Mouse</label><br>
+  <label><input type="radio" name="q21" value="Monitor"> Monitor</label><br>
+</div>
+<div class="question"><b>22. What does 'Ctrl + S' do?</b><br>
+  <label><input type="radio" name="q22" value="Save"> Save</label><br>
+  <label><input type="radio" name="q22" value="Select"> Select</label><br>
+  <label><input type="radio" name="q22" value="Send"> Send</label><br>
+</div>
+<div class="question"><b>23. Which of these is software?</b><br>
+  <label><input type="radio" name="q23" value="MS Word"> MS Word</label><br>
+  <label><input type="radio" name="q23" value="Keyboard"> Keyboard</label><br>
+  <label><input type="radio" name="q23" value="Mouse"> Mouse</label><br>
+</div>
+<div class="question"><b>24. The Internet is a ___.</b><br>
+  <label><input type="radio" name="q24" value="global network of computers"> global network of computers</label><br>
+  <label><input type="radio" name="q24" value="a computer game"> a computer game</label><br>
+  <label><input type="radio" name="q24" value="a type of software"> a type of software</label><br>
+</div>
+<div class="question"><b>25. Which key gives a space between words?</b><br>
+  <label><input type="radio" name="q25" value="Space Bar"> Space Bar</label><br>
+  <label><input type="radio" name="q25" value="Tab"> Tab</label><br>
+  <label><input type="radio" name="q25" value="Enter"> Enter</label><br>
+</div>
+<div class="question"><b>26. Which of these is NOT an input device?</b><br>
+  <label><input type="radio" name="q26" value="Printer"> Printer</label><br>
+  <label><input type="radio" name="q26" value="Keyboard"> Keyboard</label><br>
+  <label><input type="radio" name="q26" value="Scanner"> Scanner</label><br>
+</div>
+<div class="question"><b>27. What is a 'cursor'?</b><br>
+  <label><input type="radio" name="q27" value="Arrow pointer on screen"> Arrow pointer on screen</label><br>
+  <label><input type="radio" name="q27" value="A keyboard key"> A keyboard key</label><br>
+  <label><input type="radio" name="q27" value="A type of monitor"> A type of monitor</label><br>
+</div>
+<div class="question"><b>28. What does 'URL' stand for?</b><br>
+  <label><input type="radio" name="q28" value="Uniform Resource Locator"> Uniform Resource Locator</label><br>
+  <label><input type="radio" name="q28" value="Universal Resource Link"> Universal Resource Link</label><br>
+  <label><input type="radio" name="q28" value="Uniform Remote Location"> Uniform Remote Location</label><br>
+</div>
+<div class="question"><b>29. The 'F1' key is usually used for ___.</b><br>
+  <label><input type="radio" name="q29" value="Help"> Help</label><br>
+  <label><input type="radio" name="q29" value="Save"> Save</label><br>
+  <label><input type="radio" name="q29" value="Copy"> Copy</label><br>
+</div>
+<div class="question"><b>30. Which of these is a web browser?</b><br>
+  <label><input type="radio" name="q30" value="Google Chrome"> Google Chrome</label><br>
+  <label><input type="radio" name="q30" value="MS Word"> MS Word</label><br>
+  <label><input type="radio" name="q30" value="MS Excel"> MS Excel</label><br>
+</div>
+<div class="question"><b>31. What is 'Booting'?</b><br>
+  <label><input type="radio" name="q31" value="Starting the computer"> Starting the computer</label><br>
+  <label><input type="radio" name="q31" value="Shutting down"> Shutting down</label><br>
+  <label><input type="radio" name="q31" value="Installing software"> Installing software</label><br>
+</div>
+<div class="question"><b>32. Which keys are used to Undo an action?</b><br>
+  <label><input type="radio" name="q32" value="Ctrl+Z"> Ctrl+Z</label><br>
+  <label><input type="radio" name="q32" value="Ctrl+C"> Ctrl+C</label><br>
+  <label><input type="radio" name="q32" value="Ctrl+V"> Ctrl+V</label><br>
+</div>
+<div class="question"><b>33. How many function keys are on a standard keyboard?</b><br>
+  <label><input type="radio" name="q33" value="12"> 12</label><br>
+  <label><input type="radio" name="q33" value="10"> 10</label><br>
+  <label><input type="radio" name="q33" value="8"> 8</label><br>
+</div>
+<div class="question"><b>34. Which of these is an operating system?</b><br>
+  <label><input type="radio" name="q34" value="Windows"> Windows</label><br>
+  <label><input type="radio" name="q34" value="Google Chrome"> Google Chrome</label><br>
+  <label><input type="radio" name="q34" value="MS Word"> MS Word</label><br>
+</div>
+<div class="question"><b>35. What is a 'Desktop'?</b><br>
+  <label><input type="radio" name="q35" value="Main screen of a computer"> Main screen of a computer</label><br>
+  <label><input type="radio" name="q35" value="A type of keyboard"> A type of keyboard</label><br>
+  <label><input type="radio" name="q35" value="A computer game"> A computer game</label><br>
+</div>
+<div class="question"><b>36. What does 'Ctrl + A' do?</b><br>
+  <label><input type="radio" name="q36" value="Select All"> Select All</label><br>
+  <label><input type="radio" name="q36" value="Save All"> Save All</label><br>
+  <label><input type="radio" name="q36" value="Copy All"> Copy All</label><br>
+</div>
+<div class="question"><b>37. An email is used to ___.</b><br>
+  <label><input type="radio" name="q37" value="send messages electronically"> send messages electronically</label><br>
+  <label><input type="radio" name="q37" value="print documents"> print documents</label><br>
+  <label><input type="radio" name="q37" value="save files"> save files</label><br>
+</div>
+<div class="question"><b>38. Which is a correct email address format?</b><br>
+  <label><input type="radio" name="q38" value="abc@gmail.com"> abc@gmail.com</label><br>
+  <label><input type="radio" name="q38" value="abc.gmail.com"> abc.gmail.com</label><br>
+  <label><input type="radio" name="q38" value="abc#gmail.com"> abc#gmail.com</label><br>
+</div>
+<div class="question"><b>39. The number system used by computers is ___.</b><br>
+  <label><input type="radio" name="q39" value="Binary (0 and 1)"> Binary (0 and 1)</label><br>
+  <label><input type="radio" name="q39" value="Decimal (0-9)"> Decimal (0-9)</label><br>
+  <label><input type="radio" name="q39" value="Roman numerals"> Roman numerals</label><br>
+</div>
+<div class="question"><b>40. Which of these is image editing software?</b><br>
+  <label><input type="radio" name="q40" value="MS Paint"> MS Paint</label><br>
+  <label><input type="radio" name="q40" value="MS Word"> MS Word</label><br>
+  <label><input type="radio" name="q40" value="MS Excel"> MS Excel</label><br>
+</div>
+<div class="question"><b>41. What does 'DVD' stand for?</b><br>
+  <label><input type="radio" name="q41" value="Digital Versatile Disc"> Digital Versatile Disc</label><br>
+  <label><input type="radio" name="q41" value="Digital Video Device"> Digital Video Device</label><br>
+  <label><input type="radio" name="q41" value="Data Video Disc"> Data Video Disc</label><br>
+</div>
+<div class="question"><b>42. Which protects a computer from viruses?</b><br>
+  <label><input type="radio" name="q42" value="Antivirus software"> Antivirus software</label><br>
+  <label><input type="radio" name="q42" value="Keyboard"> Keyboard</label><br>
+  <label><input type="radio" name="q42" value="Monitor"> Monitor</label><br>
+</div>
+<div class="question"><b>43. How many bits make one byte?</b><br>
+  <label><input type="radio" name="q43" value="8"> 8</label><br>
+  <label><input type="radio" name="q43" value="4"> 4</label><br>
+  <label><input type="radio" name="q43" value="16"> 16</label><br>
+</div>
+<div class="question"><b>44. Which key is pressed with a letter to type CAPITAL (without Caps Lock)?</b><br>
+  <label><input type="radio" name="q44" value="Shift"> Shift</label><br>
+  <label><input type="radio" name="q44" value="Alt"> Alt</label><br>
+  <label><input type="radio" name="q44" value="Ctrl"> Ctrl</label><br>
+</div>
+<div class="question"><b>45. What is a 'Laptop'?</b><br>
+  <label><input type="radio" name="q45" value="A portable computer"> A portable computer</label><br>
+  <label><input type="radio" name="q45" value="A desktop computer"> A desktop computer</label><br>
+  <label><input type="radio" name="q45" value="A type of printer"> A type of printer</label><br>
+</div>
+<div class="question"><b>46. What does 'Ctrl + P' do?</b><br>
+  <label><input type="radio" name="q46" value="Print"> Print</label><br>
+  <label><input type="radio" name="q46" value="Paste"> Paste</label><br>
+  <label><input type="radio" name="q46" value="Play"> Play</label><br>
+</div>
+<div class="question"><b>47. Which device do we use to listen to sound from a computer?</b><br>
+  <label><input type="radio" name="q47" value="Speakers"> Speakers</label><br>
+  <label><input type="radio" name="q47" value="Scanner"> Scanner</label><br>
+  <label><input type="radio" name="q47" value="Webcam"> Webcam</label><br>
+</div>
+<div class="question"><b>48. What is a 'Webcam' used for?</b><br>
+  <label><input type="radio" name="q48" value="Taking pictures/video"> Taking pictures/video</label><br>
+  <label><input type="radio" name="q48" value="Printing"> Printing</label><br>
+  <label><input type="radio" name="q48" value="Storing data"> Storing data</label><br>
+</div>
+<div class="question"><b>49. Which of these is a spreadsheet software?</b><br>
+  <label><input type="radio" name="q49" value="MS Excel"> MS Excel</label><br>
+  <label><input type="radio" name="q49" value="MS Word"> MS Word</label><br>
+  <label><input type="radio" name="q49" value="MS PowerPoint"> MS PowerPoint</label><br>
+</div>
+<div class="question"><b>50. A 'Password' is used to ___.</b><br>
+  <label><input type="radio" name="q50" value="protect your account"> protect your account</label><br>
+  <label><input type="radio" name="q50" value="speed up the computer"> speed up the computer</label><br>
+  <label><input type="radio" name="q50" value="print documents"> print documents</label><br>
+</div>
+
+<button type="button" id="submitBtn" onclick="submitQuiz()">✅ Submit Quiz</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+let timeLeft = 900;
+let locked   = false;
+let submitted = false;
+
+const timerEl = document.getElementById('timer');
+
+const timerInterval = setInterval(function () {
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  timerEl.textContent = '⏱ Time Left: ' + m + ':' + (s < 10 ? '0' : '') + s;
+
+  if (timeLeft <= 60 && !timerEl.classList.contains('danger')) {
+    timerEl.classList.add('danger');
+  }
+
+  timeLeft--;
+
+  if (timeLeft < 0) {
+    clearInterval(timerInterval);
+    timerEl.textContent = '⏰ Time is Up!';
+    timerEl.classList.add('danger');
+
+    // Lock all radio inputs
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+    locked = true;
+
+    // Show the warning overlay
+    document.getElementById('lockOverlay').style.display = 'flex';
+  }
+}, 1000);
+
+function closeLockAndSubmit() {
+  document.getElementById('lockOverlay').style.display = 'none';
+  submitQuiz();
+}
+
+const answers = {
+  q1: "Central Processing Unit",
+  q2: "Keyboard",
+  q3: "Mouse",
+  q4: "Monitor",
+  q5: "Prints documents on paper",
+  q6: "Hard Disk",
+  q7: "Backspace",
+  q8: "World Wide Web",
+  q9: "Enter",
+  q10: "harmful software",
+  q11: "Random Access Memory",
+  q12: "Scanner",
+  q13: "Copy",
+  q14: "Paste",
+  q15: "Caps Lock",
+  q16: "Speaker",
+  q17: "Personal Computer",
+  q18: "Escape",
+  q19: "store files",
+  q20: "Converts documents to digital form",
+  q21: "Pen Drive",
+  q22: "Save",
+  q23: "MS Word",
+  q24: "global network of computers",
+  q25: "Space Bar",
+  q26: "Printer",
+  q27: "Arrow pointer on screen",
+  q28: "Uniform Resource Locator",
+  q29: "Help",
+  q30: "Google Chrome",
+  q31: "Starting the computer",
+  q32: "Ctrl+Z",
+  q33: "12",
+  q34: "Windows",
+  q35: "Main screen of a computer",
+  q36: "Select All",
+  q37: "send messages electronically",
+  q38: "abc@gmail.com",
+  q39: "Binary (0 and 1)",
+  q40: "MS Paint",
+  q41: "Digital Versatile Disc",
+  q42: "Antivirus software",
+  q43: "8",
+  q44: "Shift",
+  q45: "A portable computer",
+  q46: "Print",
+  q47: "Speakers",
+  q48: "Taking pictures/video",
+  q49: "MS Excel",
+  q50: "protect your account"
+};
+
+let report = [];
+
+function submitQuiz() {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+  document.getElementById('submitBtn').disabled = true;
+
+  let score = 0;
+  report = [];
+
+  for (const q in answers) {
+    const sel     = document.querySelector('input[name="' + q + '"]:checked');
+    const user    = sel ? sel.value : 'Not Answered';
+    const correct = answers[q];
+    const res     = (user === correct) ? 'Correct' : 'Wrong';
+    if (res === 'Correct') score++;
+    report.push({ q, user, correct, res });
+  }
+
+  const pct = score / 50;
+  let badge = pct >= 0.8 ? '🌟 Excellent! Keep it up!' :
+              pct >= 0.6 ? '👍 Good effort! Practice more.' :
+                                         '📚 Keep studying! You can do better.';
+
+  const resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+  resultEl.style.background = pct >= 0.6 ? '#e8f5e9' : '#fff3cd';
+  resultEl.style.border     = '2px solid ' + (pct >= 0.6 ? '#388e3c' : '#f59e0b');
+  resultEl.innerHTML =
+    '<h3>🎯 Score: ' + score + ' / 50</h3>' +
+    '<p>' + badge + '</p>';
+
+  generatePDF(score);
+}
+
+function generatePDF(score) {
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.setTextColor(40, 40, 40);
+    doc.text('Class 3 Computer Test Report', 10, 15);
+
+    doc.setFontSize(11);
+    doc.text('Date  : 29-04-2026', 10, 25);
+    doc.text('Score : ' + score + ' / 50', 10, 32);
+
+    let y = 44;
+    doc.setFontSize(9);
+
+    report.forEach(function (r, i) {
+      if (y > 275) { doc.addPage(); y = 15; }
+      const tick = r.res === 'Correct' ? '[OK]' : '[X] ';
+      const line = tick + ' Q' + (i + 1) + ': Your=' + r.user + ' | Ans=' + r.correct;
+      doc.setTextColor(r.res === 'Correct' ? 0 : 180, r.res === 'Correct' ? 120 : 0, 0);
+      doc.text(line.substring(0, 95), 10, y);
+      y += 7;
+    });
+
+    const now = new Date();
+    const fname = 'ComputerTest_29-04-2026_' + now.getHours() + now.getMinutes() + '.pdf';
+    doc.save(fname);
+  } catch (e) {
+    console.warn('PDF generation error:', e);
+  }
+}
+</script>
+</body>
+</html>
