@@ -3,29 +3,73 @@
 <head>
   <title>Student Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <style>
-    body { font-family: Arial; padding:20px; background:#f5f7fb; }
-    h1 { text-align:center; }
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #f4f6fb;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      background: #1565C0;
+      color: white;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
     .card {
-      background:white;
-      padding:20px;
-      margin:20px auto;
-      max-width:900px;
-      border-radius:10px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    canvas { margin-top:20px; }
+
+    .card h2 {
+      margin: 0;
+      color: #1565C0;
+    }
+
+    .chart-box {
+      background: white;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
     table {
-      width:100%;
-      border-collapse:collapse;
-      margin-top:20px;
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: white;
     }
+
     th, td {
-      border:1px solid #ddd;
-      padding:10px;
-      text-align:center;
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
     }
-    th { background:#1565C0; color:white; }
+
+    th {
+      background: #1565C0;
+      color: white;
+    }
   </style>
 </head>
 
@@ -33,86 +77,137 @@
 
 <h1>📊 Student Dashboard</h1>
 
-<div class="card">
-  <h2>Overall Performance</h2>
-  <canvas id="scoreChart"></canvas>
-</div>
+<div class="container">
 
-<div class="card">
-  <h2>Subject Wise Average</h2>
-  <canvas id="subjectChart"></canvas>
-</div>
+  <!-- Summary Cards -->
+  <div class="cards">
+    <div class="card">
+      <h3>Total Attempts</h3>
+      <h2 id="totalAttempts">0</h2>
+    </div>
+    <div class="card">
+      <h3>Average Score</h3>
+      <h2 id="avgScore">0%</h2>
+    </div>
+    <div class="card">
+      <h3>Best Score</h3>
+      <h2 id="bestScore">0%</h2>
+    </div>
+  </div>
 
-<div class="card">
-  <h2>Test History</h2>
-  <table id="historyTable">
-    <tr>
-      <th>Subject</th>
-      <th>Score</th>
-      <th>%</th>
-      <th>Date</th>
-    </tr>
-  </table>
+  <!-- Score Trend -->
+  <div class="chart-box">
+    <h3>📈 Score Trend</h3>
+    <canvas id="scoreChart"></canvas>
+  </div>
+
+  <!-- Subject Wise -->
+  <div class="chart-box">
+    <h3>📊 Subject-wise Performance</h3>
+    <canvas id="subjectChart"></canvas>
+  </div>
+
+  <!-- Table -->
+  <div class="chart-box">
+    <h3>📋 Test History</h3>
+    <table id="historyTable">
+      <tr>
+        <th>Date</th>
+        <th>Subject</th>
+        <th>Score</th>
+        <th>%</th>
+      </tr>
+    </table>
+  </div>
+
 </div>
 
 <script>
-const data = JSON.parse(localStorage.getItem("quizResults") || "[]");
 
-// ── Table ─────────────────
-const table = document.getElementById("historyTable");
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx81ycL1yL7-GEsngnlH5zGSlolI7aktQFZI0QQrIkft85P1YIWtMTOJdqCh0RPT4o3/exec";
 
-data.forEach(d => {
-  const row = `<tr>
-    <td>${d.subject}</td>
-    <td>${d.score}/${d.total}</td>
-    <td>${d.percentage}%</td>
-    <td>${d.dateTime}</td>
-  </tr>`;
-  table.innerHTML += row;
-});
+// ─────────────────────────────
+// LOAD DATA FROM GOOGLE SHEET
+// ─────────────────────────────
+async function loadData() {
+  const res = await fetch(SCRIPT_URL);
+  return await res.json();
+}
 
-// ── Chart 1: Score Trend ──
-const labels = data.map(d => d.dateTime);
-const scores = data.map(d => d.percentage);
+// ─────────────────────────────
+// INIT DASHBOARD
+// ─────────────────────────────
+async function init() {
+  const data = await loadData();
 
-new Chart(document.getElementById("scoreChart"), {
-  type: 'line',
-  data: {
-    labels: labels,
-    datasets: [{
-      label: "Score %",
-      data: scores,
-      fill: false
-    }]
-  }
-});
+  if (!data.length) return;
 
-// ── Chart 2: Subject Avg ──
-const subjectMap = {};
+  // Summary
+  const totalAttempts = data.length;
+  const scores = data.map(d => Number(d.Percentage));
 
-data.forEach(d => {
-  if (!subjectMap[d.subject]) {
-    subjectMap[d.subject] = [];
-  }
-  subjectMap[d.subject].push(d.percentage);
-});
+  const avgScore = Math.round(scores.reduce((a,b)=>a+b,0) / scores.length);
+  const bestScore = Math.max(...scores);
 
-const subjects = Object.keys(subjectMap);
-const averages = subjects.map(s => {
-  const arr = subjectMap[s];
-  return Math.round(arr.reduce((a,b)=>a+b,0)/arr.length);
-});
+  document.getElementById("totalAttempts").innerText = totalAttempts;
+  document.getElementById("avgScore").innerText = avgScore + "%";
+  document.getElementById("bestScore").innerText = bestScore + "%";
 
-new Chart(document.getElementById("subjectChart"), {
-  type: 'bar',
-  data: {
-    labels: subjects,
-    datasets: [{
-      label: "Average %",
-      data: averages
-    }]
-  }
-});
+  // Table
+  const table = document.getElementById("historyTable");
+
+  data.forEach(d => {
+    const row = `<tr>
+      <td>${new Date(d.DateTime).toLocaleString()}</td>
+      <td>${d.Subject}</td>
+      <td>${d.Score}/${d.Total}</td>
+      <td>${d.Percentage}%</td>
+    </tr>`;
+    table.innerHTML += row;
+  });
+
+  // Chart 1: Score Trend
+  new Chart(document.getElementById("scoreChart"), {
+    type: "line",
+    data: {
+      labels: data.map(d => new Date(d.DateTime).toLocaleDateString()),
+      datasets: [{
+        label: "Score %",
+        data: scores,
+        fill: false
+      }]
+    }
+  });
+
+  // Chart 2: Subject Avg
+  const subjectMap = {};
+
+  data.forEach(d => {
+    if (!subjectMap[d.Subject]) subjectMap[d.Subject] = [];
+    subjectMap[d.Subject].push(Number(d.Percentage));
+  });
+
+  const subjects = Object.keys(subjectMap);
+  const averages = subjects.map(s => {
+    const arr = subjectMap[s];
+    return Math.round(arr.reduce((a,b)=>a+b,0)/arr.length);
+  });
+
+  new Chart(document.getElementById("subjectChart"), {
+    type: "bar",
+    data: {
+      labels: subjects,
+      datasets: [{
+        label: "Average %",
+        data: averages
+      }]
+    }
+  });
+
+}
+
+init();
+
 </script>
 
 </body>
