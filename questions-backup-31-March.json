@@ -1,0 +1,4258 @@
+[
+  {
+    "id": 1,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the plural of 'child'?",
+    "options": [
+      "childes",
+      "childs",
+      "childies",
+      "children"
+    ],
+    "answer": "children"
+  },
+  {
+    "id": 2,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which word is a verb?",
+    "options": [
+      "happy",
+      "table",
+      "jump",
+      "blue"
+    ],
+    "answer": "jump"
+  },
+  {
+    "id": 3,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the opposite of 'hot'?",
+    "options": [
+      "warm",
+      "soft",
+      "cool",
+      "cold"
+    ],
+    "answer": "cold"
+  },
+  {
+    "id": 4,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which is a proper noun?",
+    "options": [
+      "city",
+      "river",
+      "Taj Mahal",
+      "mountain"
+    ],
+    "answer": "Taj Mahal"
+  },
+  {
+    "id": 5,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Fill in: She ___ to school every day.",
+    "options": [
+      "go",
+      "going",
+      "gone",
+      "goes"
+    ],
+    "answer": "goes"
+  },
+  {
+    "id": 6,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the feminine of 'lion'?",
+    "options": [
+      "liones",
+      "lionly",
+      "lions",
+      "lioness"
+    ],
+    "answer": "lioness"
+  },
+  {
+    "id": 7,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which punctuation ends a question?",
+    "options": [
+      "!",
+      ".",
+      "?",
+      ","
+    ],
+    "answer": "?"
+  },
+  {
+    "id": 8,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the synonym of 'happy'?",
+    "options": [
+      "sad",
+      "tired",
+      "joyful",
+      "angry"
+    ],
+    "answer": "joyful"
+  },
+  {
+    "id": 9,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which word is an adjective?",
+    "options": [
+      "beautiful",
+      "eat",
+      "run",
+      "jump"
+    ],
+    "answer": "beautiful"
+  },
+  {
+    "id": 10,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the plural of 'leaf'?",
+    "options": [
+      "leaf",
+      "leafes",
+      "leaves",
+      "leafs"
+    ],
+    "answer": "leaves"
+  },
+  {
+    "id": 11,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Fill in: They ___ playing cricket.",
+    "options": [
+      "am",
+      "is",
+      "be",
+      "are"
+    ],
+    "answer": "are"
+  },
+  {
+    "id": 12,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the past tense of 'eat'?",
+    "options": [
+      "eaten",
+      "eat",
+      "eated",
+      "ate"
+    ],
+    "answer": "ate"
+  },
+  {
+    "id": 13,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which word rhymes with 'cat'?",
+    "options": [
+      "run",
+      "cup",
+      "bat",
+      "dog"
+    ],
+    "answer": "bat"
+  },
+  {
+    "id": 14,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "'Run fast!' is a ___.",
+    "options": [
+      "statement",
+      "exclamation",
+      "question",
+      "command"
+    ],
+    "answer": "command"
+  },
+  {
+    "id": 15,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the plural of 'mouse'?",
+    "options": [
+      "mice",
+      "mouses",
+      "mices",
+      "mouse"
+    ],
+    "answer": "mice"
+  },
+  {
+    "id": 16,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which of these is a conjunction?",
+    "options": [
+      "quickly",
+      "and",
+      "big",
+      "run"
+    ],
+    "answer": "and"
+  },
+  {
+    "id": 17,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the feminine of 'king'?",
+    "options": [
+      "princess",
+      "countess",
+      "duchess",
+      "queen"
+    ],
+    "answer": "queen"
+  },
+  {
+    "id": 18,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which word is a preposition?",
+    "options": [
+      "jump",
+      "happy",
+      "on",
+      "quickly"
+    ],
+    "answer": "on"
+  },
+  {
+    "id": 19,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "'The book is ___ the table.' Fill in.",
+    "options": [
+      "with",
+      "from",
+      "into",
+      "on"
+    ],
+    "answer": "on"
+  },
+  {
+    "id": 20,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the synonym of 'big'?",
+    "options": [
+      "large",
+      "small",
+      "thin",
+      "short"
+    ],
+    "answer": "large"
+  },
+  {
+    "id": 21,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the antonym of 'day'?",
+    "options": [
+      "night",
+      "morning",
+      "dusk",
+      "evening"
+    ],
+    "answer": "night"
+  },
+  {
+    "id": 22,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Fill in: I ___ a student.",
+    "options": [
+      "am",
+      "be",
+      "are",
+      "is"
+    ],
+    "answer": "am"
+  },
+  {
+    "id": 23,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the plural of 'ox'?",
+    "options": [
+      "oxes",
+      "oxs",
+      "ox",
+      "oxen"
+    ],
+    "answer": "oxen"
+  },
+  {
+    "id": 24,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which word is a pronoun?",
+    "options": [
+      "happy",
+      "run",
+      "he",
+      "book"
+    ],
+    "answer": "he"
+  },
+  {
+    "id": 25,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the masculine of 'hen'?",
+    "options": [
+      "male",
+      "cock",
+      "rooster",
+      "drake"
+    ],
+    "answer": "cock"
+  },
+  {
+    "id": 26,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "'Slowly' is an ___.",
+    "options": [
+      "adjective",
+      "verb",
+      "adverb",
+      "noun"
+    ],
+    "answer": "adverb"
+  },
+  {
+    "id": 27,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the past tense of 'go'?",
+    "options": [
+      "go",
+      "gone",
+      "goed",
+      "went"
+    ],
+    "answer": "went"
+  },
+  {
+    "id": 28,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which punctuation separates items in a list?",
+    "options": [
+      "full stop",
+      "hyphen",
+      "comma",
+      "question mark"
+    ],
+    "answer": "comma"
+  },
+  {
+    "id": 29,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Fill in: The dog ___ at the stranger.",
+    "options": [
+      "barking",
+      "bark",
+      "barked",
+      "barks"
+    ],
+    "answer": "barked"
+  },
+  {
+    "id": 30,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the plural of 'potato'?",
+    "options": [
+      "potatoes",
+      "potatos",
+      "potato",
+      "potatoess"
+    ],
+    "answer": "potatoes"
+  },
+  {
+    "id": 31,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which word is an antonym of 'fast'?",
+    "options": [
+      "rapid",
+      "slow",
+      "brisk",
+      "quick"
+    ],
+    "answer": "slow"
+  },
+  {
+    "id": 32,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "'She sings beautifully.' — 'Beautifully' is a ___.",
+    "options": [
+      "adverb",
+      "verb",
+      "noun",
+      "adjective"
+    ],
+    "answer": "adverb"
+  },
+  {
+    "id": 33,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which of these words has a silent letter?",
+    "options": [
+      "knife",
+      "cat",
+      "run",
+      "bat"
+    ],
+    "answer": "knife"
+  },
+  {
+    "id": 34,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the feminine of 'uncle'?",
+    "options": [
+      "niece",
+      "mother",
+      "aunt",
+      "sister"
+    ],
+    "answer": "aunt"
+  },
+  {
+    "id": 35,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Fill in: He ___ not come yesterday.",
+    "options": [
+      "does",
+      "do",
+      "did",
+      "has"
+    ],
+    "answer": "did"
+  },
+  {
+    "id": 36,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the plural of 'knife'?",
+    "options": [
+      "knifes",
+      "knife",
+      "knieves",
+      "knives"
+    ],
+    "answer": "knives"
+  },
+  {
+    "id": 37,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the antonym of 'clean'?",
+    "options": [
+      "neat",
+      "dirty",
+      "tidy",
+      "pure"
+    ],
+    "answer": "dirty"
+  },
+  {
+    "id": 38,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which word is an adverb?",
+    "options": [
+      "quickly",
+      "happy",
+      "table",
+      "blue"
+    ],
+    "answer": "quickly"
+  },
+  {
+    "id": 39,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the plural of 'woman'?",
+    "options": [
+      "womans",
+      "women",
+      "womanes",
+      "womens"
+    ],
+    "answer": "women"
+  },
+  {
+    "id": 40,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Fill in: He is taller ___ his brother.",
+    "options": [
+      "this",
+      "then",
+      "that",
+      "than"
+    ],
+    "answer": "than"
+  },
+  {
+    "id": 41,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which sentence uses correct grammar?",
+    "options": [
+      "She no like it.",
+      "She doesn't like it.",
+      "She don't like it.",
+      "She not like it."
+    ],
+    "answer": "She doesn't like it."
+  },
+  {
+    "id": 42,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "'Enormous' means ___.",
+    "options": [
+      "very fast",
+      "very small",
+      "very large",
+      "very slow"
+    ],
+    "answer": "very large"
+  },
+  {
+    "id": 43,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the opposite of 'ancient'?",
+    "options": [
+      "antique",
+      "old",
+      "historic",
+      "modern"
+    ],
+    "answer": "modern"
+  },
+  {
+    "id": 44,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which of these is a collective noun?",
+    "options": [
+      "wing",
+      "flock",
+      "fly",
+      "bird"
+    ],
+    "answer": "flock"
+  },
+  {
+    "id": 45,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "'The cat sat on the mat.' — 'sat' is ___.",
+    "options": [
+      "a noun",
+      "a verb",
+      "a pronoun",
+      "an adjective"
+    ],
+    "answer": "a verb"
+  },
+  {
+    "id": 46,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What does 'etc.' stand for?",
+    "options": [
+      "extra copy",
+      "et cetera",
+      "even count",
+      "et century"
+    ],
+    "answer": "et cetera"
+  },
+  {
+    "id": 47,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which is an exclamatory sentence?",
+    "options": [
+      "Come here.",
+      "Where are you?",
+      "She is tall.",
+      "What a beautiful day!"
+    ],
+    "answer": "What a beautiful day!"
+  },
+  {
+    "id": 48,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Fill in: The children ___ very happy.",
+    "options": [
+      "was",
+      "is",
+      "were",
+      "be"
+    ],
+    "answer": "were"
+  },
+  {
+    "id": 49,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "Which word means 'to look quickly'?",
+    "options": [
+      "watch",
+      "glance",
+      "stare",
+      "gaze"
+    ],
+    "answer": "glance"
+  },
+  {
+    "id": 50,
+    "class": 3,
+    "category": "English",
+    "date": "all",
+    "question": "What is the opposite of 'begin'?",
+    "options": [
+      "start",
+      "go",
+      "come",
+      "end"
+    ],
+    "answer": "end"
+  },
+  {
+    "id": 51,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does CPU stand for?",
+    "options": [
+      "Common Process Unit",
+      "Computer Personal Unit",
+      "Central Power Unit",
+      "Central Processing Unit"
+    ],
+    "answer": "Central Processing Unit"
+  },
+  {
+    "id": 52,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which part of a computer is used for typing?",
+    "options": [
+      "Mouse",
+      "Speaker",
+      "Monitor",
+      "Keyboard"
+    ],
+    "answer": "Keyboard"
+  },
+  {
+    "id": 53,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What is used to point and click on a computer?",
+    "options": [
+      "Mouse",
+      "Printer",
+      "Speaker",
+      "Keyboard"
+    ],
+    "answer": "Mouse"
+  },
+  {
+    "id": 54,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which device shows output on screen?",
+    "options": [
+      "Monitor",
+      "Scanner",
+      "Router",
+      "Printer"
+    ],
+    "answer": "Monitor"
+  },
+  {
+    "id": 55,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does a printer do?",
+    "options": [
+      "Plays sound",
+      "Prints documents on paper",
+      "Stores data",
+      "Shows images"
+    ],
+    "answer": "Prints documents on paper"
+  },
+  {
+    "id": 56,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Where is data stored permanently?",
+    "options": [
+      "Hard Disk",
+      "Monitor",
+      "RAM",
+      "CPU"
+    ],
+    "answer": "Hard Disk"
+  },
+  {
+    "id": 57,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which key deletes a character to the left?",
+    "options": [
+      "Backspace",
+      "Enter",
+      "Shift",
+      "Ctrl"
+    ],
+    "answer": "Backspace"
+  },
+  {
+    "id": 58,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does 'www' stand for?",
+    "options": [
+      "World Wide Window",
+      "Wide World Web",
+      "Web World Wide",
+      "World Wide Web"
+    ],
+    "answer": "World Wide Web"
+  },
+  {
+    "id": 59,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which key moves to a new line?",
+    "options": [
+      "Tab",
+      "Ctrl",
+      "Shift",
+      "Enter"
+    ],
+    "answer": "Enter"
+  },
+  {
+    "id": 60,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "A computer virus is ___.",
+    "options": [
+      "a keyboard key",
+      "harmful software",
+      "a computer part",
+      "a real virus"
+    ],
+    "answer": "harmful software"
+  },
+  {
+    "id": 61,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does RAM stand for?",
+    "options": [
+      "Read Access Memory",
+      "Remote Access Memory",
+      "Run Access Memory",
+      "Random Access Memory"
+    ],
+    "answer": "Random Access Memory"
+  },
+  {
+    "id": 62,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which of these is an input device?",
+    "options": [
+      "Printer",
+      "Speaker",
+      "Scanner",
+      "Monitor"
+    ],
+    "answer": "Scanner"
+  },
+  {
+    "id": 63,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does 'Ctrl + C' do?",
+    "options": [
+      "Cut",
+      "Close",
+      "Copy",
+      "Paste"
+    ],
+    "answer": "Copy"
+  },
+  {
+    "id": 64,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does 'Ctrl + V' do?",
+    "options": [
+      "Paste",
+      "Copy",
+      "Cut",
+      "Save"
+    ],
+    "answer": "Paste"
+  },
+  {
+    "id": 65,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which key makes all letters CAPITAL?",
+    "options": [
+      "Shift",
+      "Caps Lock",
+      "Enter",
+      "Tab"
+    ],
+    "answer": "Caps Lock"
+  },
+  {
+    "id": 66,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which of these is an output device?",
+    "options": [
+      "Mouse",
+      "Keyboard",
+      "Speaker",
+      "Scanner"
+    ],
+    "answer": "Speaker"
+  },
+  {
+    "id": 67,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What is the full form of 'PC'?",
+    "options": [
+      "Public Computer",
+      "Power Computer",
+      "Personal Computer",
+      "Portable Computer"
+    ],
+    "answer": "Personal Computer"
+  },
+  {
+    "id": 68,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which of these is a storage device?",
+    "options": [
+      "Keyboard",
+      "Mouse",
+      "Monitor",
+      "Pen Drive"
+    ],
+    "answer": "Pen Drive"
+  },
+  {
+    "id": 69,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does 'Ctrl + S' do?",
+    "options": [
+      "Save",
+      "Search",
+      "Select",
+      "Send"
+    ],
+    "answer": "Save"
+  },
+  {
+    "id": 70,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which of these is software?",
+    "options": [
+      "Keyboard",
+      "MS Word",
+      "Mouse",
+      "Monitor"
+    ],
+    "answer": "MS Word"
+  },
+  {
+    "id": 71,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "The Internet is a ___.",
+    "options": [
+      "a type of software",
+      "a computer game",
+      "a storage device",
+      "global network of computers"
+    ],
+    "answer": "global network of computers"
+  },
+  {
+    "id": 72,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which key gives a space between words?",
+    "options": [
+      "Tab",
+      "Shift",
+      "Space Bar",
+      "Enter"
+    ],
+    "answer": "Space Bar"
+  },
+  {
+    "id": 73,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which of these is NOT an input device?",
+    "options": [
+      "Scanner",
+      "Webcam",
+      "Printer",
+      "Keyboard"
+    ],
+    "answer": "Printer"
+  },
+  {
+    "id": 74,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What is a 'cursor'?",
+    "options": [
+      "A type of monitor",
+      "Arrow pointer on screen",
+      "A storage device",
+      "A keyboard key"
+    ],
+    "answer": "Arrow pointer on screen"
+  },
+  {
+    "id": 75,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does 'URL' stand for?",
+    "options": [
+      "United Resource Locator",
+      "Uniform Resource Locator",
+      "Universal Resource Link",
+      "Uniform Remote Location"
+    ],
+    "answer": "Uniform Resource Locator"
+  },
+  {
+    "id": 76,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which of these is a web browser?",
+    "options": [
+      "MS Excel",
+      "MS Paint",
+      "MS Word",
+      "Google Chrome"
+    ],
+    "answer": "Google Chrome"
+  },
+  {
+    "id": 77,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What is 'Booting'?",
+    "options": [
+      "Shutting down",
+      "Updating software",
+      "Installing software",
+      "Starting the computer"
+    ],
+    "answer": "Starting the computer"
+  },
+  {
+    "id": 78,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which keys are used to Undo an action?",
+    "options": [
+      "Ctrl+C",
+      "Ctrl+V",
+      "Ctrl+X",
+      "Ctrl+Z"
+    ],
+    "answer": "Ctrl+Z"
+  },
+  {
+    "id": 79,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "How many function keys are on a standard keyboard?",
+    "options": [
+      "12",
+      "8",
+      "10",
+      "14"
+    ],
+    "answer": "12"
+  },
+  {
+    "id": 80,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which of these is an operating system?",
+    "options": [
+      "MS Word",
+      "Windows",
+      "MS Excel",
+      "Google Chrome"
+    ],
+    "answer": "Windows"
+  },
+  {
+    "id": 81,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What is a 'Desktop'?",
+    "options": [
+      "A computer game",
+      "Main screen of a computer",
+      "A storage device",
+      "A type of keyboard"
+    ],
+    "answer": "Main screen of a computer"
+  },
+  {
+    "id": 82,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does 'Ctrl + A' do?",
+    "options": [
+      "Select All",
+      "Copy All",
+      "Save All",
+      "Close All"
+    ],
+    "answer": "Select All"
+  },
+  {
+    "id": 83,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "The number system used by computers is ___.",
+    "options": [
+      "Binary (0 and 1)",
+      "Hexadecimal (0-F)",
+      "Decimal (0-9)",
+      "Roman numerals"
+    ],
+    "answer": "Binary (0 and 1)"
+  },
+  {
+    "id": 84,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which of these is image editing software?",
+    "options": [
+      "MS Excel",
+      "MS PowerPoint",
+      "MS Paint",
+      "MS Word"
+    ],
+    "answer": "MS Paint"
+  },
+  {
+    "id": 85,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does 'DVD' stand for?",
+    "options": [
+      "Direct Video Disk",
+      "Data Video Disc",
+      "Digital Versatile Disc",
+      "Digital Video Device"
+    ],
+    "answer": "Digital Versatile Disc"
+  },
+  {
+    "id": 86,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which protects a computer from viruses?",
+    "options": [
+      "Keyboard",
+      "Printer",
+      "Antivirus software",
+      "Monitor"
+    ],
+    "answer": "Antivirus software"
+  },
+  {
+    "id": 87,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "How many bits make one byte?",
+    "options": [
+      "4",
+      "8",
+      "16",
+      "2"
+    ],
+    "answer": "8"
+  },
+  {
+    "id": 88,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which key is pressed with a letter to type CAPITAL (without Caps Lock)?",
+    "options": [
+      "Alt",
+      "Tab",
+      "Ctrl",
+      "Shift"
+    ],
+    "answer": "Shift"
+  },
+  {
+    "id": 89,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What is a 'Laptop'?",
+    "options": [
+      "A storage device",
+      "A type of printer",
+      "A portable computer",
+      "A desktop computer"
+    ],
+    "answer": "A portable computer"
+  },
+  {
+    "id": 90,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does 'Ctrl + P' do?",
+    "options": [
+      "Play",
+      "Print",
+      "Pause",
+      "Paste"
+    ],
+    "answer": "Print"
+  },
+  {
+    "id": 91,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which device is used to listen to sound from a computer?",
+    "options": [
+      "Joystick",
+      "Speakers",
+      "Webcam",
+      "Scanner"
+    ],
+    "answer": "Speakers"
+  },
+  {
+    "id": 92,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What is a 'Webcam' used for?",
+    "options": [
+      "Playing music",
+      "Storing data",
+      "Printing",
+      "Taking pictures/video"
+    ],
+    "answer": "Taking pictures/video"
+  },
+  {
+    "id": 93,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which of these is a spreadsheet software?",
+    "options": [
+      "MS Access",
+      "MS Word",
+      "MS Excel",
+      "MS PowerPoint"
+    ],
+    "answer": "MS Excel"
+  },
+  {
+    "id": 94,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "A 'Password' is used to ___.",
+    "options": [
+      "protect your account",
+      "print documents",
+      "save files",
+      "speed up computer"
+    ],
+    "answer": "protect your account"
+  },
+  {
+    "id": 95,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does 'Ctrl + X' do?",
+    "options": [
+      "Cut",
+      "Close",
+      "Paste",
+      "Copy"
+    ],
+    "answer": "Cut"
+  },
+  {
+    "id": 96,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What is a 'Joystick' used for?",
+    "options": [
+      "Printing",
+      "Playing computer games",
+      "Typing",
+      "Scanning"
+    ],
+    "answer": "Playing computer games"
+  },
+  {
+    "id": 97,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which of these is an example of e-mail?",
+    "options": [
+      "MS Word",
+      "Windows",
+      "Google Chrome",
+      "Gmail"
+    ],
+    "answer": "Gmail"
+  },
+  {
+    "id": 98,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "What does 'F5' key do in most browsers?",
+    "options": [
+      "Save the file",
+      "Open new tab",
+      "Print",
+      "Refresh the page"
+    ],
+    "answer": "Refresh the page"
+  },
+  {
+    "id": 99,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "Which of these stores the most data?",
+    "options": [
+      "Floppy Disk",
+      "Pen Drive",
+      "Hard Disk",
+      "CD"
+    ],
+    "answer": "Hard Disk"
+  },
+  {
+    "id": 100,
+    "class": 3,
+    "category": "Computer",
+    "date": "all",
+    "question": "A computer needs ___ to start.",
+    "options": [
+      "Air",
+      "Water",
+      "Sunlight",
+      "Power/Electricity"
+    ],
+    "answer": "Power/Electricity"
+  },
+  {
+    "id": 101,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 45 + 37?",
+    "options": [
+      "62",
+      "72",
+      "82",
+      "92"
+    ],
+    "answer": "82"
+  },
+  {
+    "id": 102,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 100 - 64?",
+    "options": [
+      "46",
+      "36",
+      "56",
+      "26"
+    ],
+    "answer": "36"
+  },
+  {
+    "id": 103,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 6 × 7?",
+    "options": [
+      "48",
+      "42",
+      "54",
+      "36"
+    ],
+    "answer": "42"
+  },
+  {
+    "id": 104,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 81 ÷ 9?",
+    "options": [
+      "7",
+      "9",
+      "6",
+      "8"
+    ],
+    "answer": "9"
+  },
+  {
+    "id": 105,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is the place value of 3 in 347?",
+    "options": [
+      "Tens",
+      "Thousands",
+      "Ones",
+      "Hundreds"
+    ],
+    "answer": "Hundreds"
+  },
+  {
+    "id": 106,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "Which is the smallest 3-digit number?",
+    "options": [
+      "101",
+      "100",
+      "99",
+      "111"
+    ],
+    "answer": "100"
+  },
+  {
+    "id": 107,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 250 + 150?",
+    "options": [
+      "300",
+      "350",
+      "400",
+      "450"
+    ],
+    "answer": "400"
+  },
+  {
+    "id": 108,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 500 - 275?",
+    "options": [
+      "215",
+      "225",
+      "235",
+      "245"
+    ],
+    "answer": "225"
+  },
+  {
+    "id": 109,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "How many sides does a hexagon have?",
+    "options": [
+      "7",
+      "5",
+      "8",
+      "6"
+    ],
+    "answer": "6"
+  },
+  {
+    "id": 110,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 9 × 8?",
+    "options": [
+      "63",
+      "56",
+      "72",
+      "81"
+    ],
+    "answer": "72"
+  },
+  {
+    "id": 111,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 144 ÷ 12?",
+    "options": [
+      "14",
+      "11",
+      "12",
+      "13"
+    ],
+    "answer": "12"
+  },
+  {
+    "id": 112,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "Perimeter of a square with side 5 cm?",
+    "options": [
+      "20 cm",
+      "10 cm",
+      "15 cm",
+      "25 cm"
+    ],
+    "answer": "20 cm"
+  },
+  {
+    "id": 113,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "Which number comes between 49 and 51?",
+    "options": [
+      "48",
+      "50",
+      "52",
+      "53"
+    ],
+    "answer": "50"
+  },
+  {
+    "id": 114,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is half of 68?",
+    "options": [
+      "38",
+      "32",
+      "36",
+      "34"
+    ],
+    "answer": "34"
+  },
+  {
+    "id": 115,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "How many minutes are in an hour?",
+    "options": [
+      "90",
+      "45",
+      "30",
+      "60"
+    ],
+    "answer": "60"
+  },
+  {
+    "id": 116,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 7 × 6?",
+    "options": [
+      "35",
+      "48",
+      "42",
+      "56"
+    ],
+    "answer": "42"
+  },
+  {
+    "id": 117,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 1000 - 450?",
+    "options": [
+      "600",
+      "550",
+      "650",
+      "500"
+    ],
+    "answer": "550"
+  },
+  {
+    "id": 118,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is the Roman numeral for 10?",
+    "options": [
+      "V",
+      "I",
+      "X",
+      "L"
+    ],
+    "answer": "X"
+  },
+  {
+    "id": 119,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "Which shape has 4 equal sides?",
+    "options": [
+      "Oval",
+      "Triangle",
+      "Rectangle",
+      "Square"
+    ],
+    "answer": "Square"
+  },
+  {
+    "id": 120,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 56 ÷ 7?",
+    "options": [
+      "6",
+      "9",
+      "8",
+      "7"
+    ],
+    "answer": "8"
+  },
+  {
+    "id": 121,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 325 + 275?",
+    "options": [
+      "700",
+      "600",
+      "400",
+      "500"
+    ],
+    "answer": "600"
+  },
+  {
+    "id": 122,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "How many centimeters in a meter?",
+    "options": [
+      "100",
+      "50",
+      "1000",
+      "10"
+    ],
+    "answer": "100"
+  },
+  {
+    "id": 123,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "How many seconds in a minute?",
+    "options": [
+      "30",
+      "60",
+      "45",
+      "90"
+    ],
+    "answer": "60"
+  },
+  {
+    "id": 124,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is the next even number after 28?",
+    "options": [
+      "29",
+      "31",
+      "30",
+      "32"
+    ],
+    "answer": "30"
+  },
+  {
+    "id": 125,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 1/4 of 20?",
+    "options": [
+      "10",
+      "4",
+      "5",
+      "8"
+    ],
+    "answer": "5"
+  },
+  {
+    "id": 126,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "How many grams in a kilogram?",
+    "options": [
+      "500",
+      "250",
+      "1000",
+      "100"
+    ],
+    "answer": "1000"
+  },
+  {
+    "id": 127,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 7 + 8 + 9?",
+    "options": [
+      "20",
+      "24",
+      "22",
+      "26"
+    ],
+    "answer": "24"
+  },
+  {
+    "id": 128,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "Which number is divisible by 5?",
+    "options": [
+      "31",
+      "37",
+      "35",
+      "33"
+    ],
+    "answer": "35"
+  },
+  {
+    "id": 129,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "Area of rectangle: length 6 cm, width 4 cm?",
+    "options": [
+      "24 sq cm",
+      "28 sq cm",
+      "20 sq cm",
+      "18 sq cm"
+    ],
+    "answer": "24 sq cm"
+  },
+  {
+    "id": 130,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 99 + 1?",
+    "options": [
+      "102",
+      "98",
+      "101",
+      "100"
+    ],
+    "answer": "100"
+  },
+  {
+    "id": 131,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "How many faces does a cube have?",
+    "options": [
+      "6",
+      "4",
+      "8",
+      "5"
+    ],
+    "answer": "6"
+  },
+  {
+    "id": 132,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 3 × 11?",
+    "options": [
+      "36",
+      "30",
+      "39",
+      "33"
+    ],
+    "answer": "33"
+  },
+  {
+    "id": 133,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is double of 45?",
+    "options": [
+      "90",
+      "95",
+      "85",
+      "80"
+    ],
+    "answer": "90"
+  },
+  {
+    "id": 134,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "Which is an odd number?",
+    "options": [
+      "28",
+      "44",
+      "32",
+      "37"
+    ],
+    "answer": "37"
+  },
+  {
+    "id": 135,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 200 ÷ 4?",
+    "options": [
+      "50",
+      "40",
+      "25",
+      "60"
+    ],
+    "answer": "50"
+  },
+  {
+    "id": 136,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is the value of 5 in 503?",
+    "options": [
+      "50",
+      "500",
+      "5",
+      "5000"
+    ],
+    "answer": "500"
+  },
+  {
+    "id": 137,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "How many days in a leap year?",
+    "options": [
+      "365",
+      "366",
+      "360",
+      "364"
+    ],
+    "answer": "366"
+  },
+  {
+    "id": 138,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 15 × 3?",
+    "options": [
+      "55",
+      "40",
+      "45",
+      "50"
+    ],
+    "answer": "45"
+  },
+  {
+    "id": 139,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "Which fraction is the largest?",
+    "options": [
+      "1/2",
+      "1/8",
+      "1/4",
+      "3/4"
+    ],
+    "answer": "3/4"
+  },
+  {
+    "id": 140,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 999 + 1?",
+    "options": [
+      "1100",
+      "1000",
+      "1001",
+      "998"
+    ],
+    "answer": "1000"
+  },
+  {
+    "id": 141,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "How many hours in a day?",
+    "options": [
+      "24",
+      "12",
+      "36",
+      "48"
+    ],
+    "answer": "24"
+  },
+  {
+    "id": 142,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 50 × 2?",
+    "options": [
+      "50",
+      "150",
+      "200",
+      "100"
+    ],
+    "answer": "100"
+  },
+  {
+    "id": 143,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 63 - 18?",
+    "options": [
+      "45",
+      "55",
+      "40",
+      "35"
+    ],
+    "answer": "45"
+  },
+  {
+    "id": 144,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "Which is the largest 2-digit number?",
+    "options": [
+      "99",
+      "97",
+      "98",
+      "100"
+    ],
+    "answer": "99"
+  },
+  {
+    "id": 145,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 12 × 5?",
+    "options": [
+      "50",
+      "55",
+      "60",
+      "70"
+    ],
+    "answer": "60"
+  },
+  {
+    "id": 146,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "How many milliliters in 1 liter?",
+    "options": [
+      "100",
+      "1000",
+      "500",
+      "250"
+    ],
+    "answer": "1000"
+  },
+  {
+    "id": 147,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 432 rounded to the nearest hundred?",
+    "options": [
+      "440",
+      "400",
+      "500",
+      "430"
+    ],
+    "answer": "400"
+  },
+  {
+    "id": 148,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 11 × 11?",
+    "options": [
+      "141",
+      "121",
+      "111",
+      "131"
+    ],
+    "answer": "121"
+  },
+  {
+    "id": 149,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "8 pens cost ₹5 each. Total cost?",
+    "options": [
+      "₹40",
+      "₹45",
+      "₹35",
+      "₹30"
+    ],
+    "answer": "₹40"
+  },
+  {
+    "id": 150,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is 1/2 of 50?",
+    "options": [
+      "25",
+      "30",
+      "20",
+      "15"
+    ],
+    "answer": "25"
+  },
+  {
+    "id": 151,
+    "class": 3,
+    "category": "Maths",
+    "date": "all",
+    "question": "What is the perimeter of a rectangle with length 8 cm and width 3 cm?",
+    "options": [
+      "22 cm",
+      "20 cm",
+      "18 cm",
+      "24 cm"
+    ],
+    "answer": "22 cm"
+  },
+  {
+    "id": 152,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "हिंदी में कितने स्वर होते हैं?",
+    "options": [
+      "9",
+      "11",
+      "13",
+      "8"
+    ],
+    "answer": "11"
+  },
+  {
+    "id": 153,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'अ, आ, इ, ई' ये क्या हैं?",
+    "options": [
+      "स्वर",
+      "व्यंजन",
+      "संख्याएँ",
+      "मात्राएँ"
+    ],
+    "answer": "स्वर"
+  },
+  {
+    "id": 154,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'क, ख, ग, घ' ये क्या हैं?",
+    "options": [
+      "अनुस्वार",
+      "स्वर",
+      "मात्राएँ",
+      "व्यंजन"
+    ],
+    "answer": "व्यंजन"
+  },
+  {
+    "id": 155,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'लड़का' का स्त्रीलिंग क्या है?",
+    "options": [
+      "लड़का",
+      "लड़कन",
+      "लड़की",
+      "लड़के"
+    ],
+    "answer": "लड़की"
+  },
+  {
+    "id": 156,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'राजा' का स्त्रीलिंग क्या है?",
+    "options": [
+      "राजकुमारी",
+      "राजकुमार",
+      "महारानी",
+      "रानी"
+    ],
+    "answer": "रानी"
+  },
+  {
+    "id": 157,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'बड़ा' का विलोम शब्द क्या है?",
+    "options": [
+      "मोटा",
+      "छोटा",
+      "लंबा",
+      "भारी"
+    ],
+    "answer": "छोटा"
+  },
+  {
+    "id": 158,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'दिन' का विलोम शब्द क्या है?",
+    "options": [
+      "सुबह",
+      "रात",
+      "शाम",
+      "दोपहर"
+    ],
+    "answer": "रात"
+  },
+  {
+    "id": 159,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'किताब' का बहुवचन क्या है?",
+    "options": [
+      "किताबें",
+      "किताबों",
+      "किताब",
+      "किताबे"
+    ],
+    "answer": "किताबें"
+  },
+  {
+    "id": 160,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "निम्न में से संज्ञा शब्द कौन सा है?",
+    "options": [
+      "तेज़",
+      "दौड़ना",
+      "मेज",
+      "सुंदर"
+    ],
+    "answer": "मेज"
+  },
+  {
+    "id": 161,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'अच्छा' का विलोम क्या है?",
+    "options": [
+      "बड़ा",
+      "छोटा",
+      "सुंदर",
+      "बुरा"
+    ],
+    "answer": "बुरा"
+  },
+  {
+    "id": 162,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'गर्म' का विलोम क्या है?",
+    "options": [
+      "ठंडा",
+      "नरम",
+      "सुखद",
+      "गरम"
+    ],
+    "answer": "ठंडा"
+  },
+  {
+    "id": 163,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "हिंदी में 'Sun' को क्या कहते हैं?",
+    "options": [
+      "चंद्रमा",
+      "आकाश",
+      "तारा",
+      "सूर्य"
+    ],
+    "answer": "सूर्य"
+  },
+  {
+    "id": 164,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'नदी' शब्द किस लिंग का है?",
+    "options": [
+      "उभयलिंग",
+      "नपुंसकलिंग",
+      "पुल्लिंग",
+      "स्त्रीलिंग"
+    ],
+    "answer": "स्त्रीलिंग"
+  },
+  {
+    "id": 165,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'पानी' का पर्यायवाची शब्द क्या है?",
+    "options": [
+      "जल",
+      "वायु",
+      "अग्नि",
+      "पृथ्वी"
+    ],
+    "answer": "जल"
+  },
+  {
+    "id": 166,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'आकाश' का अर्थ क्या है?",
+    "options": [
+      "आसमान",
+      "जमीन",
+      "पानी",
+      "पहाड़"
+    ],
+    "answer": "आसमान"
+  },
+  {
+    "id": 167,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'माता' का पर्यायवाची शब्द क्या है?",
+    "options": [
+      "भाई",
+      "पिता",
+      "माँ",
+      "बहन"
+    ],
+    "answer": "माँ"
+  },
+  {
+    "id": 168,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'घर' का पर्यायवाची शब्द क्या है?",
+    "options": [
+      "विद्यालय",
+      "मकान",
+      "दुकान",
+      "अस्पताल"
+    ],
+    "answer": "मकान"
+  },
+  {
+    "id": 169,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'विद्यालय' का अर्थ क्या है?",
+    "options": [
+      "स्कूल",
+      "अस्पताल",
+      "मंदिर",
+      "बाजार"
+    ],
+    "answer": "स्कूल"
+  },
+  {
+    "id": 170,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'मैं, तुम, वह' ये क्या हैं?",
+    "options": [
+      "सर्वनाम",
+      "विशेषण",
+      "क्रिया",
+      "संज्ञा"
+    ],
+    "answer": "सर्वनाम"
+  },
+  {
+    "id": 171,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'हरा' शब्द क्या है?",
+    "options": [
+      "सर्वनाम",
+      "संज्ञा",
+      "क्रिया",
+      "विशेषण"
+    ],
+    "answer": "विशेषण"
+  },
+  {
+    "id": 172,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'खाना' शब्द क्या है?",
+    "options": [
+      "क्रिया",
+      "विशेषण",
+      "सर्वनाम",
+      "संज्ञा"
+    ],
+    "answer": "क्रिया"
+  },
+  {
+    "id": 173,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "हिंदी वर्णमाला का पहला स्वर कौन सा है?",
+    "options": [
+      "आ",
+      "अ",
+      "ई",
+      "इ"
+    ],
+    "answer": "अ"
+  },
+  {
+    "id": 174,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "हिंदी वर्णमाला का पहला व्यंजन कौन सा है?",
+    "options": [
+      "च",
+      "ग",
+      "क",
+      "ख"
+    ],
+    "answer": "क"
+  },
+  {
+    "id": 175,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'सुबह' का विलोम शब्द क्या है?",
+    "options": [
+      "रात",
+      "शाम",
+      "दोपहर",
+      "भोर"
+    ],
+    "answer": "शाम"
+  },
+  {
+    "id": 176,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'ऊँचा' का विलोम शब्द क्या है?",
+    "options": [
+      "मोटा",
+      "पतला",
+      "नीचा",
+      "छोटा"
+    ],
+    "answer": "नीचा"
+  },
+  {
+    "id": 177,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'पुस्तक' का बहुवचन क्या है?",
+    "options": [
+      "पुस्तकें",
+      "पुस्तक",
+      "पुस्तकों",
+      "पुस्तके"
+    ],
+    "answer": "पुस्तकें"
+  },
+  {
+    "id": 178,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'काला' का विलोम शब्द क्या है?",
+    "options": [
+      "लाल",
+      "नीला",
+      "सफेद",
+      "पीला"
+    ],
+    "answer": "सफेद"
+  },
+  {
+    "id": 179,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'खुश' का विलोम शब्द क्या है?",
+    "options": [
+      "शांत",
+      "दुखी",
+      "क्रोधित",
+      "थका"
+    ],
+    "answer": "दुखी"
+  },
+  {
+    "id": 180,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'नया' का विलोम शब्द क्या है?",
+    "options": [
+      "बड़ा",
+      "पुराना",
+      "सुंदर",
+      "छोटा"
+    ],
+    "answer": "पुराना"
+  },
+  {
+    "id": 181,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'वृक्ष' का अर्थ क्या है?",
+    "options": [
+      "पेड़",
+      "जड़",
+      "फूल",
+      "पत्ती"
+    ],
+    "answer": "पेड़"
+  },
+  {
+    "id": 182,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'शेर' की स्त्रीलिंग क्या है?",
+    "options": [
+      "शेरी",
+      "शेरनी",
+      "शेरा",
+      "शेरे"
+    ],
+    "answer": "शेरनी"
+  },
+  {
+    "id": 183,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'बाघ' की स्त्रीलिंग क्या है?",
+    "options": [
+      "बाघनी",
+      "बाघी",
+      "बाघिन",
+      "बाघा"
+    ],
+    "answer": "बाघिन"
+  },
+  {
+    "id": 184,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'गाय' का बहुवचन क्या है?",
+    "options": [
+      "गायों",
+      "गायें",
+      "गाय",
+      "गाये"
+    ],
+    "answer": "गायें"
+  },
+  {
+    "id": 185,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "हिंदी दिवस कब मनाया जाता है?",
+    "options": [
+      "14 सितंबर",
+      "26 जनवरी",
+      "14 जनवरी",
+      "15 अगस्त"
+    ],
+    "answer": "14 सितंबर"
+  },
+  {
+    "id": 186,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'धीरे-धीरे' कौन सा शब्द है?",
+    "options": [
+      "सर्वनाम",
+      "क्रिया विशेषण",
+      "विशेषण",
+      "संज्ञा"
+    ],
+    "answer": "क्रिया विशेषण"
+  },
+  {
+    "id": 187,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'राम और श्याम मित्र हैं।' में 'और' क्या है?",
+    "options": [
+      "क्रिया",
+      "विशेषण",
+      "संज्ञा",
+      "समुच्चयबोधक"
+    ],
+    "answer": "समुच्चयबोधक"
+  },
+  {
+    "id": 188,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'मोर' भारत का राष्ट्रीय ___ है।",
+    "options": [
+      "वृक्ष",
+      "पशु",
+      "फूल",
+      "पक्षी"
+    ],
+    "answer": "पक्षी"
+  },
+  {
+    "id": 189,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "हिंदी में 'Moon' को क्या कहते हैं?",
+    "options": [
+      "तारा",
+      "चंद्रमा",
+      "ग्रह",
+      "सूर्य"
+    ],
+    "answer": "चंद्रमा"
+  },
+  {
+    "id": 190,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "हिंदी में 'Flower' को क्या कहते हैं?",
+    "options": [
+      "तना",
+      "जड़",
+      "पत्ता",
+      "फूल"
+    ],
+    "answer": "फूल"
+  },
+  {
+    "id": 191,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'राजा' किस लिंग का शब्द है?",
+    "options": [
+      "नपुंसकलिंग",
+      "स्त्रीलिंग",
+      "पुल्लिंग",
+      "उभयलिंग"
+    ],
+    "answer": "पुल्लिंग"
+  },
+  {
+    "id": 192,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'सुंदर' शब्द क्या है?",
+    "options": [
+      "विशेषण",
+      "सर्वनाम",
+      "संज्ञा",
+      "क्रिया"
+    ],
+    "answer": "विशेषण"
+  },
+  {
+    "id": 193,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "हिंदी में 'Water' को क्या कहते हैं?",
+    "options": [
+      "पानी",
+      "मिट्टी",
+      "आग",
+      "हवा"
+    ],
+    "answer": "पानी"
+  },
+  {
+    "id": 194,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'अमृत' का विलोम शब्द क्या है?",
+    "options": [
+      "कड़वा",
+      "खट्टा",
+      "मीठा",
+      "विष"
+    ],
+    "answer": "विष"
+  },
+  {
+    "id": 195,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'बाघ' किस लिंग का शब्द है?",
+    "options": [
+      "उभयलिंग",
+      "नपुंसकलिंग",
+      "स्त्रीलिंग",
+      "पुल्लिंग"
+    ],
+    "answer": "पुल्लिंग"
+  },
+  {
+    "id": 196,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'पेड़ पर पक्षी बैठे हैं।' में 'पर' क्या है?",
+    "options": [
+      "संज्ञा",
+      "क्रिया",
+      "विशेषण",
+      "संबंधबोधक"
+    ],
+    "answer": "संबंधबोधक"
+  },
+  {
+    "id": 197,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'माँ मुझसे प्यार करती हैं।' में क्रिया कौन सी है?",
+    "options": [
+      "माँ",
+      "प्यार",
+      "मुझसे",
+      "करती हैं"
+    ],
+    "answer": "करती हैं"
+  },
+  {
+    "id": 198,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'मेरा' किस सर्वनाम का रूप है?",
+    "options": [
+      "तुम",
+      "हम",
+      "वह",
+      "मैं"
+    ],
+    "answer": "मैं"
+  },
+  {
+    "id": 199,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "हिंदी में 'Tree' को क्या कहते हैं?",
+    "options": [
+      "पत्थर",
+      "पंछी",
+      "पेड़",
+      "पानी"
+    ],
+    "answer": "पेड़"
+  },
+  {
+    "id": 200,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'छोटा' का पर्यायवाची क्या है?",
+    "options": [
+      "बड़ा",
+      "लंबा",
+      "मोटा",
+      "लघु"
+    ],
+    "answer": "लघु"
+  },
+  {
+    "id": 201,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'पाठशाला' किसे कहते हैं?",
+    "options": [
+      "विद्यालय को",
+      "अस्पताल को",
+      "दुकान को",
+      "मंदिर को"
+    ],
+    "answer": "विद्यालय को"
+  },
+  {
+    "id": 202,
+    "class": 3,
+    "category": "Hindi",
+    "date": "all",
+    "question": "'रोटी' किस लिंग का शब्द है?",
+    "options": [
+      "पुल्लिंग",
+      "नपुंसकलिंग",
+      "स्त्रीलिंग",
+      "उभयलिंग"
+    ],
+    "answer": "स्त्रीलिंग"
+  },
+  {
+    "id": 203,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which is the largest planet in our solar system?",
+    "options": [
+      "Earth",
+      "Jupiter",
+      "Neptune",
+      "Saturn"
+    ],
+    "answer": "Jupiter"
+  },
+  {
+    "id": 204,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What do plants need to make food?",
+    "options": [
+      "Only sunlight",
+      "Only water",
+      "Only soil",
+      "Sunlight, water and CO2"
+    ],
+    "answer": "Sunlight, water and CO2"
+  },
+  {
+    "id": 205,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What is the process by which plants make food?",
+    "options": [
+      "Respiration",
+      "Photosynthesis",
+      "Digestion",
+      "Absorption"
+    ],
+    "answer": "Photosynthesis"
+  },
+  {
+    "id": 206,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which organ pumps blood in our body?",
+    "options": [
+      "Lungs",
+      "Kidney",
+      "Liver",
+      "Heart"
+    ],
+    "answer": "Heart"
+  },
+  {
+    "id": 207,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Animals that eat only plants are called ___.",
+    "options": [
+      "Scavengers",
+      "Carnivores",
+      "Omnivores",
+      "Herbivores"
+    ],
+    "answer": "Herbivores"
+  },
+  {
+    "id": 208,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which gas do plants take in during photosynthesis?",
+    "options": [
+      "Oxygen",
+      "Hydrogen",
+      "Nitrogen",
+      "Carbon Dioxide"
+    ],
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "id": 209,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What is the boiling point of water?",
+    "options": [
+      "100°C",
+      "50°C",
+      "75°C",
+      "200°C"
+    ],
+    "answer": "100°C"
+  },
+  {
+    "id": 210,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which is the nearest star to the Earth?",
+    "options": [
+      "Polaris",
+      "The Moon",
+      "The Sun",
+      "Jupiter"
+    ],
+    "answer": "The Sun"
+  },
+  {
+    "id": 211,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Animals that eat both plants and animals are called ___.",
+    "options": [
+      "Scavengers",
+      "Carnivores",
+      "Herbivores",
+      "Omnivores"
+    ],
+    "answer": "Omnivores"
+  },
+  {
+    "id": 212,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which organ is responsible for breathing?",
+    "options": [
+      "Kidney",
+      "Liver",
+      "Heart",
+      "Lungs"
+    ],
+    "answer": "Lungs"
+  },
+  {
+    "id": 213,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Water freezes at ___ degrees Celsius.",
+    "options": [
+      "10",
+      "0",
+      "100",
+      "-10"
+    ],
+    "answer": "0"
+  },
+  {
+    "id": 214,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which part of the plant makes food?",
+    "options": [
+      "Stem",
+      "Roots",
+      "Leaves",
+      "Flowers"
+    ],
+    "answer": "Leaves"
+  },
+  {
+    "id": 215,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What is the natural satellite of Earth?",
+    "options": [
+      "Moon",
+      "Mars",
+      "Sun",
+      "Venus"
+    ],
+    "answer": "Moon"
+  },
+  {
+    "id": 216,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which planet is known as the Red Planet?",
+    "options": [
+      "Jupiter",
+      "Mars",
+      "Venus",
+      "Saturn"
+    ],
+    "answer": "Mars"
+  },
+  {
+    "id": 217,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Water turning into vapour is called ___.",
+    "options": [
+      "Melting",
+      "Precipitation",
+      "Condensation",
+      "Evaporation"
+    ],
+    "answer": "Evaporation"
+  },
+  {
+    "id": 218,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which sense organ is used for hearing?",
+    "options": [
+      "Ear",
+      "Nose",
+      "Tongue",
+      "Eye"
+    ],
+    "answer": "Ear"
+  },
+  {
+    "id": 219,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What do caterpillars change into?",
+    "options": [
+      "Wasps",
+      "Bees",
+      "Butterflies",
+      "Flies"
+    ],
+    "answer": "Butterflies"
+  },
+  {
+    "id": 220,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which vitamin do we get from sunlight?",
+    "options": [
+      "Vitamin B",
+      "Vitamin C",
+      "Vitamin D",
+      "Vitamin A"
+    ],
+    "answer": "Vitamin D"
+  },
+  {
+    "id": 221,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What does a thermometer measure?",
+    "options": [
+      "Temperature",
+      "Length",
+      "Speed",
+      "Weight"
+    ],
+    "answer": "Temperature"
+  },
+  {
+    "id": 222,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which part of the plant absorbs water from soil?",
+    "options": [
+      "Roots",
+      "Stem",
+      "Leaves",
+      "Flowers"
+    ],
+    "answer": "Roots"
+  },
+  {
+    "id": 223,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What is the state of water at 0°C?",
+    "options": [
+      "Liquid",
+      "Plasma",
+      "Gas",
+      "Solid (Ice)"
+    ],
+    "answer": "Solid (Ice)"
+  },
+  {
+    "id": 224,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which of these animals lays eggs?",
+    "options": [
+      "Cat",
+      "Dog",
+      "Cow",
+      "Hen"
+    ],
+    "answer": "Hen"
+  },
+  {
+    "id": 225,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What is the main source of energy for Earth?",
+    "options": [
+      "Moon",
+      "Sun",
+      "Wind",
+      "Water"
+    ],
+    "answer": "Sun"
+  },
+  {
+    "id": 226,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which gas is most abundant in the atmosphere?",
+    "options": [
+      "Nitrogen",
+      "Oxygen",
+      "Carbon Dioxide",
+      "Hydrogen"
+    ],
+    "answer": "Nitrogen"
+  },
+  {
+    "id": 227,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which planet is closest to the Sun?",
+    "options": [
+      "Venus",
+      "Earth",
+      "Mercury",
+      "Mars"
+    ],
+    "answer": "Mercury"
+  },
+  {
+    "id": 228,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Water changing from gas to liquid is called ___.",
+    "options": [
+      "Freezing",
+      "Evaporation",
+      "Condensation",
+      "Precipitation"
+    ],
+    "answer": "Condensation"
+  },
+  {
+    "id": 229,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which sense helps us smell?",
+    "options": [
+      "Nose",
+      "Ear",
+      "Tongue",
+      "Eye"
+    ],
+    "answer": "Nose"
+  },
+  {
+    "id": 230,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Animals that live both on land and in water are ___.",
+    "options": [
+      "Amphibians",
+      "Reptiles",
+      "Mammals",
+      "Birds"
+    ],
+    "answer": "Amphibians"
+  },
+  {
+    "id": 231,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which is the largest animal on land?",
+    "options": [
+      "Elephant",
+      "Giraffe",
+      "Hippo",
+      "Rhinoceros"
+    ],
+    "answer": "Elephant"
+  },
+  {
+    "id": 232,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which organ do we use to taste food?",
+    "options": [
+      "Tongue",
+      "Nose",
+      "Eye",
+      "Ear"
+    ],
+    "answer": "Tongue"
+  },
+  {
+    "id": 233,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What is the young one of a cow called?",
+    "options": [
+      "Calf",
+      "Pup",
+      "Foal",
+      "Lamb"
+    ],
+    "answer": "Calf"
+  },
+  {
+    "id": 234,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which planet has rings around it?",
+    "options": [
+      "Neptune",
+      "Mars",
+      "Saturn",
+      "Jupiter"
+    ],
+    "answer": "Saturn"
+  },
+  {
+    "id": 235,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What do plants give out during photosynthesis?",
+    "options": [
+      "Carbon Dioxide",
+      "Hydrogen",
+      "Oxygen",
+      "Nitrogen"
+    ],
+    "answer": "Oxygen"
+  },
+  {
+    "id": 236,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which of these is a non-living thing?",
+    "options": [
+      "Insect",
+      "Mushroom",
+      "Rock",
+      "Plant"
+    ],
+    "answer": "Rock"
+  },
+  {
+    "id": 237,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "The change from caterpillar to butterfly is called ___.",
+    "options": [
+      "Metamorphosis",
+      "Digestion",
+      "Germination",
+      "Evaporation"
+    ],
+    "answer": "Metamorphosis"
+  },
+  {
+    "id": 238,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which organ do fish use to breathe?",
+    "options": [
+      "Skin",
+      "Lungs",
+      "Fins",
+      "Gills"
+    ],
+    "answer": "Gills"
+  },
+  {
+    "id": 239,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What is the young one of a horse called?",
+    "options": [
+      "Kid",
+      "Foal",
+      "Puppy",
+      "Calf"
+    ],
+    "answer": "Foal"
+  },
+  {
+    "id": 240,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which force pulls objects towards Earth?",
+    "options": [
+      "Magnetism",
+      "Tension",
+      "Gravity",
+      "Friction"
+    ],
+    "answer": "Gravity"
+  },
+  {
+    "id": 241,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which of these is a primary colour?",
+    "options": [
+      "Orange",
+      "Green",
+      "Red",
+      "Purple"
+    ],
+    "answer": "Red"
+  },
+  {
+    "id": 242,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What is the young one of a dog called?",
+    "options": [
+      "Kitten",
+      "Puppy",
+      "Lamb",
+      "Foal"
+    ],
+    "answer": "Puppy"
+  },
+  {
+    "id": 243,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which season comes after Winter?",
+    "options": [
+      "Autumn",
+      "Summer",
+      "Spring",
+      "Monsoon"
+    ],
+    "answer": "Spring"
+  },
+  {
+    "id": 244,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What gives plants their green colour?",
+    "options": [
+      "Chlorophyll",
+      "Nitrogen",
+      "Oxygen",
+      "Carbon Dioxide"
+    ],
+    "answer": "Chlorophyll"
+  },
+  {
+    "id": 245,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which of these is a reptile?",
+    "options": [
+      "Whale",
+      "Lizard",
+      "Frog",
+      "Eagle"
+    ],
+    "answer": "Lizard"
+  },
+  {
+    "id": 246,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What do we call animals that feed milk to their young?",
+    "options": [
+      "Birds",
+      "Amphibians",
+      "Reptiles",
+      "Mammals"
+    ],
+    "answer": "Mammals"
+  },
+  {
+    "id": 247,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which is the hardest natural substance?",
+    "options": [
+      "Iron",
+      "Gold",
+      "Silver",
+      "Diamond"
+    ],
+    "answer": "Diamond"
+  },
+  {
+    "id": 248,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What is the full form of 'DNA'?",
+    "options": [
+      "Double Nucleus Acid",
+      "Direct Nucleic Atom",
+      "Deoxyribonucleic Acid",
+      "Digital Nuclei Acid"
+    ],
+    "answer": "Deoxyribonucleic Acid"
+  },
+  {
+    "id": 249,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which of these is a source of light?",
+    "options": [
+      "Mirror",
+      "Cloud",
+      "Sun",
+      "Moon"
+    ],
+    "answer": "Sun"
+  },
+  {
+    "id": 250,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What do carnivores eat?",
+    "options": [
+      "Plants only",
+      "Both plants and meat",
+      "Insects only",
+      "Meat only"
+    ],
+    "answer": "Meat only"
+  },
+  {
+    "id": 251,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which of these is a mammal?",
+    "options": [
+      "Frog",
+      "Whale",
+      "Crocodile",
+      "Snake"
+    ],
+    "answer": "Whale"
+  },
+  {
+    "id": 252,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "What is used to measure length?",
+    "options": [
+      "Ruler",
+      "Scale",
+      "Thermometer",
+      "Compass"
+    ],
+    "answer": "Ruler"
+  },
+  {
+    "id": 253,
+    "class": 3,
+    "category": "Science",
+    "date": "all",
+    "question": "Which of these has no bones?",
+    "options": [
+      "Earthworm",
+      "Fish",
+      "Bird",
+      "Frog"
+    ],
+    "answer": "Earthworm"
+  },
+  {
+    "id": 254,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is the capital city of India?",
+    "options": [
+      "Mumbai",
+      "New Delhi",
+      "Chennai",
+      "Kolkata"
+    ],
+    "answer": "New Delhi"
+  },
+  {
+    "id": 255,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which river is called the 'Ganga'?",
+    "options": [
+      "Yamuna",
+      "Godavari",
+      "Brahmaputra",
+      "Ganges"
+    ],
+    "answer": "Ganges"
+  },
+  {
+    "id": 256,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "How many states are there in India (2024)?",
+    "options": [
+      "29",
+      "28",
+      "27",
+      "30"
+    ],
+    "answer": "28"
+  },
+  {
+    "id": 257,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is the national language of India?",
+    "options": [
+      "Tamil",
+      "Bengali",
+      "Hindi",
+      "English"
+    ],
+    "answer": "Hindi"
+  },
+  {
+    "id": 258,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which mountain range is the highest in the world?",
+    "options": [
+      "Alps",
+      "Andes",
+      "Rockies",
+      "Himalayas"
+    ],
+    "answer": "Himalayas"
+  },
+  {
+    "id": 259,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Who was the first Prime Minister of India?",
+    "options": [
+      "Jawaharlal Nehru",
+      "Sardar Patel",
+      "Mahatma Gandhi",
+      "B.R. Ambedkar"
+    ],
+    "answer": "Jawaharlal Nehru"
+  },
+  {
+    "id": 260,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is the national fruit of India?",
+    "options": [
+      "Apple",
+      "Guava",
+      "Mango",
+      "Banana"
+    ],
+    "answer": "Mango"
+  },
+  {
+    "id": 261,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "In which direction does the sun rise?",
+    "options": [
+      "East",
+      "West",
+      "South",
+      "North"
+    ],
+    "answer": "East"
+  },
+  {
+    "id": 262,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "On which date is India's Independence Day?",
+    "options": [
+      "26 January",
+      "2 October",
+      "15 August",
+      "14 November"
+    ],
+    "answer": "15 August"
+  },
+  {
+    "id": 263,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which of these is a means of transport?",
+    "options": [
+      "Computer",
+      "Bus",
+      "Radio",
+      "Television"
+    ],
+    "answer": "Bus"
+  },
+  {
+    "id": 264,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is a map?",
+    "options": [
+      "A type of book",
+      "A globe",
+      "Drawing of Earth's surface",
+      "A dictionary"
+    ],
+    "answer": "Drawing of Earth's surface"
+  },
+  {
+    "id": 265,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which continent does India belong to?",
+    "options": [
+      "Europe",
+      "Asia",
+      "Australia",
+      "Africa"
+    ],
+    "answer": "Asia"
+  },
+  {
+    "id": 266,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is the longest river in India?",
+    "options": [
+      "Yamuna",
+      "Godavari",
+      "Brahmaputra",
+      "Ganga"
+    ],
+    "answer": "Ganga"
+  },
+  {
+    "id": 267,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Who is known as the 'Father of the Nation'?",
+    "options": [
+      "Mahatma Gandhi",
+      "Nehru",
+      "Shastri",
+      "Ambedkar"
+    ],
+    "answer": "Mahatma Gandhi"
+  },
+  {
+    "id": 268,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What does a compass help us find?",
+    "options": [
+      "Distance",
+      "Temperature",
+      "Direction",
+      "Weight"
+    ],
+    "answer": "Direction"
+  },
+  {
+    "id": 269,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is the national flower of India?",
+    "options": [
+      "Lotus",
+      "Rose",
+      "Marigold",
+      "Sunflower"
+    ],
+    "answer": "Lotus"
+  },
+  {
+    "id": 270,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which is the largest state in India by area?",
+    "options": [
+      "Rajasthan",
+      "Uttar Pradesh",
+      "Madhya Pradesh",
+      "Maharashtra"
+    ],
+    "answer": "Rajasthan"
+  },
+  {
+    "id": 271,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is a globe?",
+    "options": [
+      "A flat map",
+      "A type of compass",
+      "A spherical model of Earth",
+      "A book of maps"
+    ],
+    "answer": "A spherical model of Earth"
+  },
+  {
+    "id": 272,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What ocean is to the south of India?",
+    "options": [
+      "Indian Ocean",
+      "Arabian Sea",
+      "Bay of Bengal",
+      "Pacific Ocean"
+    ],
+    "answer": "Indian Ocean"
+  },
+  {
+    "id": 273,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What do we call a person who grows crops?",
+    "options": [
+      "Doctor",
+      "Teacher",
+      "Farmer",
+      "Engineer"
+    ],
+    "answer": "Farmer"
+  },
+  {
+    "id": 274,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is the national tree of India?",
+    "options": [
+      "Mango",
+      "Banyan",
+      "Neem",
+      "Peepal"
+    ],
+    "answer": "Banyan"
+  },
+  {
+    "id": 275,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is the currency of India?",
+    "options": [
+      "Dollar",
+      "Rupee",
+      "Pound",
+      "Euro"
+    ],
+    "answer": "Rupee"
+  },
+  {
+    "id": 276,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Republic Day of India is celebrated on ___.",
+    "options": [
+      "26 January",
+      "2 October",
+      "14 November",
+      "15 August"
+    ],
+    "answer": "26 January"
+  },
+  {
+    "id": 277,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Gandhi Jayanti is celebrated on ___.",
+    "options": [
+      "14 November",
+      "15 August",
+      "2 October",
+      "26 January"
+    ],
+    "answer": "2 October"
+  },
+  {
+    "id": 278,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What do we call the head of a village?",
+    "options": [
+      "Chief Minister",
+      "Mayor",
+      "Sarpanch",
+      "Governor"
+    ],
+    "answer": "Sarpanch"
+  },
+  {
+    "id": 279,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "The Taj Mahal is located in ___.",
+    "options": [
+      "Agra",
+      "Mumbai",
+      "Delhi",
+      "Jaipur"
+    ],
+    "answer": "Agra"
+  },
+  {
+    "id": 280,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which of these is a means of communication?",
+    "options": [
+      "Chair",
+      "Telephone",
+      "Bed",
+      "Table"
+    ],
+    "answer": "Telephone"
+  },
+  {
+    "id": 281,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What type of climate does a desert have?",
+    "options": [
+      "Hot and dry",
+      "Moderate",
+      "Tropical",
+      "Cold and wet"
+    ],
+    "answer": "Hot and dry"
+  },
+  {
+    "id": 282,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Who makes laws in India?",
+    "options": [
+      "Parliament",
+      "Army",
+      "Police",
+      "Judiciary"
+    ],
+    "answer": "Parliament"
+  },
+  {
+    "id": 283,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "India's national emblem comes from ___.",
+    "options": [
+      "Red Fort",
+      "Qutub Minar",
+      "Taj Mahal",
+      "Ashoka Pillar"
+    ],
+    "answer": "Ashoka Pillar"
+  },
+  {
+    "id": 284,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which of these is a non-renewable resource?",
+    "options": [
+      "Coal",
+      "Water",
+      "Solar Energy",
+      "Wind Energy"
+    ],
+    "answer": "Coal"
+  },
+  {
+    "id": 285,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "A peninsula is land surrounded by water on ___ sides.",
+    "options": [
+      "Four",
+      "One",
+      "Two",
+      "Three"
+    ],
+    "answer": "Three"
+  },
+  {
+    "id": 286,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "India is a ___ country.",
+    "options": [
+      "Dictatorship",
+      "Democratic",
+      "Monarchy",
+      "Military"
+    ],
+    "answer": "Democratic"
+  },
+  {
+    "id": 287,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "A book of maps is called ___.",
+    "options": [
+      "Atlas",
+      "Encyclopedia",
+      "Dictionary",
+      "Globe"
+    ],
+    "answer": "Atlas"
+  },
+  {
+    "id": 288,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which line divides the Earth into North and South?",
+    "options": [
+      "Equator",
+      "Tropic of Cancer",
+      "Prime Meridian",
+      "Arctic Circle"
+    ],
+    "answer": "Equator"
+  },
+  {
+    "id": 289,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What type of soil is best for farming?",
+    "options": [
+      "Rocky soil",
+      "Sandy soil",
+      "Clay soil",
+      "Loamy soil"
+    ],
+    "answer": "Loamy soil"
+  },
+  {
+    "id": 290,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which of these is a hill station in India?",
+    "options": [
+      "Shimla",
+      "Surat",
+      "Patna",
+      "Agra"
+    ],
+    "answer": "Shimla"
+  },
+  {
+    "id": 291,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What do we call moving from one place to another to live?",
+    "options": [
+      "Cultivation",
+      "Celebration",
+      "Migration",
+      "Navigation"
+    ],
+    "answer": "Migration"
+  },
+  {
+    "id": 292,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is the function of a hospital?",
+    "options": [
+      "To make laws",
+      "To treat sick people",
+      "To store food",
+      "To teach students"
+    ],
+    "answer": "To treat sick people"
+  },
+  {
+    "id": 293,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which colour is used for water on maps?",
+    "options": [
+      "Green",
+      "Blue",
+      "Brown",
+      "Yellow"
+    ],
+    "answer": "Blue"
+  },
+  {
+    "id": 294,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "How many Union Territories are there in India (2024)?",
+    "options": [
+      "7",
+      "9",
+      "8",
+      "6"
+    ],
+    "answer": "8"
+  },
+  {
+    "id": 295,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which season is coldest in India?",
+    "options": [
+      "Monsoon",
+      "Spring",
+      "Summer",
+      "Winter"
+    ],
+    "answer": "Winter"
+  },
+  {
+    "id": 296,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is the full form of 'PM' in Indian government?",
+    "options": [
+      "Prime Minister",
+      "Public Minister",
+      "Post Master",
+      "Police Minister"
+    ],
+    "answer": "Prime Minister"
+  },
+  {
+    "id": 297,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which of these is a natural resource?",
+    "options": [
+      "Coal",
+      "Glass",
+      "Plastic",
+      "Paper"
+    ],
+    "answer": "Coal"
+  },
+  {
+    "id": 298,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What do we call a very large city?",
+    "options": [
+      "Town",
+      "Village",
+      "Metropolis",
+      "Hamlet"
+    ],
+    "answer": "Metropolis"
+  },
+  {
+    "id": 299,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What do we call a person who delivers letters?",
+    "options": [
+      "Fireman",
+      "Postman",
+      "Policeman",
+      "Milkman"
+    ],
+    "answer": "Postman"
+  },
+  {
+    "id": 300,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is a market?",
+    "options": [
+      "A hospital",
+      "A park",
+      "A place to buy and sell goods",
+      "A school"
+    ],
+    "answer": "A place to buy and sell goods"
+  },
+  {
+    "id": 301,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What does the President of India do?",
+    "options": [
+      "Head of the country",
+      "Head of the court",
+      "Head of the army",
+      "Head of the police"
+    ],
+    "answer": "Head of the country"
+  },
+  {
+    "id": 302,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Which of these is the national animal of India?",
+    "options": [
+      "Peacock",
+      "Elephant",
+      "Lion",
+      "Tiger"
+    ],
+    "answer": "Tiger"
+  },
+  {
+    "id": 303,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "Where is the Red Fort located?",
+    "options": [
+      "Jaipur",
+      "Agra",
+      "Delhi",
+      "Mumbai"
+    ],
+    "answer": "Delhi"
+  },
+  {
+    "id": 304,
+    "class": 3,
+    "category": "SS",
+    "date": "all",
+    "question": "What is the Panchayat system?",
+    "options": [
+      "Local self-government in villages",
+      "A farming method",
+      "A type of festival",
+      "A water system"
+    ],
+    "answer": "Local self-government in villages"
+  }
+]

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advik Quiz — Class 3</title>
+<title>Practice Tests — Class 3</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -399,7 +399,7 @@ body { font-family: 'Nunito', sans-serif; background: #f0f4f8; min-height: 100vh
 <div id="homePage">
 
   <nav class="home-nav">
-    <div class="brand">🎓 Advik Quiz</div>
+    <div class="brand">🎓 Class Assignment</div>
     <div class="tagline">CLASS 3 · APRIL 2026</div>
   </nav>
 
@@ -439,10 +439,13 @@ body { font-family: 'Nunito', sans-serif; background: #f0f4f8; min-height: 100vh
   <div class="home-section">
     <h2>📚 Available Subjects</h2>
     <div class="subjects-grid" id="subjectsGrid"></div>
+    <button onclick="window.location.href='/dashboard.html'">
+    📊 View Dashboard
+    </button>
   </div>
 
   <div class="home-footer">
-    © 2026 Advik Quiz System &nbsp;·&nbsp; Class 3 &nbsp;·&nbsp; April 2026
+    © 2026 Quiz System &nbsp;·&nbsp; Class 3 &nbsp;·&nbsp; April 2026
   </div>
 
 </div>
@@ -520,7 +523,7 @@ function parseParams() {
 function bootHome() {
   document.getElementById('loadingScreen').style.display = 'none';
   document.getElementById('homePage').style.display      = 'block';
-  document.title = 'Advik Quiz — Class 3';
+  document.title = 'Practice Tests — Class 3';
 
   // Populate subject dropdown
   const selSubj = document.getElementById('selSubject');

@@ -346,8 +346,8 @@ let params     = {};
       return;
     }
 
-    // Shuffle and take up to 50
-    questions = shuffle(pool).slice(0, 50);
+    // Shuffle and take up to 25 questions
+    questions = shuffle(pool).slice(0, 25);
     initQuiz();
 
   } catch(e) {
@@ -531,6 +531,22 @@ function submitQuiz() {
 
   // Store for PDF
   window._quizReport = { report, correct, wrong, skipped, total, params };
+    const result = {
+    subject: params.subject,
+    score: correct,
+    total: total,
+    percentage: Math.round((correct / total) * 100),
+    attempt: 1
+  };
+  saveResult(result);
+}
+
+//------ Store Result in Local storage (optional) ------
+async function saveResult(result) {
+  await fetch("https://script.google.com/macros/s/AKfycbx81ycL1yL7-GEsngnlH5zGSlolI7aktQFZI0QQrIkft85P1YIWtMTOJdqCh0RPT4o3/exec", {
+    method: "POST",
+    body: JSON.stringify(result)
+  });
 }
 
 // ── PDF ───────────────────────────────────────────────────────
