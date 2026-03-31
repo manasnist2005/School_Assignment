@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root {
+  --accent: #1565C0;
+  --accent-bg: #E3F2FD;
+  --radius: 14px;
+  --shadow: 0 4px 18px rgba(0,0,0,0.10);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #f0f4f8;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* ── Loading / Error screens ── */
+#loadingScreen, #errorScreen {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 100vh; gap: 16px; padding: 30px; text-align: center;
+}
+.spinner {
+  width: 52px; height: 52px;
+  border: 5px solid #ddd; border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Header ── */
+.quiz-header {
+  background: var(--accent);
+  color: #fff;
+  padding: 18px 20px 14px;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+.quiz-header h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(20px, 4vw, 28px);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.quiz-header .meta {
+  font-size: 13px; opacity: 0.88; display: flex; gap: 14px; flex-wrap: wrap;
+}
+.quiz-header .meta span { display: flex; align-items: center; gap: 4px; }
+
+/* ── Timer ── */
+#timerBar {
+  background: #fff8e1;
+  border-bottom: 3px solid #fdd835;
+  padding: 10px 20px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-size: 20px; font-weight: 800; color: #f57f17;
+  position: sticky; top: 70px; z-index: 99;
+  transition: background 0.4s, border-color 0.4s, color 0.4s;
+}
+#timerBar.danger {
+  background: #ffebee; border-color: #e53935; color: #c62828;
+  animation: timerPulse 0.8s ease-in-out infinite;
+}
+@keyframes timerPulse {
+  0%,100% { opacity: 1; } 50% { opacity: 0.65; }
+}
+.timer-icon { font-size: 22px; }
+
+/* ── Progress ── */
+#progressWrap {
+  background: white; padding: 10px 20px;
+  display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 13px; color: #555;
+}
+#progressBar {
+  flex: 1; height: 8px; background: #e5e7eb;
+  border-radius: 99px; overflow: hidden;
+}
+#progressFill {
+  height: 100%; background: var(--accent);
+  border-radius: 99px; transition: width 0.3s;
+  width: 0%;
+}
+#progressLabel { min-width: 70px; text-align: right; font-weight: 700; color: var(--accent); }
+
+/* ── Questions ── */
+.questions-wrap { padding: 16px; max-width: 860px; margin: 0 auto; }
+.q-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--accent);
+  transition: box-shadow 0.2s;
+  animation: fadeUp 0.4s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.q-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.13); }
+.q-num {
+  display: inline-block;
+  background: var(--accent); color: white;
+  font-weight: 800; font-size: 12px;
+  padding: 2px 9px; border-radius: 99px;
+  margin-bottom: 8px;
+}
+.q-text {
+  font-size: 15px; font-weight: 700; color: #1a202c;
+  line-height: 1.5; margin-bottom: 12px;
+}
+.options { display: flex; flex-direction: column; gap: 7px; }
+.opt-label {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 13px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px; font-weight: 600; color: #374151;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  user-select: none;
+}
+.opt-label:hover { border-color: var(--accent); background: var(--accent-bg); color: var(--accent); }
+.opt-label input[type="radio"] {
+  accent-color: var(--accent); width: 17px; height: 17px; flex-shrink: 0;
+}
+.opt-label.selected { border-color: var(--accent); background: var(--accent-bg); color: var(--accent); }
+
+/* ── Submit button ── */
+.submit-wrap { padding: 0 16px 10px; max-width: 860px; margin: 0 auto; }
+#submitBtn {
+  width: 100%; padding: 15px;
+  background: var(--accent); color: white;
+  border: none; border-radius: var(--radius);
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px; letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transition: opacity 0.2s, transform 0.15s;
+}
+#submitBtn:hover:not(:disabled) { opacity: 0.92; transform: translateY(-2px); }
+#submitBtn:disabled { background: #9ca3af; cursor: not-allowed; transform: none; }
+
+/* ── Result panel ── */
+#resultPanel {
+  display: none;
+  max-width: 860px; margin: 20px auto; padding: 0 16px;
+}
+.score-card {
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.score-card .big-score {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(42px, 8vw, 64px);
+  line-height: 1;
+}
+.score-card .badge { font-size: 18px; font-weight: 700; margin-top: 6px; }
+.score-card .stats {
+  display: flex; justify-content: center; gap: 24px;
+  margin-top: 14px; flex-wrap: wrap;
+}
+.score-card .stat-box {
+  background: rgba(255,255,255,0.65);
+  border-radius: 10px; padding: 10px 18px; text-align: center;
+}
+.score-card .stat-box .val { font-size: 26px; font-weight: 900; }
+.score-card .stat-box .lbl { font-size: 12px; opacity: 0.75; }
+#pdfBtn {
+  display: block; width: 100%;
+  padding: 13px;
+  border: 2px solid var(--accent); border-radius: var(--radius);
+  background: transparent; color: var(--accent);
+  font-family: 'Fredoka One', cursive; font-size: 18px;
+  cursor: pointer; margin-bottom: 20px;
+  transition: background 0.2s, color 0.2s;
+}
+#pdfBtn:hover { background: var(--accent); color: white; }
+.section-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px; color: #374151;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ── Result cards (inline review) ── */
+.q-card.correct { border-left-color: #2e7d32; background: #f0fdf4; }
+.q-card.wrong   { border-left-color: #c62828; background: #fff5f5; }
+.q-card.skipped { border-left-color: #9e9e9e; background: #fafafa; }
+.result-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 800;
+  padding: 2px 9px; border-radius: 99px;
+  margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase;
+}
+.correct .result-tag { background: #c8e6c9; color: #1b5e20; }
+.wrong   .result-tag { background: #ffcdd2; color: #b71c1c; }
+.skipped .result-tag { background: #e0e0e0; color: #616161; }
+.opt-label.user-wrong  { border-color: #e53935; background: #ffebee; color: #c62828; }
+.opt-label.correct-ans { border-color: #43a047; background: #e8f5e9; color: #1b5e20; }
+
+/* ── Time-up overlay ── */
+#lockOverlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(183,28,28,0.95);
+  z-index: 9999;
+  justify-content: center; align-items: center;
+  flex-direction: column; text-align: center; padding: 30px;
+  animation: overlayIn 0.3s ease;
+}
+@keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+#lockOverlay h1 { color: white; font-family: 'Fredoka One', cursive; font-size: clamp(36px,8vw,56px); margin-bottom: 10px; }
+#lockOverlay p  { color: #ffcdd2; font-size: 17px; margin-bottom: 28px; max-width: 400px; }
+#lockOverlay button {
+  padding: 15px 40px; font-family: 'Fredoka One', cursive;
+  font-size: 20px; background: white; color: #b71c1c;
+  border: none; border-radius: 12px; cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+  transition: transform 0.15s;
+}
+#lockOverlay button:hover { transform: scale(1.04); }
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .quiz-header { padding: 14px 14px 10px; }
+  .questions-wrap, .submit-wrap, #resultPanel { padding-left: 10px; padding-right: 10px; }
+  .q-card { padding: 13px 13px; }
+}
+</style>
+</head>
+<body>
+
+<div id="loadingScreen">
+  <div class="spinner"></div>
+  <p style="font-size:16px;color:#555;font-weight:700;">Loading quiz…</p>
+</div>
+
+<div id="errorScreen" style="display:none;">
+  <div style="font-size:60px">⚠️</div>
+  <h2 style="color:#c62828">Could not load quiz</h2>
+  <p id="errorMsg" style="color:#555;max-width:400px;line-height:1.6"></p>
+</div>
+
+<!-- Timer-expired overlay -->
+<div id="lockOverlay">
+  <h1>⏰ Time's Up!</h1>
+  <p>The quiz is now locked. Click below to submit and see your results.</p>
+  <button onclick="closeLockAndSubmit()">📝 Submit My Answers</button>
+</div>
+
+<!-- Main quiz (hidden until loaded) -->
+<div id="quizApp" style="display:none;">
+
+  <header class="quiz-header" id="quizHeader">
+    <h1 id="quizTitle">Quiz</h1>
+    <div class="meta">
+      <span>🎓 <span id="metaClass"></span></span>
+      <span>📅 <span id="metaDate"></span></span>
+      <span>❓ <span id="metaTotal"></span> Questions</span>
+    </div>
+  </header>
+
+  <div id="timerBar"><span class="timer-icon">⏱</span><span id="timerText">15:00</span></div>
+
+  <div id="progressWrap">
+    <div id="progressBar"><div id="progressFill"></div></div>
+    <div id="progressLabel">0 / 0</div>
+  </div>
+
+  <div class="questions-wrap" id="questionsWrap"></div>
+
+  <div class="submit-wrap">
+    <button id="submitBtn" onclick="submitQuiz()">✅ Submit Quiz</button>
+  </div>
+
+  <div id="resultPanel"></div>
+
+</div>
+
+<script>
+// ── Subject metadata ──────────────────────────────────────────
+const SUBJECT_META = {"English": {"emoji": "\ud83d\udcd6", "color": "#1565C0", "bg": "#E3F2FD"}, "Computer": {"emoji": "\ud83d\udcbb", "color": "#00695C", "bg": "#E0F2F1"}, "Maths": {"emoji": "\ud83d\udd22", "color": "#2E7D32", "bg": "#E8F5E9"}, "Hindi": {"emoji": "\ud83c\uddee\ud83c\uddf3", "color": "#B71C1C", "bg": "#FFEBEE"}, "Science": {"emoji": "\ud83d\udd2c", "color": "#4527A0", "bg": "#EDE7F6"}, "SS": {"emoji": "\ud83c\udf0d", "color": "#E65100", "bg": "#FFF3E0"}, "GK": {"emoji": "\ud83e\udde0", "color": "#00838F", "bg": "#E0F7FA"}};
+
+// ── URL param parser ──────────────────────────────────────────
+function getParams() {
+  // 1) Try path: /class3/English/01-04-2026/ or /class3/English/01-04-26/
+  const path = window.location.pathname;
+  const m = path.match(/class(\d+)\/([^\/]+)\/([^\/]+)/i);
+  if (m) return { cls: m[1], subject: decodeURIComponent(m[2]), date: m[3] };
+
+  // 2) Fall back to query string: ?class=3&subject=English&date=01-04-2026
+  const p = new URLSearchParams(window.location.search);
+  return {
+    cls:     p.get('class')   || p.get('cls') || '3',
+    subject: p.get('subject') || 'English',
+    date:    p.get('date')    || '01-04-2026'
+  };
+}
+
+// ── State ─────────────────────────────────────────────────────
+let questions  = [];
+let timeLeft   = 900;
+let timerInterval = null;
+let locked     = false;
+let submitted  = false;
+let params     = {};
+
+// ── Boot ─────────────────────────────────────────────────────
+(async function boot() {
+  params = getParams();
+
+  // Resolve questions.json path relative to this HTML file
+  const base = window.location.pathname.replace(/\/[^\/]*$/, '/');
+  const jsonURL = new URL('questions.json', window.location.href.split('?')[0]
+      .replace(/class\d+\/.*/, ''));
+
+  try {
+    const resp = await fetch(jsonURL.href);
+    if (!resp.ok) throw new Error('HTTP ' + resp.status + ' — ' + jsonURL.href);
+    const all = await resp.json();
+
+    // Filter by class + subject
+    const pool = all.filter(q =>
+      String(q.class) === String(params.cls) &&
+      q.category.toLowerCase() === params.subject.toLowerCase()
+    );
+
+    if (pool.length === 0) {
+      showError('No questions found for Class ' + params.cls + ' / ' + params.subject +
+                '. Check that the subject name matches exactly.');
+      return;
+    }
+
+    // Shuffle and take up to 50
+    questions = shuffle(pool).slice(0, 50);
+    initQuiz();
+
+  } catch(e) {
+    showError('Failed to load questions.json.<br><br>' +
+              '<b>If opening as a local file</b>, you need a local web server.<br>' +
+              'Run: <code>python -m http.server 8080</code> in the folder, then open<br>' +
+              '<code>http://localhost:8080/quiz.html?class=3&subject=English&date=01-04-2026</code><br><br>' +
+              'Error: ' + e.message);
+  }
+})();
+
+function showError(msg) {
+  document.getElementById('loadingScreen').style.display = 'none';
+  document.getElementById('errorScreen').style.display  = 'flex';
+  document.getElementById('errorMsg').innerHTML = msg;
+}
+
+// ── Init ──────────────────────────────────────────────────────
+function initQuiz() {
+  const meta = SUBJECT_META[params.subject] || { emoji:'📝', color:'#1565C0', bg:'#E3F2FD' };
+
+  // Apply theme
+  document.documentElement.style.setProperty('--accent',    meta.color);
+  document.documentElement.style.setProperty('--accent-bg', meta.bg);
+  document.title = 'Class ' + params.cls + ' ' + params.subject + ' Quiz';
+
+  // Header
+  document.getElementById('quizTitle').textContent =
+      meta.emoji + ' Class ' + params.cls + ' ' + params.subject + ' Quiz';
+  document.getElementById('metaClass').textContent = 'Class ' + params.cls;
+  document.getElementById('metaDate').textContent  = params.date;
+  document.getElementById('metaTotal').textContent = questions.length;
+
+  // Build questions HTML
+  const wrap = document.getElementById('questionsWrap');
+  wrap.innerHTML = questions.map((q, i) => `
+    <div class="q-card" id="card-${i}" style="animation-delay:${Math.min(i*0.03,0.5)}s">
+      <span class="q-num">Q ${i+1}</span>
+      <div class="q-text">${escHtml(q.question)}</div>
+      <div class="options">
+        ${q.options.map((opt, oi) => `
+          <label class="opt-label" id="lbl-${i}-${oi}">
+            <input type="radio" name="q${i}" value="${escAttr(opt)}"
+                   onchange="onPick(${i})"> ${escHtml(opt)}
+          </label>`).join('')}
+      </div>
+    </div>`).join('');
+
+  updateProgress();
+
+  // Show app
+  document.getElementById('loadingScreen').style.display = 'none';
+  document.getElementById('quizApp').style.display = 'block';
+
+  // Start timer
+  startTimer();
+}
+
+// ── Timer ─────────────────────────────────────────────────────
+function startTimer() {
+  const el = document.getElementById('timerText');
+  timerInterval = setInterval(() => {
+    const m = Math.floor(timeLeft / 60);
+    const s = timeLeft % 60;
+    el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+
+    if (timeLeft <= 60 && !document.getElementById('timerBar').classList.contains('danger')) {
+      document.getElementById('timerBar').classList.add('danger');
+    }
+    timeLeft--;
+
+    if (timeLeft < 0) {
+      clearInterval(timerInterval);
+      el.textContent = '0:00';
+      // Lock all radios
+      document.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+      locked = true;
+      document.getElementById('lockOverlay').style.display = 'flex';
+    }
+  }, 1000);
+}
+
+// ── Progress ──────────────────────────────────────────────────
+function onPick(i) {
+  // highlight selected option
+  const radios = document.querySelectorAll(`input[name="q${i}"]`);
+  radios.forEach((r, oi) => {
+    document.getElementById(`lbl-${i}-${oi}`)
+      .classList.toggle('selected', r.checked);
+  });
+  updateProgress();
+}
+
+function updateProgress() {
+  let answered = 0;
+  questions.forEach((_, i) => {
+    if (document.querySelector(`input[name="q${i}"]:checked`)) answered++;
+  });
+  const pct = questions.length ? (answered / questions.length * 100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = answered + ' / ' + questions.length;
+}
+
+// ── Overlay ───────────────────────────────────────────────────
+function closeLockAndSubmit() {
+  document.getElementById('lockOverlay').style.display = 'none';
+  submitQuiz();
+}
+
+// ── Submit ────────────────────────────────────────────────────
+function submitQuiz() {
+  if (submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+  document.getElementById('submitBtn').disabled = true;
+
+  let correct = 0, wrong = 0, skipped = 0;
+  const report = [];
+
+  questions.forEach((q, i) => {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    const userAns = sel ? sel.value : null;
+    const isCorrect = userAns === q.answer;
+    const isSkipped = !userAns;
+
+    if (isCorrect) correct++;
+    else if (isSkipped) skipped++;
+    else wrong++;
+
+    report.push({ q, i, userAns, isCorrect, isSkipped });
+  });
+
+  // ── Colour each card ──
+  report.forEach(({ q, i, userAns, isCorrect, isSkipped }) => {
+    const card = document.getElementById(`card-${i}`);
+    card.classList.add(isCorrect ? 'correct' : isSkipped ? 'skipped' : 'wrong');
+
+    // Add result tag
+    const tag = document.createElement('span');
+    tag.className = 'result-tag';
+    tag.textContent = isCorrect ? '✅ Correct' : isSkipped ? '⬜ Skipped' : '❌ Wrong';
+    card.insertBefore(tag, card.querySelector('.q-num'));
+
+    // Highlight options
+    q.options.forEach((opt, oi) => {
+      const lbl = document.getElementById(`lbl-${i}-${oi}`);
+      if (!isCorrect) {
+        if (opt === q.answer)  lbl.classList.add('correct-ans');
+        if (opt === userAns)   lbl.classList.add('user-wrong');
+      }
+    });
+
+    // Disable all radios in this card
+    card.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+  });
+
+  // ── Score card ──
+  const total  = questions.length;
+  const pct    = correct / total;
+  const grade  = pct >= 0.8 ? ['🌟 Excellent!','#1b5e20','#e8f5e9']
+               : pct >= 0.6 ? ['👍 Good Work!','#e65100','#fff3e0']
+                             : ['📚 Keep Practising','#b71c1c','#ffebee'];
+
+  const panel = document.getElementById('resultPanel');
+  panel.style.display = 'block';
+  panel.innerHTML = `
+    <div class="score-card" style="background:${grade[2]};border:2px solid ${grade[1]};">
+      <div class="big-score" style="color:${grade[1]}">${correct}<span style="font-size:0.45em;opacity:0.6"> / ${total}</span></div>
+      <div class="badge" style="color:${grade[1]}">${grade[0]}</div>
+      <div class="stats">
+        <div class="stat-box"><div class="val" style="color:#2e7d32">${correct}</div><div class="lbl">Correct</div></div>
+        <div class="stat-box"><div class="val" style="color:#c62828">${wrong}</div><div class="lbl">Wrong</div></div>
+        <div class="stat-box"><div class="val" style="color:#757575">${skipped}</div><div class="lbl">Skipped</div></div>
+        <div class="stat-box"><div class="val" style="color:#1565c0">${Math.round(pct*100)}%</div><div class="lbl">Score %</div></div>
+      </div>
+    </div>
+    <button id="pdfBtn" onclick="generatePDF(${correct},${wrong},${skipped})">📄 Download PDF Report</button>
+    <div class="section-title">📋 Detailed Review — scroll down to see each question</div>`;
+
+  panel.scrollIntoView({ behavior: 'smooth' });
+
+  // Store for PDF
+  window._quizReport = { report, correct, wrong, skipped, total, params };
+}
+
+// ── PDF ───────────────────────────────────────────────────────
+function generatePDF(correct, wrong, skipped) {
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit:'mm', format:'a4' });
+    const { report, total, params: p } = window._quizReport;
+
+    const accentHex = getComputedStyle(document.documentElement)
+                        .getPropertyValue('--accent').trim();
+
+    // Header
+    doc.setFillColor(accentHex);
+    doc.rect(0, 0, 210, 30, 'F');
+    doc.setTextColor(255,255,255);
+    doc.setFontSize(18); doc.setFont('helvetica','bold');
+    doc.text('Class ' + p.cls + ' ' + p.subject + ' Quiz Report', 10, 12);
+    doc.setFontSize(10); doc.setFont('helvetica','normal');
+    doc.text('Date: ' + p.date + '   |   Generated: ' + new Date().toLocaleString(), 10, 22);
+
+    // Summary box
+    doc.setDrawColor(200); doc.setFillColor(245,245,245);
+    doc.roundedRect(10, 35, 190, 22, 3, 3, 'FD');
+    doc.setTextColor(30,30,30); doc.setFontSize(11); doc.setFont('helvetica','bold');
+    doc.text(`Score: ${correct} / ${total}   |   Correct: ${correct}   Wrong: ${wrong}   Skipped: ${skipped}   (${Math.round(correct/total*100)}%)`, 16, 49);
+
+    let y = 65;
+    doc.setFontSize(9);
+
+    report.forEach((r, idx) => {
+      if (y > 270) { doc.addPage(); y = 15; }
+
+      const tag  = r.isCorrect ? '[OK]' : r.isSkipped ? '[--]' : '[X]';
+      const rClr = r.isCorrect ? [27,94,32] : r.isSkipped ? [100,100,100] : [198,40,40];
+
+      doc.setFont('helvetica','bold');
+      doc.setTextColor(...rClr);
+      doc.text(`${tag} Q${idx+1}: ${truncate(r.q.question, 85)}`, 10, y);
+      y += 6;
+
+      doc.setFont('helvetica','normal');
+      if (!r.isCorrect) {
+        doc.setTextColor(150,50,50);
+        doc.text(`       Your answer : ${r.userAns || 'Not answered'}`, 10, y); y += 5;
+        doc.setTextColor(27,94,32);
+        doc.text(`       Correct ans  : ${r.q.answer}`, 10, y); y += 5;
+      }
+      y += 2;
+    });
+
+    const ts = new Date();
+    const fname = `${p.subject}_Class${p.cls}_${p.date}_${ts.getHours()}${ts.getMinutes()}.pdf`;
+    doc.save(fname);
+  } catch(e) {
+    alert('PDF error: ' + e.message);
+  }
+}
+
+// ── Helpers ───────────────────────────────────────────────────
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i+1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+                  .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escAttr(s) { return String(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+function truncate(s,n) { return s.length > n ? s.slice(0,n)+'…' : s; }
+</script>
+</body>
+</html>
