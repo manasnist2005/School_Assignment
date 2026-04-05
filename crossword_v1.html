@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Explorer - Daily Challenge</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .controls {
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 20px;
+            color: #2980b9;
+        }
+        
+        .game-area {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        /* 12x12 Grid styling */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 30px); 
+            grid-template-rows: repeat(12, 30px);    
+            gap: 2px;                                
+            background-color: #2c3e50;
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            user-select: none;
+        }
+        
+        .cell {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;                         
+            font-weight: bold;
+            color: #333;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+        
+        .cell:hover { background-color: #e0f7fa; }
+        .cell.selected { background-color: #ffe082; color: #d35400; transform: scale(0.95); }
+        .cell.found { background-color: #2ecc71; color: white; transform: scale(1); cursor: default;}
+
+        .hints {
+            max-width: 350px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .hints h3 { margin-top: 0; color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px; }
+        .hints ul { list-style-type: none; padding-left: 0; margin: 0; }
+        .hints li { 
+            margin-bottom: 8px; 
+            font-size: 14px; 
+            line-height: 1.4; 
+            padding: 8px;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            transition: all 0.3s;
+        }
+        .hints li.solved {
+            text-decoration: line-through;
+            color: #95a5a6;
+            background-color: #e8f8f5;
+        }
+
+        #success-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #f1c40f;
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: bounceIn 0.6s ease-out;
+            text-align: center;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Word Explorer</h1>
+    
+    <div class="controls">
+        <strong id="puzzle-title">Loading Challenge...</strong>
+    </div>
+
+    <div class="game-area">
+        <div class="grid" id="word-grid"></div>
+        <div class="hints">
+            <h3>Find these 10 words!</h3>
+            <ul id="hints-list"></ul>
+        </div>
+    </div>
+
+    <div id="success-message">🎉 Incredible job, Advik! You mastered the 12x12 grid! 🎉</div>
+
+    <script>
+        let puzzles = [];
+        let currentIndex = 0;
+        let placedWordData = [];
+        let foundWordsCount = 0;
+        const GRID_SIZE = 12;
+
+        // Fetch the JSON data
+        fetch('crossworddata_v1.json')
+            .then(response => response.json())
+            .then(data => {
+                puzzles = data;
+                
+                // Check URL for a specific set (e.g., ?set=2)
+                const urlParams = new URLSearchParams(window.location.search);
+                const requestedSet = urlParams.get('set');
+                
+                if (requestedSet) {
+                    const foundIndex = puzzles.findIndex(p => p.id == requestedSet);
+                    if (foundIndex !== -1) {
+                        currentIndex = foundIndex;
+                    }
+                }
+                
+                loadPuzzle(currentIndex);
+            })
+            .catch(error => {
+                document.getElementById('puzzle-title').innerText = "Error loading crossworddata_v1.json";
+                console.error('Error:', error);
+            });
+
+        function loadPuzzle(index) {
+            const puzzle = puzzles[index];
+            document.getElementById('puzzle-title').innerText = puzzle.title;
+            document.getElementById('success-message').style.display = 'none';
+            foundWordsCount = 0;
+
+            buildGame(puzzle.words);
+        }
+
+        function buildGame(words) {
+            const gridContainer = document.getElementById('word-grid');
+            const hintsList = document.getElementById('hints-list');
+            gridContainer.innerHTML = '';
+            hintsList.innerHTML = '';
+            placedWordData = [];
+
+            // 1. Create empty 12x12 grid
+            let logicalGrid = Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(''));
+
+            // 2. Hide the words in the grid (Horizontal, Vertical, and Diagonal)
+            words.forEach((wordObj, index) => {
+                let word = wordObj.word.toUpperCase();
+                let placed = false;
+                let attempts = 0;
+
+                while (!placed && attempts < 500) {
+                    let dirRand = Math.random();
+                    let dir = dirRand < 0.33 ? 'H' : (dirRand < 0.66 ? 'V' : 'D');
+                    
+                    let row = Math.floor(Math.random() * GRID_SIZE);
+                    let col = Math.floor(Math.random() * GRID_SIZE);
+                    let canPlace = true;
+                    let coords = [];
+
+                    // Check boundaries based on direction
+                    if (dir === 'H' && col + word.length <= GRID_SIZE) {
+                        for (let i = 0; i < word.length; i++) {
+                            if (logicalGrid[row][col + i] !== '' && logicalGrid[row][col + i] !== word[i]) {
+                                canPlace = false; break;
+                            }
+                        }
+                        if (canPlace) {
+                            for (let i = 0; i < word.length; i++) {
+                                logicalGrid[row][col + i] = word[i];
+                                coords.push(`${row}-${col + i}`);
+                            }
+                        }
+                    } else if (dir === 'V' && row + word.length <= GRID_SIZE) {
+                        for (let i = 0; i < word.length; i++) {
+                            if (logicalGrid[row + i][col] !== '' && logicalGrid[row + i][col] !== word[i]) {
+                                canPlace = false; break;
+                            }
+                        }
+                        if (canPlace) {
+                            for (let i = 0; i < word.length; i++) {
+                                logicalGrid[row + i][col] = word[i];
+                                coords.push(`${row + i}-${col}`);
+                            }
+                        }
+                    } else if (dir === 'D' && row + word.length <= GRID_SIZE && col + word.length <= GRID_SIZE) {
+                        // Diagonal: Top-Left to Bottom-Right
+                        for (let i = 0; i < word.length; i++) {
+                            if (logicalGrid[row + i][col + i] !== '' && logicalGrid[row + i][col + i] !== word[i]) {
+                                canPlace = false; break;
+                            }
+                        }
+                        if (canPlace) {
+                            for (let i = 0; i < word.length; i++) {
+                                logicalGrid[row + i][col + i] = word[i];
+                                coords.push(`${row + i}-${col + i}`);
+                            }
+                        }
+                    } else {
+                        canPlace = false;
+                    }
+
+                    if (canPlace) {
+                        placedWordData.push({ id: index, word: word, coords: coords });
+                        placed = true;
+                    }
+                    attempts++;
+                }
+
+                if(!placed) console.warn(`Could not place word: ${word}`);
+
+                // Add hint to UI
+                const li = document.createElement('li');
+                li.id = `hint-${index}`;
+                li.innerHTML = `<strong>${word.length} Letters:</strong> ${wordObj.hint}`;
+                hintsList.appendChild(li);
+            });
+
+            // 3. Fill the remaining empty spaces with random letters
+            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            for (let r = 0; r < GRID_SIZE; r++) {
+                for (let c = 0; c < GRID_SIZE; c++) {
+                    if (logicalGrid[r][c] === '') {
+                        logicalGrid[r][c] = alphabet[Math.floor(Math.random() * alphabet.length)];
+                    }
+
+                    // Render physical cell
+                    const cellDiv = document.createElement('div');
+                    cellDiv.className = 'cell';
+                    cellDiv.innerText = logicalGrid[r][c];
+                    cellDiv.dataset.coord = `${r}-${c}`;
+                    
+                    cellDiv.addEventListener('click', function() {
+                        if (this.classList.contains('found')) return;
+                        this.classList.toggle('selected');
+                        checkWords();
+                    });
+
+                    gridContainer.appendChild(cellDiv);
+                }
+            }
+        }
+
+        function checkWords() {
+            const allSelected = Array.from(document.querySelectorAll('.cell.selected')).map(el => el.dataset.coord);
+            const allFound = Array.from(document.querySelectorAll('.cell.found')).map(el => el.dataset.coord);
+            const combinedActive = [...allSelected, ...allFound];
+
+            placedWordData.forEach(wordData => {
+                if (wordData.isFound) return;
+
+                // Check if all coordinates for this word are currently selected or found
+                const isWordFound = wordData.coords.every(coord => combinedActive.includes(coord));
+
+                if (isWordFound) {
+                    wordData.isFound = true;
+                    foundWordsCount++;
+                    
+                    // Lock them in visually
+                    wordData.coords.forEach(coord => {
+                        const cell = document.querySelector(`.cell[data-coord="${coord}"]`);
+                        cell.classList.remove('selected');
+                        cell.classList.add('found');
+                    });
+
+                    // Cross out the hint
+                    document.getElementById(`hint-${wordData.id}`).classList.add('solved');
+                }
+            });
+
+            if (foundWordsCount === placedWordData.length) {
+                document.querySelectorAll('.cell.selected').forEach(el => el.classList.remove('selected'));
+                document.getElementById('success-message').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

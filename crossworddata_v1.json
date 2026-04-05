@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "title": "Set 1: Space Mission",
+    "words": [
+      {"word": "ASTRONAUT", "hint": "A person trained to travel in a spacecraft."},
+      {"word": "GALAXY", "hint": "A huge collection of gas, dust, and billions of stars."},
+      {"word": "PLANET", "hint": "A large round object that orbits a star."},
+      {"word": "COMET", "hint": "A chunk of ice and rock with a glowing tail."},
+      {"word": "ORBIT", "hint": "The curved path an object takes in space."},
+      {"word": "METEOR", "hint": "A shooting star burning up in the atmosphere."},
+      {"word": "ROCKET", "hint": "A vehicle used to launch things into space."},
+      {"word": "GRAVITY", "hint": "The force that pulls objects toward the ground."},
+      {"word": "STARS", "hint": "Giant balls of hot, glowing gas in the night sky."},
+      {"word": "MOON", "hint": "The natural satellite that orbits the Earth."}
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Set 2: The Science Lab",
+    "words": [
+      {"word": "BEAKER", "hint": "A glass cup used by scientists for mixing liquids."},
+      {"word": "MAGNET", "hint": "An object that attracts iron and steel."},
+      {"word": "ENERGY", "hint": "The power needed to do work or make things move."},
+      {"word": "LIQUID", "hint": "A state of matter like water or juice."},
+      {"word": "SOLID", "hint": "A state of matter that holds its own shape, like a rock."},
+      {"word": "GAS", "hint": "An invisible state of matter, like the air we breathe."},
+      {"word": "INVENT", "hint": "To create or design something totally new."},
+      {"word": "MEASURE", "hint": "To find the size, length, or amount of something."},
+      {"word": "SCALES", "hint": "A tool used to weigh things."},
+      {"word": "FUNNEL", "hint": "A tube wide at the top and narrow at the bottom."}
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Set 3: World Geography",
+    "words": [
+      {"word": "OCEAN", "hint": "A massive body of saltwater."},
+      {"word": "MOUNTAIN", "hint": "A very tall landform with a peak."},
+      {"word": "DESERT", "hint": "A very dry, hot, and sandy area of land."},
+      {"word": "RIVER", "hint": "A large natural stream of flowing water."},
+      {"word": "ISLAND", "hint": "A piece of land completely surrounded by water."},
+      {"word": "CANYON", "hint": "A deep gorge, typically with a river flowing through it."},
+      {"word": "FOREST", "hint": "A large area covered chiefly with trees."},
+      {"word": "VALLEY", "hint": "A low area of land between hills or mountains."},
+      {"word": "VOLCANO", "hint": "A mountain that can erupt with lava."},
+      {"word": "GLOBE", "hint": "A spherical model of the Earth."}
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Set 4: The Human Body",
+    "words": [
+      {"word": "SKELETON", "hint": "The framework of bones inside your body."},
+      {"word": "HEART", "hint": "The muscle that pumps blood everywhere."},
+      {"word": "BRAIN", "hint": "The organ inside your head that helps you think."},
+      {"word": "MUSCLE", "hint": "Tissue in your body that helps you move and lift things."},
+      {"word": "LUNGS", "hint": "Two organs in your chest used for breathing."},
+      {"word": "BLOOD", "hint": "The red liquid that carries oxygen through your veins."},
+      {"word": "STOMACH", "hint": "Where your food goes to be digested."},
+      {"word": "TEETH", "hint": "Hard white objects in your mouth used for chewing."},
+      {"word": "SKIN", "hint": "The outer covering of your entire body."},
+      {"word": "BONE", "hint": "A hard, white piece that makes up your skeleton."}
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Set 5: Prehistoric Times",
+    "words": [
+      {"word": "DINOSAUR", "hint": "A giant reptile that lived millions of years ago."},
+      {"word": "FOSSIL", "hint": "The remains of a prehistoric animal preserved in rock."},
+      {"word": "CAVE", "hint": "A large natural hole in the side of a hill or mountain."},
+      {"word": "EXTINCT", "hint": "When a species of animal no longer exists."},
+      {"word": "HUNTER", "hint": "A person or animal that tracks down food."},
+      {"word": "MAMMOTHS", "hint": "Giant extinct elephants with long, curved tusks."},
+      {"word": "SPEAR", "hint": "A long stick with a pointed tip used in ancient times."},
+      {"word": "ICEAGE", "hint": "A time when thick ice sheets covered parts of the Earth."},
+      {"word": "REPTILE", "hint": "A cold-blooded animal with scales, like a lizard."},
+      {"word": "CLAW", "hint": "A sharp, curved nail on the foot of an animal."}
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Set 6: Under the Sea",
+    "words": [
+      {"word": "DOLPHIN", "hint": "A very smart and playful marine animal."},
+      {"word": "OCTOPUS", "hint": "A sea creature with eight long arms."},
+      {"word": "CORAL", "hint": "Colorful underwater structures that look like rocks."},
+      {"word": "SHARK", "hint": "A fast-swimming fish with sharp teeth."},
+      {"word": "TURTLE", "hint": "A slow-moving reptile with a hard shell."},
+      {"word": "JELLY", "hint": "Short for a clear, wobbly sea creature that can sting."},
+      {"word": "SEAHORSE", "hint": "A tiny fish that looks like a miniature horse."},
+      {"word": "CRAB", "hint": "Has claws and walks sideways on the ocean floor."},
+      {"word": "WHALE", "hint": "The largest mammal that lives in the ocean."},
+      {"word": "SHELL", "hint": "You can find these empty homes on the beach."}
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Set 7: Magic and Fantasy",
+    "words": [
+      {"word": "DRAGON", "hint": "A giant mythical creature that breathes fire."},
+      {"word": "WIZARD", "hint": "A person who does magic with a wand."},
+      {"word": "CASTLE", "hint": "A huge stone building where kings and queens live."},
+      {"word": "SPELL", "hint": "Magic words spoken to make something happen."},
+      {"word": "MAGIC", "hint": "Tricks and illusions that seem impossible."},
+      {"word": "FAIRY", "hint": "A tiny magical creature with wings."},
+      {"word": "WAND", "hint": "A thin stick used to cast magic spells."},
+      {"word": "KNIGHT", "hint": "A brave warrior who wears shiny armor."},
+      {"word": "KING", "hint": "The male ruler of a country or castle."},
+      {"word": "QUEEN", "hint": "The female ruler of a country or castle."}
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Set 8: At the Beach",
+    "words": [
+      {"word": "SAND", "hint": "Tiny grains of rock you walk on at the beach."},
+      {"word": "SUN", "hint": "The bright yellow star that makes you feel hot."},
+      {"word": "WAVE", "hint": "Moving water that crashes onto the shore."},
+      {"word": "TOWEL", "hint": "You use this to dry off after swimming."},
+      {"word": "SURF", "hint": "To ride on top of an ocean wave on a board."},
+      {"word": "BUCKET", "hint": "A plastic container used to carry sand and water."},
+      {"word": "SPADE", "hint": "A small shovel used to dig in the sand."},
+      {"word": "PICNIC", "hint": "Eating a packed lunch outdoors on a blanket."},
+      {"word": "UMBRELLA", "hint": "Provides shade so you don't get a sunburn."},
+      {"word": "SHORE", "hint": "The edge of the land right next to the ocean."}
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Set 9: In the Garden",
+    "words": [
+      {"word": "FLOWER", "hint": "The colorful part of a plant that smells nice."},
+      {"word": "PLANT", "hint": "A living thing that grows in the ground."},
+      {"word": "GRASS", "hint": "The short green blades that cover a lawn."},
+      {"word": "SEED", "hint": "You plant this tiny thing to grow a new plant."},
+      {"word": "DIRT", "hint": "The dark soil where plants grow."},
+      {"word": "WORM", "hint": "A wiggly creature that helps keep soil healthy."},
+      {"word": "WATER", "hint": "Plants need sunlight and this liquid to grow."},
+      {"word": "SPIDER", "hint": "An eight-legged bug that spins a web."},
+      {"word": "BEE", "hint": "A buzzing insect that drinks nectar from flowers."},
+      {"word": "INSECT", "hint": "A small bug with six legs."}
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Set 10: Fruits and Veggies",
+    "words": [
+      {"word": "CARROT", "hint": "A crunchy orange vegetable that rabbits love."},
+      {"word": "APPLE", "hint": "A sweet, crunchy fruit that can be red or green."},
+      {"word": "BANANA", "hint": "A long yellow fruit that monkeys like to eat."},
+      {"word": "GRAPES", "hint": "Small green or purple fruits that grow in bunches."},
+      {"word": "ONION", "hint": "A round vegetable that might make you cry when chopped."},
+      {"word": "POTATO", "hint": "A brown vegetable used to make French fries."},
+      {"word": "TOMATO", "hint": "A soft red fruit often used like a vegetable in salads."},
+      {"word": "PEAS", "hint": "Tiny green vegetables that grow inside a pod."},
+      {"word": "CORN", "hint": "Yellow kernels that grow on a tall stalk."},
+      {"word": "MELON", "hint": "A large, sweet, juicy fruit, like a watermelon."}
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Set 11: Transport and Travel",
+    "words": [
+      {"word": "AIRPLANE", "hint": "A huge flying machine with wings."},
+      {"word": "TRAIN", "hint": "A line of connected cars that travels on metal tracks."},
+      {"word": "TRACTOR", "hint": "A strong vehicle with large back wheels used on farms."},
+      {"word": "BICYCLE", "hint": "A vehicle with two wheels that you pedal."},
+      {"word": "SCOOTER", "hint": "A toy vehicle with two small wheels and a handlebar."},
+      {"word": "HELICOPTER", "hint": "A flying machine with spinning blades on top."},
+      {"word": "BOAT", "hint": "A small vessel for traveling on water."},
+      {"word": "TRUCK", "hint": "A large vehicle designed to carry heavy loads."},
+      {"word": "ENGINE", "hint": "The machine part that makes a car move."},
+      {"word": "WHEEL", "hint": "The round part of a car that rolls on the road."}
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Set 12: Weather and Seasons",
+    "words": [
+      {"word": "SUMMER", "hint": "The hottest season when school is out."},
+      {"word": "WINTER", "hint": "The coldest season, sometimes with snow."},
+      {"word": "SPRING", "hint": "The season when flowers begin to bloom."},
+      {"word": "AUTUMN", "hint": "The season when leaves turn orange and fall off trees."},
+      {"word": "RAINBOW", "hint": "A colorful arc in the sky after it rains."},
+      {"word": "STORM", "hint": "Heavy rain with thunder and lightning."},
+      {"word": "SNOWMAN", "hint": "A figure made of packed snow with a carrot nose."},
+      {"word": "FREEZE", "hint": "When water gets so cold it turns into ice."},
+      {"word": "CLOUDY", "hint": "When the sky is gray and you can't see the sun."},
+      {"word": "BREEZE", "hint": "A gentle, cool wind."}
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Set 13: Sports and Games",
+    "words": [
+      {"word": "SOCCER", "hint": "A game where you kick a black and white ball into a net."},
+      {"word": "TENNIS", "hint": "A game played with a racket and a fuzzy yellow ball."},
+      {"word": "BASKET", "hint": "You throw the ball into this ring to score in basketball."},
+      {"word": "CRICKET", "hint": "A popular sport played with a bat and ball on an oval field."},
+      {"word": "BALL", "hint": "A round object used in many different sports."},
+      {"word": "TEAM", "hint": "A group of players working together to win."},
+      {"word": "WINNER", "hint": "The person or team that finishes first in a game."},
+      {"word": "MEDAL", "hint": "A shiny gold, silver, or bronze award worn around the neck."},
+      {"word": "SCORE", "hint": "The number of points a team has in a game."},
+      {"word": "PLAYER", "hint": "A person who is participating in a sport."}
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Set 14: Jobs and Helpers",
+    "words": [
+      {"word": "DOCTOR", "hint": "A person who helps you get better when you are sick."},
+      {"word": "NURSE", "hint": "A medical helper who takes care of patients in a hospital."},
+      {"word": "POLICE", "hint": "Officers who keep the city safe and catch bad guys."},
+      {"word": "FARMER", "hint": "A person who grows crops and takes care of animals."},
+      {"word": "BAKER", "hint": "Someone who makes bread, cakes, and cookies."},
+      {"word": "PILOT", "hint": "The person who flies an airplane."},
+      {"word": "TEACHER", "hint": "Someone who helps students learn in a classroom."},
+      {"word": "SINGER", "hint": "A person who makes music with their voice."},
+      {"word": "ARTIST", "hint": "Someone who paints pictures or draws."},
+      {"word": "DENTIST", "hint": "A doctor who checks your teeth to keep them healthy."}
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Set 15: Camping Trip",
+    "words": [
+      {"word": "TENT", "hint": "A fabric shelter you sleep in when camping."},
+      {"word": "CAMPFIRE", "hint": "An outdoor fire used for warmth and roasting marshmallows."},
+      {"word": "WOOD", "hint": "You need logs of this to keep the fire burning."},
+      {"word": "FOREST", "hint": "A large area covered in tall trees."},
+      {"word": "HIKE", "hint": "A long walk outdoors, usually on a trail."},
+      {"word": "BOOTS", "hint": "Strong, sturdy shoes you wear for hiking."},
+      {"word": "TRAIL", "hint": "A dirt path through the woods."},
+      {"word": "LANTERN", "hint": "A portable lamp used to see in the dark at camp."},
+      {"word": "STARS", "hint": "You can see millions of these shining at night in the woods."},
+      {"word": "NATURE", "hint": "Everything outdoors, like plants, animals, and rocks."}
+    ]
+  }
+]
