@@ -1,0 +1,210 @@
+[
+  {
+    "id": 1,
+    "title": "Set 1: Space Mission",
+    "words": [
+      {"word": "ROCKET", "hint": "A vehicle used to launch things into space", "dir": "H", "row": 1, "col": 1},
+      {"word": "ROVER", "hint": "A robot that drives around on Mars", "dir": "V", "row": 1, "col": 1},
+      {"word": "REACH", "hint": "To stretch out your arm to grab something", "dir": "H", "row": 5, "col": 1},
+      {"word": "EARTH", "hint": "The blue and green planet we live on", "dir": "V", "row": 1, "col": 5},
+      {"word": "HALO", "hint": "A ring of light around the sun or moon", "dir": "H", "row": 5, "col": 5},
+      {"word": "ORBIT", "hint": "The curved path of a planet around a star", "dir": "V", "row": 5, "col": 8},
+      {"word": "START", "hint": "The beginning of a race or mission", "dir": "H", "row": 9, "col": 4},
+      {"word": "SUN", "hint": "The massive, hot star in the center of our solar system", "dir": "V", "row": 9, "col": 4},
+      {"word": "MARS", "hint": "Known as the Red Planet", "dir": "H", "row": 1, "col": 8},
+      {"word": "RINGS", "hint": "Saturn is famous for having these around it", "dir": "V", "row": 1, "col": 10}
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Set 2: The Human Body",
+    "words": [
+      {"word": "SKELETON", "hint": "All the bones holding your body up", "dir": "H", "row": 2, "col": 2},
+      {"word": "EXAM", "hint": "What the doctor gives you to check your health", "dir": "V", "row": 2, "col": 4},
+      {"word": "TEARS", "hint": "Drops of saltwater that fall from your eyes", "dir": "H", "row": 4, "col": 2},
+      {"word": "THIGH", "hint": "The strong, top part of your leg", "dir": "V", "row": 4, "col": 2},
+      {"word": "HEART", "hint": "The muscle that pumps blood everywhere", "dir": "H", "row": 8, "col": 2},
+      {"word": "ORGAN", "hint": "A body part with a special job, like the stomach", "dir": "V", "row": 2, "col": 8},
+      {"word": "NAIL", "hint": "The hard part at the end of your finger", "dir": "H", "row": 6, "col": 8},
+      {"word": "LIPS", "hint": "You use these to smile or blow a kiss", "dir": "V", "row": 6, "col": 11},
+      {"word": "EARS", "hint": "You use these to listen to music", "dir": "H", "row": 9, "col": 8},
+      {"word": "NOSE", "hint": "You use this to smell flowers and food", "dir": "V", "row": 6, "col": 8}
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Set 3: In the Kitchen",
+    "words": [
+      {"word": "PANCAKES", "hint": "Flat, round cakes eaten with syrup", "dir": "H", "row": 1, "col": 1},
+      {"word": "PIZZA", "hint": "Round dough covered with tomato sauce and cheese", "dir": "V", "row": 1, "col": 1},
+      {"word": "ACORN", "hint": "A nut that falls from an oak tree", "dir": "H", "row": 5, "col": 1},
+      {"word": "APRON", "hint": "Worn over your clothes to keep them clean while cooking", "dir": "V", "row": 1, "col": 5},
+      {"word": "NAAN", "hint": "A type of flatbread baked in an oven", "dir": "H", "row": 5, "col": 5},
+      {"word": "SPOON", "hint": "You use this tool to eat soup", "dir": "V", "row": 1, "col": 8},
+      {"word": "NOODLE", "hint": "A long, thin string of pasta", "dir": "V", "row": 5, "col": 8},
+      {"word": "DISH", "hint": "A plate or bowl you serve food on", "dir": "H", "row": 8, "col": 8},
+      {"word": "HAM", "hint": "A type of meat often eaten in sandwiches", "dir": "V", "row": 8, "col": 11},
+      {"word": "YAM", "hint": "An orange vegetable similar to a sweet potato", "dir": "H", "row": 10, "col": 9}
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Set 4: Wild Animals",
+    "words": [
+      {"word": "LIONS", "hint": "Big wild cats known for their loud roars", "dir": "H", "row": 1, "col": 1},
+      {"word": "LEMUR", "hint": "A monkey-like animal with a long, striped tail", "dir": "V", "row": 1, "col": 1},
+      {"word": "BEARS", "hint": "Large furry animals that love eating honey", "dir": "H", "row": 1, "col": 7},
+      {"word": "BIRDS", "hint": "Animals that have feathers and lay eggs", "dir": "V", "row": 1, "col": 7},
+      {"word": "FOXES", "hint": "Clever woodland animals with bushy tails", "dir": "H", "row": 7, "col": 1},
+      {"word": "FROGS", "hint": "Green amphibians that hop and croak", "dir": "V", "row": 7, "col": 1},
+      {"word": "PANDA", "hint": "A large black and white bear that eats bamboo", "dir": "H", "row": 7, "col": 7},
+      {"word": "PUMAS", "hint": "Large wild cats also known as mountain lions", "dir": "V", "row": 7, "col": 7},
+      {"word": "APE", "hint": "A large, smart animal similar to a monkey", "dir": "H", "row": 4, "col": 4},
+      {"word": "ANT", "hint": "A tiny, hardworking insect", "dir": "V", "row": 4, "col": 4}
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Set 5: Color Fun",
+    "words": [
+      {"word": "BLUE", "hint": "The color of the sky on a clear day", "dir": "H", "row": 1, "col": 1},
+      {"word": "BROWN", "hint": "The color of tree bark and chocolate", "dir": "V", "row": 1, "col": 1},
+      {"word": "PEACH", "hint": "A light orange-pink color, also a fruit", "dir": "H", "row": 1, "col": 7},
+      {"word": "PINKS", "hint": "Light red colors, like cotton candy", "dir": "V", "row": 1, "col": 7},
+      {"word": "GREY", "hint": "The color of clouds before it rains", "dir": "H", "row": 7, "col": 1},
+      {"word": "GOLD", "hint": "A shiny yellow color, like a winner's medal", "dir": "V", "row": 7, "col": 1},
+      {"word": "REDS", "hint": "The colors of apples, strawberries, and fire trucks", "dir": "H", "row": 7, "col": 7},
+      {"word": "ROSES", "hint": "Beautiful red or pink flowers with thorns", "dir": "V", "row": 7, "col": 7},
+      {"word": "INK", "hint": "The dark liquid inside a pen", "dir": "H", "row": 4, "col": 4},
+      {"word": "ICE", "hint": "Frozen, clear water", "dir": "V", "row": 4, "col": 4}
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Set 6: Nature & Weather",
+    "words": [
+      {"word": "CLOUD", "hint": "White and fluffy, floats high in the sky", "dir": "H", "row": 1, "col": 1},
+      {"word": "CREEK", "hint": "A small, flowing stream of water", "dir": "V", "row": 1, "col": 1},
+      {"word": "STORM", "hint": "Heavy rain with loud thunder and lightning", "dir": "H", "row": 1, "col": 7},
+      {"word": "SOLAR", "hint": "Energy that comes directly from the sun", "dir": "V", "row": 1, "col": 7},
+      {"word": "RIVER", "hint": "A large natural stream of water flowing to the sea", "dir": "H", "row": 7, "col": 1},
+      {"word": "RAINS", "hint": "Drops of water falling from the clouds", "dir": "V", "row": 7, "col": 1},
+      {"word": "FLOOD", "hint": "When too much rain covers the land with water", "dir": "H", "row": 7, "col": 7},
+      {"word": "FROST", "hint": "A thin layer of white ice on grass in winter", "dir": "V", "row": 7, "col": 7},
+      {"word": "SUN", "hint": "The bright yellow star that warms our planet", "dir": "H", "row": 4, "col": 4},
+      {"word": "SEA", "hint": "Another word for the ocean", "dir": "V", "row": 4, "col": 4}
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Set 7: Transportation",
+    "words": [
+      {"word": "TRAIN", "hint": "A long vehicle that travels on metal tracks", "dir": "H", "row": 1, "col": 1},
+      {"word": "TRUCK", "hint": "A large vehicle used for carrying heavy loads", "dir": "V", "row": 1, "col": 1},
+      {"word": "PLANE", "hint": "A flying machine with wings", "dir": "H", "row": 1, "col": 7},
+      {"word": "PEDAL", "hint": "The part of a bicycle you push with your feet", "dir": "V", "row": 1, "col": 7},
+      {"word": "SKATE", "hint": "To glide on ice or rollers using special shoes", "dir": "H", "row": 7, "col": 1},
+      {"word": "SCOOT", "hint": "To move quickly, like on a 2-wheeled toy", "dir": "V", "row": 7, "col": 1},
+      {"word": "MOTOR", "hint": "The engine that makes cars and boats move", "dir": "H", "row": 7, "col": 7},
+      {"word": "METRO", "hint": "An underground train system in a city", "dir": "V", "row": 7, "col": 7},
+      {"word": "CAR", "hint": "A vehicle with four wheels used by families", "dir": "H", "row": 4, "col": 4},
+      {"word": "CAB", "hint": "Another word for a taxi", "dir": "V", "row": 4, "col": 4}
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Set 8: Fruits & Veggies",
+    "words": [
+      {"word": "APPLE", "hint": "A crunchy red or green fruit that keeps the doctor away", "dir": "H", "row": 1, "col": 1},
+      {"word": "ACORN", "hint": "A small nut that falls from an oak tree", "dir": "V", "row": 1, "col": 1},
+      {"word": "PEACH", "hint": "A sweet, fuzzy fruit with a pit inside", "dir": "H", "row": 1, "col": 7},
+      {"word": "PLUMS", "hint": "Small, sweet purple fruits", "dir": "V", "row": 1, "col": 7},
+      {"word": "ONION", "hint": "A vegetable with layers that might make you cry when chopped", "dir": "H", "row": 7, "col": 1},
+      {"word": "OLIVE", "hint": "A tiny green or black fruit used to make oil", "dir": "V", "row": 7, "col": 1},
+      {"word": "MELON", "hint": "A large, sweet, juicy fruit, like a watermelon", "dir": "H", "row": 7, "col": 7},
+      {"word": "MANGO", "hint": "A sweet, tropical yellow fruit", "dir": "V", "row": 7, "col": 7},
+      {"word": "YAM", "hint": "An orange vegetable similar to a sweet potato", "dir": "H", "row": 4, "col": 4},
+      {"word": "YUM", "hint": "What you say when food tastes delicious!", "dir": "V", "row": 4, "col": 4}
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Set 9: School Supplies",
+    "words": [
+      {"word": "PAPER", "hint": "Flat white sheets you write and draw on", "dir": "H", "row": 1, "col": 1},
+      {"word": "PAINT", "hint": "Colorful liquid used to create art", "dir": "V", "row": 1, "col": 1},
+      {"word": "RULER", "hint": "A tool used to measure how long something is", "dir": "H", "row": 1, "col": 7},
+      {"word": "READS", "hint": "What a student does with a book", "dir": "V", "row": 1, "col": 7},
+      {"word": "BOOKS", "hint": "Items with pages full of stories and facts", "dir": "H", "row": 7, "col": 1},
+      {"word": "BOARD", "hint": "Where the teacher writes in the front of the classroom", "dir": "V", "row": 7, "col": 1},
+      {"word": "MARKS", "hint": "Scores or grades you get on a test", "dir": "H", "row": 7, "col": 7},
+      {"word": "MATHS", "hint": "The subject where you learn numbers and shapes", "dir": "V", "row": 7, "col": 7},
+      {"word": "PEN", "hint": "A writing tool that uses ink", "dir": "H", "row": 4, "col": 4},
+      {"word": "PIN", "hint": "A sharp little item used to hang paper on a board", "dir": "V", "row": 4, "col": 4}
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Set 10: Clothes",
+    "words": [
+      {"word": "SHIRT", "hint": "Clothing worn on the top part of your body", "dir": "H", "row": 1, "col": 1},
+      {"word": "SOCKS", "hint": "You wear these on your feet inside your shoes", "dir": "V", "row": 1, "col": 1},
+      {"word": "PANTS", "hint": "Clothing worn on your legs", "dir": "H", "row": 1, "col": 7},
+      {"word": "PARKA", "hint": "A heavy winter coat with a hood", "dir": "V", "row": 1, "col": 7},
+      {"word": "SHOES", "hint": "You wear these on your feet to go outside", "dir": "H", "row": 7, "col": 1},
+      {"word": "SCARF", "hint": "A long piece of cloth wrapped around the neck for warmth", "dir": "V", "row": 7, "col": 1},
+      {"word": "GLOVE", "hint": "Keeps your hand warm in the winter", "dir": "H", "row": 7, "col": 7},
+      {"word": "GOWNS", "hint": "Long, fancy dresses", "dir": "V", "row": 7, "col": 7},
+      {"word": "HAT", "hint": "You wear this on your head to block the sun", "dir": "H", "row": 4, "col": 4},
+      {"word": "HEM", "hint": "The folded and sewn edge of a piece of clothing", "dir": "V", "row": 4, "col": 4}
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Set 11: Ocean Life",
+    "words": [
+      {"word": "SHARK", "hint": "A large ocean fish known for its sharp teeth", "dir": "H", "row": 1, "col": 1},
+      {"word": "SHELL", "hint": "A hard, protective home found on the beach", "dir": "V", "row": 1, "col": 1},
+      {"word": "WHALE", "hint": "The largest mammal in the sea", "dir": "H", "row": 1, "col": 7},
+      {"word": "WATER", "hint": "The clear liquid that fills the oceans", "dir": "V", "row": 1, "col": 7},
+      {"word": "CORAL", "hint": "Colorful underwater structures that fish live in", "dir": "H", "row": 7, "col": 1},
+      {"word": "CRABS", "hint": "Sea creatures with claws that walk sideways", "dir": "V", "row": 7, "col": 1},
+      {"word": "SQUID", "hint": "A sea animal with soft body and long tentacles", "dir": "H", "row": 7, "col": 7},
+      {"word": "SCUBA", "hint": "Gear used by divers to breathe underwater", "dir": "V", "row": 7, "col": 7},
+      {"word": "EEL", "hint": "A long, slippery fish that looks like a snake", "dir": "H", "row": 4, "col": 4},
+      {"word": "EGG", "hint": "What a baby fish hatches out of", "dir": "V", "row": 4, "col": 4}
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Set 12: In the Sky",
+    "words": [
+      {"word": "STARS", "hint": "Bright, twinkling lights in the night sky", "dir": "H", "row": 1, "col": 1},
+      {"word": "SPACE", "hint": "The huge, dark area beyond Earth", "dir": "V", "row": 1, "col": 1},
+      {"word": "COMET", "hint": "A flying ball of ice and dust with a glowing tail", "dir": "H", "row": 1, "col": 7},
+      {"word": "CREST", "hint": "The very top edge of a mountain reaching into the sky", "dir": "V", "row": 1, "col": 7},
+      {"word": "ALIEN", "hint": "A fictional creature from another planet", "dir": "H", "row": 7, "col": 1},
+      {"word": "ASTRO", "hint": "A prefix meaning 'related to the stars'", "dir": "V", "row": 7, "col": 1},
+      {"word": "ROCKS", "hint": "Meteors are basically giant flying space _____", "dir": "H", "row": 7, "col": 7},
+      {"word": "RADAR", "hint": "Equipment used to track airplanes in the sky", "dir": "V", "row": 7, "col": 7},
+      {"word": "SUN", "hint": "Our closest star", "dir": "H", "row": 4, "col": 4},
+      {"word": "SKY", "hint": "The blue space right above us", "dir": "V", "row": 4, "col": 4}
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Set 13: Time & Seasons",
+    "words": [
+      {"word": "MONTH", "hint": "There are twelve of these in a year", "dir": "H", "row": 1, "col": 1},
+      {"word": "MARCH", "hint": "The third month of the year", "dir": "V", "row": 1, "col": 1},
+      {"word": "YEARS", "hint": "It takes one of these for Earth to orbit the sun", "dir": "H", "row": 1, "col": 7},
+      {"word": "YOUTH", "hint": "The time of life when you are young", "dir": "V", "row": 1, "col": 7},
+      {"word": "CLOCK", "hint": "A machine with hands that tells the time", "dir": "H", "row": 7, "col": 1},
+      {"word": "CRISP", "hint": "How the cool morning air feels in autumn", "dir": "V", "row": 7, "col": 1},
+      {"word": "WEEKS", "hint": "Made up of seven days each", "dir": "H", "row": 7, "col": 7},
+      {"word": "WATCH", "hint": "A small clock you wear on your wrist", "dir": "V", "row": 7, "col": 7},
+      {"word": "DAY", "hint": "The time when the sun is up", "dir": "H", "row": 4, "col": 4},
+      {"word": "DUE", "hint": "The date when homework needs to be handed in", "dir": "V", "row": 4, "col": 4}
+    ]
+  }
+]
