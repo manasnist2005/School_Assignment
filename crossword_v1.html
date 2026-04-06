@@ -65,27 +65,61 @@
         .cell.found { background-color: #2ecc71; color: white; transform: scale(1); cursor: default;}
 
         .hints {
-            max-width: 350px;
+            width: 320px;
             background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
         }
-        .hints h3 { margin-top: 0; color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px; }
-        .hints ul { list-style-type: none; padding-left: 0; margin: 0; }
-        .hints li { 
-            margin-bottom: 8px; 
-            font-size: 14px; 
-            line-height: 1.4; 
-            padding: 8px;
+        .hints h3 { 
+            margin-top: 0; 
+            color: #2c3e50; 
+            border-bottom: 2px solid #ecf0f1; 
+            padding-bottom: 5px; 
+        }
+        
+        .active-hint-box {
+            background-color: #e8f4f8;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            font-size: 16px;
             border-radius: 4px;
-            background-color: #f8f9fa;
-            transition: all 0.3s;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            color: #2c3e50;
+            min-height: 80px;
+            transition: all 0.3s ease;
         }
-        .hints li.solved {
-            text-decoration: line-through;
+        
+        .masked-word {
+            margin-top: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 6px;
+            color: #d35400;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 8px;
+            border-radius: 5px;
+            
+            /* Hidden by default, smoothly fades in */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .masked-word.visible {
+            opacity: 1;
+        }
+
+        .progress-text {
+            text-align: right;
+            font-size: 14px;
+            font-weight: bold;
             color: #95a5a6;
-            background-color: #e8f8f5;
         }
 
         #success-message {
@@ -120,8 +154,9 @@
     <div class="game-area">
         <div class="grid" id="word-grid"></div>
         <div class="hints">
-            <h3>Find these 10 words!</h3>
-            <ul id="hints-list"></ul>
+            <h3>Find this word:</h3>
+            <div id="single-hint" class="active-hint-box">Loading...</div>
+            <div id="progress-counter" class="progress-text">Word 0 of 0</div>
         </div>
     </div>
 
@@ -129,10 +164,12 @@
 
     <script>
         let puzzles = [];
-        let currentIndex = 0;
         let placedWordData = [];
-        let foundWordsCount = 0;
+        let currentWordIndex = 0;
+        let hintRevealTimer = null; 
+        
         const GRID_SIZE = 12;
+        const HINT_DELAY_MS = 120000; // 120,000 milliseconds = 2 minutes
 
         // Fetch the JSON data
         fetch('crossworddata_v1.json')
@@ -144,14 +181,15 @@
                 const urlParams = new URLSearchParams(window.location.search);
                 const requestedSet = urlParams.get('set');
                 
+                let puzzleIndexToLoad = 0;
                 if (requestedSet) {
                     const foundIndex = puzzles.findIndex(p => p.id == requestedSet);
                     if (foundIndex !== -1) {
-                        currentIndex = foundIndex;
+                        puzzleIndexToLoad = foundIndex;
                     }
                 }
                 
-                loadPuzzle(currentIndex);
+                loadPuzzle(puzzleIndexToLoad);
             })
             .catch(error => {
                 document.getElementById('puzzle-title').innerText = "Error loading crossworddata_v1.json";
@@ -162,22 +200,21 @@
             const puzzle = puzzles[index];
             document.getElementById('puzzle-title').innerText = puzzle.title;
             document.getElementById('success-message').style.display = 'none';
-            foundWordsCount = 0;
+            currentWordIndex = 0;
+            clearTimeout(hintRevealTimer);
 
             buildGame(puzzle.words);
         }
 
         function buildGame(words) {
             const gridContainer = document.getElementById('word-grid');
-            const hintsList = document.getElementById('hints-list');
             gridContainer.innerHTML = '';
-            hintsList.innerHTML = '';
             placedWordData = [];
 
             // 1. Create empty 12x12 grid
             let logicalGrid = Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(''));
 
-            // 2. Hide the words in the grid (Horizontal, Vertical, and Diagonal)
+            // 2. Hide the words in the grid
             words.forEach((wordObj, index) => {
                 let word = wordObj.word.toUpperCase();
                 let placed = false;
@@ -218,7 +255,6 @@
                             }
                         }
                     } else if (dir === 'D' && row + word.length <= GRID_SIZE && col + word.length <= GRID_SIZE) {
-                        // Diagonal: Top-Left to Bottom-Right
                         for (let i = 0; i < word.length; i++) {
                             if (logicalGrid[row + i][col + i] !== '' && logicalGrid[row + i][col + i] !== word[i]) {
                                 canPlace = false; break;
@@ -235,19 +271,18 @@
                     }
 
                     if (canPlace) {
-                        placedWordData.push({ id: index, word: word, coords: coords });
+                        placedWordData.push({ 
+                            id: index, 
+                            word: word, 
+                            coords: coords,
+                            hint: wordObj.hint 
+                        });
                         placed = true;
                     }
                     attempts++;
                 }
 
                 if(!placed) console.warn(`Could not place word: ${word}`);
-
-                // Add hint to UI
-                const li = document.createElement('li');
-                li.id = `hint-${index}`;
-                li.innerHTML = `<strong>${word.length} Letters:</strong> ${wordObj.hint}`;
-                hintsList.appendChild(li);
             });
 
             // 3. Fill the remaining empty spaces with random letters
@@ -273,6 +308,47 @@
                     gridContainer.appendChild(cellDiv);
                 }
             }
+
+            // 4. Show the first hint
+            showCurrentHint();
+        }
+
+        // Helper function to create the A****T mask
+        function getMaskedWord(word) {
+            if (word.length <= 2) return word; 
+            const firstLetter = word.charAt(0);
+            const lastLetter = word.charAt(word.length - 1);
+            const asterisks = '*'.repeat(word.length - 2);
+            return `${firstLetter}${asterisks}${lastLetter}`;
+        }
+
+        function showCurrentHint() {
+            // Clear any previous running timers
+            clearTimeout(hintRevealTimer);
+
+            if (currentWordIndex < placedWordData.length) {
+                const currentData = placedWordData[currentWordIndex];
+                const maskedAnswer = getMaskedWord(currentData.word);
+
+                // Insert the hint text and the hidden masked word container
+                document.getElementById('single-hint').innerHTML = `
+                    <div><strong>${currentData.word.length} Letters:</strong> ${currentData.hint}</div>
+                    <div id="masked-word-display" class="masked-word">${maskedAnswer}</div>
+                `;
+                document.getElementById('progress-counter').innerText = `Word ${currentWordIndex + 1} of ${placedWordData.length}`;
+                
+                // Start the 2-minute timer to reveal the masked answer
+                hintRevealTimer = setTimeout(() => {
+                    const maskedDisplay = document.getElementById('masked-word-display');
+                    if (maskedDisplay) {
+                        maskedDisplay.classList.add('visible');
+                    }
+                }, HINT_DELAY_MS);
+
+            } else {
+                document.getElementById('single-hint').innerHTML = "<strong>All words found!</strong>";
+                document.getElementById('progress-counter').innerText = `Challenge Complete`;
+            }
         }
 
         function checkWords() {
@@ -280,31 +356,40 @@
             const allFound = Array.from(document.querySelectorAll('.cell.found')).map(el => el.dataset.coord);
             const combinedActive = [...allSelected, ...allFound];
 
-            placedWordData.forEach(wordData => {
-                if (wordData.isFound) return;
+            // Only check against the CURRENT word they are supposed to be finding
+            const currentData = placedWordData[currentWordIndex];
+            if (!currentData) return;
 
-                // Check if all coordinates for this word are currently selected or found
-                const isWordFound = wordData.coords.every(coord => combinedActive.includes(coord));
+            const isWordFound = currentData.coords.every(coord => combinedActive.includes(coord));
 
-                if (isWordFound) {
-                    wordData.isFound = true;
-                    foundWordsCount++;
-                    
-                    // Lock them in visually
-                    wordData.coords.forEach(coord => {
-                        const cell = document.querySelector(`.cell[data-coord="${coord}"]`);
-                        cell.classList.remove('selected');
-                        cell.classList.add('found');
-                    });
+            if (isWordFound) {
+                currentData.isFound = true;
+                
+                // If they find it before 2 minutes, stop the timer so it doesn't trigger on the next word
+                clearTimeout(hintRevealTimer);
+                
+                // Lock them in visually
+                currentData.coords.forEach(coord => {
+                    const cell = document.querySelector(`.cell[data-coord="${coord}"]`);
+                    cell.classList.remove('selected');
+                    cell.classList.add('found');
+                });
 
-                    // Cross out the hint
-                    document.getElementById(`hint-${wordData.id}`).classList.add('solved');
-                }
-            });
-
-            if (foundWordsCount === placedWordData.length) {
+                // Clear any leftover selected cells to clean the board for the next word
                 document.querySelectorAll('.cell.selected').forEach(el => el.classList.remove('selected'));
-                document.getElementById('success-message').style.display = 'block';
+
+                // Move to the next word
+                currentWordIndex++;
+
+                // Small delay before showing the next hint so they see their success
+                setTimeout(() => {
+                    if (currentWordIndex < placedWordData.length) {
+                        showCurrentHint();
+                    } else {
+                        showCurrentHint(); // Triggers the "All words found" text
+                        document.getElementById('success-message').style.display = 'block';
+                    }
+                }, 400); 
             }
         }
     </script>
